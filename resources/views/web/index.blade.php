@@ -681,6 +681,6 @@ $page_title = "Home";
     </main>
 
 
-    <?php include('footer.php')?>
+
 
 @endsection
