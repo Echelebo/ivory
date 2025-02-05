@@ -1,488 +1,686 @@
 @extends('web.layouts.master')
 
-@php
-    $header = \App\Models\PageSetup::page('home');
-@endphp
-@if(isset($header))
-
-    @section('title', $header->meta_title)
-
-    @section('top_meta_tags')
-    @if(isset($header->meta_description))
-    <meta name="description" content="{!! str_limit(strip_tags($header->meta_description), 160, ' ...') !!}">
-    @else
-    <meta name="description" content="{!! str_limit(strip_tags($setting->description), 160, ' ...') !!}">
-    @endif
-
-    @if(isset($header->meta_keywords))
-    <meta name="keywords" content="{!! strip_tags($header->meta_keywords) !!}">
-    @else
-    <meta name="keywords" content="{!! strip_tags($setting->keywords) !!}">
-    @endif
-    @endsection
-
-@endif
-
-@section('social_meta_tags')
-    @if(isset($setting))
-    <meta property="og:type" content="website">
-    <meta property='og:site_name' content="{{ $setting->title }}"/>
-    <meta property='og:title' content="{{ $setting->title }}"/>
-    <meta property='og:description' content="{!! str_limit(strip_tags($setting->description), 160, ' ...') !!}"/>
-    <meta property='og:url' content="{{ route('home') }}"/>
-    <meta property='og:image' content="{{ asset('/uploads/setting/'.$setting->logo_path) }}"/>
-
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="{!! '@'.str_replace(' ', '', $setting->title) !!}" />
-    <meta name="twitter:creator" content="@HiTechParks" />
-    <meta name="twitter:url" content="{{ route('home') }}" />
-    <meta name="twitter:title" content="{{ $setting->title }}" />
-    <meta name="twitter:description" content="{!! str_limit(strip_tags($setting->description), 160, ' ...') !!}" />
-    <meta name="twitter:image" content="{{ asset('/uploads/setting/'.$setting->logo_path) }}" />
-    @endif
-@endsection
-
 @section('content')
 
-    @if(count($sliders) > 0)
-    <!-- Bnner Section -->
-    <section class="banner-section">
-        <div class="carousel-column">
-            <div class="carousel-outer">
-                <div class="banner-carousel owl-carousel owl-theme">
-                    @foreach($sliders as $slider)
-                    <!-- Slide Item -->
-                    <div class="slide-item" style="background-image: url({{ asset('uploads/slider/'.$slider->image_path) }});">
-                        <div class="container">
-                            <div class="content-box">
-                                <h1>{{ $slider->title }}</h1>
-                                <div class="text">{!! $slider->description !!}</div>
-                                <div class="link-box">
-                                    @php
-                                        $page_contact = \App\Models\PageSetup::page('contact-us');
-                                    @endphp
-                                    @if(isset($page_contact))
-                                    <a href="{{ route('contact') }}" class="theme-btn btn-style-one">{{ __('common.contact_us') }}</a>
-                                    @endif
+<?php
+$page_title = "Home";
+?>
+<main class="main">
 
-                                    @if(isset($slider->link))
-                                    <a href="{{ $slider->link }}" target="_blank" class="theme-btn btn-style-two">{{ __('common.read_more') }}</a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Bnner Section -->
-    @endif
-
-
-    @if(isset($about) || count($counters) > 0)
-    <!-- About Section -->    
-    <section class="our-mission-section">
-        <div class="container">
-            @if(isset($about))
-            <div class="sec-title left">
-                <h2>{{ $about->title }}</h2>
-                <div class="separater"></div>
-            </div>
-            <div class="row">
-                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 wow fadeInRight animated">
-                    <div class="inner-box">
-                        <div class="text">{!! $about->description !!} <br/></div>
-                        <br/>
-                        @php
-                            $page_about = \App\Models\PageSetup::page('about-us');
-                        @endphp
-                        @if(isset($page_about))
-                        <div class="link-box"><a href="{{ route('about') }}" class="theme-btn btn-style-three">{{ __('common.read_more') }}</a></div>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                    @if(isset($about->mission_title))
-                    <div class="innner-box wow fadeInLeft">
-                        <div class="info-box">
-                            <h4>{{ $about->mission_title }}</h4>
-                            <div class="text">{!! $about->mission_desc !!}</div>
-                        </div>
-                    </div>
-                    @endif
-                    @if(isset($about->vision_title))
-                    <div class="innner-box wow fadeInLeft">
-                        <div class="info-box">
-                            <h4>{{ $about->vision_title }}</h4>
-                            <div class="text">{!! $about->vision_desc !!}</div>
-                        </div>
-                    </div>
-                    @endif
-                </div>
-            </div>
-            @endif
-
-            @if(count($counters) > 0)
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 clearfix fun-fact-section">
-                    <div class="fact-counter">
-                        <div class="row">
-                            @foreach($counters as $counter)
-                            <!--Column-->
-                            <div class="counter-column col-lg-3 col-md-6 col-sm-12 wow fadeInUp">
-                                <div class="count-box">
-                                    <div class="count"><span class="count-text" data-speed="5000" data-stop="{{ $counter->value }}">0</span></div>
-                                    <div class="separater"></div>
-                                    <h4 class="counter-title">{{ $counter->title }}</h4>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
-        </div>
-    </section>
-    <!--End About Section --> 
-    @endif
-
-
-    @php
-        $section_services = \App\Models\Section::section('services');
-    @endphp
-    @if(count($services) > 0 && isset($section_services))
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">    
-            <div class="sec-title centered">
-                <h2>{{ $section_services->title }}</h2>
-                <div class="text">{!! $section_services->description !!}</div>
-                <div class="separater"></div>
-            </div>
-            <div class="services-box row clearfix">
-                <div class="services-carousel owl-carousel owl-theme">
-                    @foreach($services as $service)
-                    <!-- Service Block -->
-                    <div class="service-block wow fadeInDown">
-                        <div class="inner-box">
-                            <div class="image-box">
-                                <figure><img src="{{ asset('uploads/service/'.$service->image_path) }}" alt="{{ $service->title }}"/></figure>
-                                <div class="overlay-box"><a href="{{ route('service.single', $service->slug) }}">{{ __('common.read_more') }}</a></div>
-                            </div>
-                            <div class="lower-content">
-                                <h3><a href="{{ route('service.single', $service->slug) }}">{{ $service->title }}</a></h3>
-                                <div class="text">{!! strip_tags($service->short_desc) !!}</div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--End Services Section -->
-    @endif
-
-
-    @php
-        $section_portfolio = \App\Models\Section::section('portfolio');
-    @endphp
-    @if(count($portfolios) > 0 && isset($section_portfolio))
-    <!--Gallery Section-->
-    <section class="gallery-section">
-        <!--Sortable Masonry-->
-        <div class="sortable-masonry">
-            <div class="container">
-                <div class="sec-title centered">
-                    <h2>{{ $section_portfolio->title }}</h2>
-                    <div class="text">{!! $section_portfolio->description !!}</div>
-                    <div class="separater"></div>
-                </div>
-                <!--Filter-->
-                <div class="filters row clearfix">
-                    
-                    <ul class="filter-tabs filter-btns clearfix">
-                        <li class="active filter" data-role="button" data-filter=".all">{{ __('common.all') }}</li>
-                        @foreach($portfolio_categories as $portfolio_category)
-                        <li class="filter" data-role="button" data-filter=".{{ $portfolio_category->slug }}">{{ $portfolio_category->title }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            
-                <div class="row clearfix items-container">
-                    
-                    @foreach($portfolios as $portfolio)
-                    <!--Default Portfolio Item-->
-                    <div class="default-portfolio-item mix masonry-item all 
-                        @foreach($portfolio->categories as $category)
-                            {{ $category->slug }} 
-                        @endforeach
-                     col-lg-4 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('uploads/portfolio/'.$portfolio->image_path) }}" alt="{{ $portfolio->title }}"></figure>
-                            <!--Overlay Box-->
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="content">
-                                        <div class="content-inner">
-                                            <div class="tags">
-                                                @foreach($portfolio->categories as $category)
-                                                    > {{ $category->title }} 
-                                                @endforeach
-                                            </div>
-                                            <h3><a href="{{ route('portfolio.single', $portfolio->slug) }}">{{ $portfolio->title }}</a></h3>
-                                        </div>
-                                        <a href="{{ route('portfolio.single', $portfolio->slug) }}" class="link-btn">{{ __('common.read_more') }}</a>
+        <!-- hero slider -->
+        <div class="hero-section">
+            <div class="hero-slider owl-carousel owl-theme">
+                <div class="hero-single" style="background: url(assets/img/slider/slider-1.jpg)">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-12 col-lg-7">
+                                <div class="hero-content">
+                                    <h6 class="hero-sub-title" data-animation="fadeInDown" data-delay=".25s">
+                                        <i class="far fa-book-open-reader"></i>Welcome To Ivorygate!
+                                    </h6>
+                                    <h1 class="hero-title" data-animation="fadeInRight" data-delay=".50s">
+                                        Start Your Beautiful And <span>Bright</span> Future
+                                    </h1>
+                                    <p data-animation="fadeInLeft" data-delay=".75s">
+                                    Every teaching and learning journey is unique Following
+                                    We'll help guide your way.
+                                    </p>
+                                    <div class="hero-btn" data-animation="fadeInUp" data-delay="1s">
+                                        <a href="/about" class="theme-btn">About Us<i
+                                                class="fas fa-arrow-right-long"></i></a>
+                                        <a href="/contact" class="theme-btn theme-btn2">Contact Us<i
+                                                class="fas fa-arrow-right-long"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach
 
                 </div>
-
-                @php
-                    $page_portfolio = \App\Models\PageSetup::page('portfolio');
-                @endphp
-                @if(isset($page_portfolio))
-                <div class="load-more-btn text-center">
-                    <a href="{{ route('portfolios') }}" class="theme-btn btn-style-four">{{ __('common.view_more') }}</a>
-                </div>
-                @endif
-            </div>
-        </div>
-    </section>
-    <!--End Gallery Section-->
-    @endif
-
-
-    @php
-        $section_team = \App\Models\Section::section('team');
-    @endphp
-    @if(count($members) > 0 && isset($section_team))
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <div class="sec-title left">
-                <h2>{{ $section_team->title }}</h2>
-                <div class="text">{!! $section_team->description !!}</div>
-                <div class="separater"></div>
-            </div>
-
-            <div class="outer-column clearfix">
-                <div class="team-carousal">
-                    @foreach($members as $member)
-                    <!-- Team Block -->
-                    <div class="team-block">
-                        <div class="inner-box">
-                            <div class="image-box">
-                                <div class="image"><img src="{{ asset('uploads/member/'.$member->image_path) }}" alt="{{ $member->title }}"></div>
-                                
-                            </div>
-                            <div class="info-box">
-                                <h3 class="name"><a>{{ $member->title }}</a></h3>
-                                <span class="designation">{{ $member->designation->title }}@if(isset($member->designation->department)), {{ $member->designation->department }}@endif</span>
-                                @if(isset($member->email))
-                                <span><i class="far fa-envelope"></i> {{ $member->email }}</span>
-                                @endif
-                                @if(isset($member->phone))
-                                <span><i class="fas fa-phone-volume"></i> {{ $member->phone }}</span>
-                                @endif
-                            </div>
-                            <ul class="social-links">
-                                @if(isset($member->facebook))
-                                <li><a href="{{ $member->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                @endif
-                                @if(isset($member->twitter))
-                                <li><a href="{{ $member->twitter }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                @endif
-                                @if(isset($member->instagram))
-                                <li><a href="{{ $member->instagram }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                @endif
-                                @if(isset($member->linkedin))
-                                <li><a href="{{ $member->linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                                @endif
-                            </ul>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!--End Team Section -->
-    @endif
-
-
-    @php
-        $section_testimonials = \App\Models\Section::section('testimonials');
-    @endphp
-    @if(count($testimonials) > 0 && isset($section_testimonials))
-    <!-- Testimonial Section Two-->
-    <section class="testimonial-section">
-        <div class="container">
-            <div class="sec-title centered">
-                <h2>{{ $section_testimonials->title }}</h2>
-                <div class="text">{!! $section_testimonials->description !!}</div>
-                <div class="separater"></div>
-            </div>
-
-            <div class="testimonial-carousel owl-carousel owl-theme">
-                @foreach($testimonials as $testimonial)
-                <!-- Testimonial block two -->
-                <div class="testimonial-block">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <div class="thumb"><img src="{{ asset('uploads/testimonial/'.$testimonial->image_path) }}" alt="{{ $testimonial->title }}"></div>
-                        </div>
-                         <div class="info-box">
-                            <div class="text">{!! $testimonial->description !!}</div>
-                            <h5 class="name">{{ $testimonial->title }}</h5>
-                            <div class="company-name">{{ $testimonial->designation }}@if(isset($testimonial->organization)), {{ $testimonial->organization }}@endif</div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    <!--End Testimonial Section Two-->
-    @endif
-
-
-    @php
-        $section_blog = \App\Models\Section::section('blog');
-    @endphp
-    @if(count($articles) > 0 && isset($section_blog))
-    <!-- News Section -->
-    <section class="news-section">
-        <div class="container">
-            <div class="sec-title left">
-                <h2>{{ $section_blog->title }}</h2>
-                <div class="text">{!! $section_blog->description !!}</div>
-                <div class="separater"></div>
-            </div>
-            <div class="row">
-            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                @foreach($articles as $key => $article)
-                @if($key == 0)
-                <!-- News Block -->
-                <div class="news-block">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img src="{{ asset('uploads/article/'.$article->image_path) }}" alt="{{ $article->title }}"></figure>
-                            <div class="overlay-box"><a href="{{ route('blog.single', $article->slug) }}" class="link-btn">{{ __('common.read_more') }}</a></div>
-
-                        </div>
-                        <div class="caption-box">
-                            <h3><a href="{{ route('blog.single', $article->slug) }}">{!! str_limit(strip_tags($article->title), 50, ' ...') !!}</a></h3>
-                            <div class="text">{!! str_limit(strip_tags($article->description), 110, ' ...') !!}</div>
-                            <ul class="post-meta">
-                                <li><i class="far fa-calendar-check"></i> {{ date('d M, Y', strtotime($article->created_at)) }}</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                @endif
-                @endforeach
-            </div>
-
-            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                <div class="news-block-two">
-                    @foreach($articles as $key => $article)
-                    @if($key > 0)
-                    <div class="inner-box">
-                        <div class="row clearfix">
-                            <!--Image Column-->
-                            <div class="image-box col-lg-6 col-md-6 col-sm-12">
-                                <div class="image">
-                                    <figure class="image"><img src="{{ asset('uploads/article/'.$article->image_path) }}" alt="{{ $article->title }}"></figure>
-                                    <div class="overlay-box"><a href="{{ route('blog.single', $article->slug) }}" class="link-btn">{{ __('common.read_more') }}</a></div>
+                <div class="hero-single" style="background: url(assets/img/slider/slider-2.jpg)">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-12 col-lg-7">
+                                <div class="hero-content">
+                                    <h6 class="hero-sub-title" data-animation="fadeInDown" data-delay=".25s">
+                                        <i class="far fa-book-open-reader"></i>Welcome To Ivorygate!
+                                    </h6>
+                                    <h1 class="hero-title" data-animation="fadeInRight" data-delay=".50s">
+                                    Never Stop Learning, Life Never Stop Teaching
+                                    </h1>
+                                    <p data-animation="fadeInLeft" data-delay=".75s">
+                                    Combines the ideas of empowered learning and top-tier instruction for students.
+                                    </p>
+                                    <div class="hero-btn" data-animation="fadeInUp" data-delay="1s">
+                                        <a href="/about" class="theme-btn">About Us<i
+                                                class="fas fa-arrow-right-long"></i></a>
+                                        <a href="/contact" class="theme-btn theme-btn2">Contact Us<i
+                                                class="fas fa-arrow-right-long"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                                <!--Content Column-->
-                                <div class="caption-box col-lg-6 col-md-6 col-sm-12">
-                                    <h3><a href="{{ route('blog.single', $article->slug) }}">{!! str_limit(strip_tags($article->title), 50, ' ...') !!}</a></h3>
-                                <div class="text">{!! str_limit(strip_tags($article->description), 110, ' ...') !!}</div>
-                                <ul class="post-meta">
-                                    <li><i class="far fa-calendar-check"></i> {{ date('d M, Y', strtotime($article->created_at)) }}</li>
-                                </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-single" style="background: url(assets/img/slider/slider-3.jpg)">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-12 col-lg-7">
+                                <div class="hero-content">
+                                    <h6 class="hero-sub-title" data-animation="fadeInDown" data-delay=".25s">
+                                        <i class="far fa-book-open-reader"></i>Welcome To Ivorygate!
+                                    </h6>
+                                    <h1 class="hero-title" data-animation="fadeInRight" data-delay=".50s">
+                                        Start Your Beautiful And <span>Bright</span> Future
+                                    </h1>
+                                    <p data-animation="fadeInLeft" data-delay=".75s">
+                                    Our instructors are industry experts and passionate educators with a wealth of knowledge and experience.
+                                    </p>
+                                    <div class="hero-btn" data-animation="fadeInUp" data-delay="1s">
+                                        <a href="/about" class="theme-btn">About Us<i
+                                                class="fas fa-arrow-right-long"></i></a>
+                                        <a href="/contact" class="theme-btn theme-btn2">Contact Us<i
+                                                class="fas fa-arrow-right-long"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    @endif
-                    @endforeach
                 </div>
             </div>
-
-            </div>
         </div>
-    </section>
-    <!--End News Section -->
-    @endif
+        <!-- hero slider end -->
 
 
-    @php
-        $section_process = \App\Models\Section::section('process');
-    @endphp
-    @if(count($processes) > 0 && isset($section_process))
-    <!--Feautred Section -->
-    <section class="feautred-section style-two" style="background-image: url({{ asset('web/images/background/process-bg.png') }});">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="sec-title left">
-                        <h2>{{ $section_process->title }}</h2>
-                        <div class="text">{!! $section_process->description !!}</div>
-                        <div class="separater"></div>
+        <!-- feature area -->
+        <div class="feature-area fa-negative">
+            <div class="col-xl-9 ms-auto">
+                <div class="feature-wrapper">
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-item">
+                                <span class="count">01</span>
+                                <div class="feature-icon">
+                                    <img src="assets/img/icon/scholarship.svg" alt="">
+                                </div>
+                                <div class="feature-content">
+                                    <h4 class="feature-title">Scholarship Facility</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-item">
+                                <span class="count">02</span>
+                                <div class="feature-icon">
+                                    <img src="assets/img/icon/teacher.svg" alt="">
+                                </div>
+                                <div class="feature-content">
+                                    <h4 class="feature-title">Skilled Lecturers</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-item">
+                                <span class="count">03</span>
+                                <div class="feature-icon">
+                                    <img src="assets/img/icon/library.svg" alt="">
+                                </div>
+                                <div class="feature-content">
+                                    <h4 class="feature-title">Book Library Facility</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-item">
+                                <span class="count">04</span>
+                                <div class="feature-icon">
+                                    <img src="assets/img/icon/money.svg" alt="">
+                                </div>
+                                <div class="feature-content">
+                                    <h4 class="feature-title">Affordable Price</h4>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="featured-box row clearfix">
-                @foreach($processes as $key => $process)
-                <div class="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="{{ ($key + 1) * 200 }}ms">
-                    <div class="inner-box">
-                        <div class="title-box">
-                            <h4><span class="numbe-post">{{ $key + 1 }}</span>{{ $process->title }}</h4>
+        </div>
+        <!-- feature area end -->
+
+
+        <!-- about area -->
+
+ <!-- about area -->
+ <div class="about-area py-120">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about-left wow fadeInLeft" data-wow-delay=".25s">
+                            <div class="about-img">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <img class="img-1" src="assets/img/about/01.jpg" alt="">
+                                        <div class="about-experience mt-4">
+                                            <div class="about-experience-icon">
+                                                <img src="assets/img/icon/exchange-idea.svg" alt="">
+                                            </div>
+                                            <b class="text-start">Many Years Of <br> Quality Service</b>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img class="img-2" src="assets/img/about/02.jpg" alt="">
+                                        <img class="img-3 mt-4" src="assets/img/about/03.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="lower-content">
-                            <div class="text">{!! $process->description !!}</div> 
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-right wow fadeInRight" data-wow-delay=".25s">
+                            <div class="site-heading mb-3">
+                                <span class="site-title-tagline"><i class="far fa-book-open-reader"></i> About Us</span>
+                                <h2 class="site-title">
+                                    Our Education System <span>Inspires</span> You More.
+                                </h2>
+                            </div>
+                            <p class="about-text">
+                            We don’t just give students an education and experiences that set them up for success in a career. We help them succeed in their career—to discover a field they’re passionate about and dare to lead it.
+                            </p>
+                            <div class="about-content">
+                                <div class="row">
+
+                                    <div class="col-md-10">
+                                        <div class="about-quote">
+                                            <p>IVORY GATE EDUCATION is on a mission to inspire and motivate young ones to
+                                            Desire, pursue and attain academic excellence and diligence for outstanding performance in SAT, JAMB, SSCE, SS1 Foundation Class, BECE (Junior WAEC), Common Entrance,Virtual/ Online Classes and Information Technology.</p>
+                                            <i class="far fa-quote-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="about-bottom">
+                                <a href="/about" class="theme-btn">Discover More<i
+                                        class="fas fa-arrow-right-long"></i></a>
+                                <div class="about-phone">
+                                    <div class="icon"><i class="fal fa-headset"></i></div>
+                                    <div class="number">
+                                        <span>Call Now</span>
+                                        <h6><a href="tel:+2348137107935">+2348137107935</a></h6>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
             </div>
         </div>
-    </section>
-    <!--End Feautred Section -->
-    @endif
+        <!-- about area end -->
 
-
-    @php
-        $section_clients = \App\Models\Section::section('clients');
-    @endphp
-    @if(count($clients) > 0 && isset($section_clients))
-    <!--Clients Section-->
-    <section class="clients-section style-two">
-        <div class="container">
-            <div class="sponsors-outer">
-                <!--Sponsors Carousel-->
-                <ul class="sponsors-carousel owl-carousel owl-theme">
-                    @foreach($clients as $client)
-                    <li class="slide-item"><figure class="image-box"><a href="{{ $client->link }}" target="_blank"><img src="{{ asset('uploads/client/'.$client->image_path) }}" alt="{{ $client->title }}"></a></figure></li>
-                    @endforeach
-                </ul>
+        <!-- counter area -->
+        <div class="counter-area pt-60 pb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="counter-box">
+                            <div class="icon">
+                                <img src="assets/img/icon/course.svg" alt="">
+                            </div>
+                            <div>
+                                <span class="counter" data-count="+" data-to="30" data-speed="3000">30</span>
+                                <h6 class="title">+ Total Subjects  </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="counter-box">
+                            <div class="icon">
+                                <img src="assets/img/icon/graduation.svg" alt="">
+                            </div>
+                            <div>
+                                <span class="counter" data-count="+" data-to="200" data-speed="3000">200</span>
+                                <h6 class="title">+ Our Students</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="counter-box">
+                            <div class="icon">
+                                <img src="assets/img/icon/teacher-2.svg" alt="">
+                            </div>
+                            <div>
+                                <span class="counter" data-count="+" data-to="50" data-speed="3000">50</span>
+                                <h6 class="title">+ Skilled Lecturers</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="counter-box">
+                            <div class="icon">
+                                <img src="assets/img/icon/award.svg" alt="">
+                            </div>
+                            <div>
+                                <span class="counter" data-count="+" data-to="30" data-speed="3000">30</span>
+                                <h6 class="title">+ Win Awards</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-    <!--End Clients Section-->
-    @endif
+
+
+        <!-- choose-area -->
+        <div class="choose-area pt-80 pb-80">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="choose-content wow fadeInUp" data-wow-delay=".25s">
+                            <div class="choose-content-info">
+                                <div class="site-heading mb-0">
+                                    <span class="site-title-tagline"><i class="far fa-book-open-reader"></i> Why Choose Us</span>
+                                    <h2 class="site-title text-white mb-10">We Are Expert & <span>Do Our Best</span> For Your Goal</h2>
+                                    <p class="text-white">
+                                    We provides a focused learning environment with specialized instructors, tailored curriculum, smaller class sizes, personalized attention, and often access to additional resources like labs or technology, allowing for deeper engagement and improved learning outcomes compared to traditional schooling.
+                                    </p>
+                                </div>
+                                <div class="choose-content-wrap">
+                                    <div class="row g-4">
+                                        <div class="col-md-6">
+                                            <div class="choose-item">
+                                                <div class="choose-item-icon">
+                                                    <img src="assets/img/icon/teacher-2.svg" alt="">
+                                                </div>
+                                                <div class="choose-item-info">
+                                                    <h4>Expert Teachers</h4>
+                                                    <p>We typically focus on specific subjects or skills, enabling instructors to provide in-depth knowledge and expertise in that area.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="choose-item">
+                                                <div class="choose-item-icon">
+                                                    <img src="assets/img/icon/course-material.svg" alt="">
+                                                </div>
+                                                <div class="choose-item-info">
+                                                    <h4>Targeted curriculum</h4>
+                                                    <p>Our curriculum is designed to directly address the specific skills or knowledge required for a particular field or exam, maximizing learning efficiency.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="choose-item">
+                                                <div class="choose-item-icon">
+                                                    <img src="assets/img/icon/online-course.svg" alt="">
+                                                </div>
+                                                <div class="choose-item-info">
+                                                    <h4>Career-focused approach</h4>
+                                                    <p>We align our programs with industry needs and career pathways, providing practical skills and training relevant to the job market. </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="choose-item">
+                                                <div class="choose-item-icon">
+                                                    <img src="assets/img/icon/money.svg" alt="">
+                                                </div>
+                                                <div class="choose-item-info">
+                                                    <h4>Supportive community</h4>
+                                                    <p>Smaller student populations can foster a more supportive and collaborative learning environment where students can network and build relationships with peers and instructors.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="choose-img wow fadeInRight" data-wow-delay=".25s">
+                            <img src="assets/img/choose/01.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- choose-area end -->
+
+
+        <!-- gallery-area -->
+
+
+
+
+
+
+        <!-- event area --
+        <div class="event-area bg py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto">
+                        <div class="site-heading text-center">
+                            <span class="site-title-tagline"><i class="far fa-book-open-reader"></i> Events</span>
+                            <h2 class="site-title">Our Upcoming <span>Events</span></h2>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-slider owl-carousel owl-theme">
+                    <div class="event-item">
+                        <div class="event-location">
+                            <span><i class="far fa-map-marker-alt"></i> Abuja, Nigeria</span>
+                        </div>
+                        <div class="event-img">
+                            <img src="assets/img/event/01.jpg" alt="">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-meta">
+                                <span class="event-date"><i class="far fa-calendar-alt"></i>16 June, 2025</span>
+                                <span class="event-time"><i class="far fa-clock"></i>10.00AM - 04.00PM</span>
+                            </div>
+                            <h4 class="event-title"><a href="#">High School Program 2025</a></h4>
+                            <p></p>
+                            <div class="event-btn">
+                                <a href="#" class="theme-btn">Join Event<i
+                                        class="fas fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-location">
+                            <span><i class="far fa-map-marker-alt"></i> Abuja, Nigeria</span>
+                        </div>
+                        <div class="event-img">
+                            <img src="assets/img/event/02.jpg" alt="">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-meta">
+                                <span class="event-date"><i class="far fa-calendar-alt"></i>16 June, 2025</span>
+                                <span class="event-time"><i class="far fa-clock"></i>10.00AM - 04.00PM</span>
+                            </div>
+                            <h4 class="event-title"><a href="#">High School Program 2024</a></h4>
+                            <p></p>
+                            <div class="event-btn">
+                                <a href="#" class="theme-btn">Join Event<i
+                                        class="fas fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-location">
+                            <span><i class="far fa-map-marker-alt"></i> Abuja, Nigeria</span>
+                        </div>
+                        <div class="event-img">
+                            <img src="assets/img/event/03.jpg" alt="">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-meta">
+                                <span class="event-date"><i class="far fa-calendar-alt"></i>16 June, 2025</span>
+                                <span class="event-time"><i class="far fa-clock"></i>10.00AM - 04.00PM</span>
+                            </div>
+                            <h4 class="event-title"><a href="#">High School Program 2025</a></h4>
+                            <p></p>
+                            <div class="event-btn">
+                                <a href="#" class="theme-btn">Join Event<i
+                                        class="fas fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-location">
+                            <span><i class="far fa-map-marker-alt"></i> Abuja, Nigeria</span>
+                        </div>
+                        <div class="event-img">
+                            <img src="assets/img/event/04.jpg" alt="">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-meta">
+                                <span class="event-date"><i class="far fa-calendar-alt"></i>16 June, 2025</span>
+                                <span class="event-time"><i class="far fa-clock"></i>10.00AM - 04.00PM</span>
+                            </div>
+                            <h4 class="event-title"><a href="#">High School Program 2025</a></h4>
+                            <p></p>
+                            <div class="event-btn">
+                                <a href="#" class="theme-btn">Join Event<i
+                                        class="fas fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- event area end -->
+        <!-- cta-area -->
+        <div class="cta-area">
+            <div class="container">
+                <div class="cta-wrapper">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 ms-lg-auto">
+                            <div class="cta-content">
+                                <h1>We have online group learning running - Join Today For Your Classes</h1>
+                                <p>Our students have consistently achieved high scores in standardized tests, including Waec, Jamb.
+                                In 2024, 92% of our graduates were accepted into top-tier universities.</p>
+                                <div class="cta-btn">
+                                    <a href="https://forms.gle/SdWRWBRSbBXMJtZT8" class="theme-btn" target="_blank">Join Group Now!<i
+                                            class="fas fa-arrow-right-long"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- cta-area end -->
+
+        <!-- department area -->
+        <div class="department-area bg py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto">
+                        <div class="site-heading text-center">
+                            <span class="site-title-tagline"><i class="far fa-book-open-reader"></i> Services</span>
+                            <h2 class="site-title">Browse Our <span>Services</span></h2>
+                            <p>Ivorygate services are designed to meet the diverse needs of students and families in the community, fostering an inclusive and supportive learning environment. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="department-slider owl-carousel owl-theme">
+                    <div class="department-item">
+                        <div class="department-icon">
+                            <img src="assets/img/icon/monitor.svg" alt="">
+                        </div>
+                        <div class="department-info">
+                            <h4 class="department-title">Academic Tutoring</h4>
+                            <p>One-on-one and group tutoring sessions across subjects (math, science, etc.).
+                            Test preparation for standardized tests (e.g., SAT, JAMB, SSCE).</p>
+
+                        </div>
+                    </div>
+                    <div class="department-item">
+                        <div class="department-icon">
+                            <img src="assets/img/icon/law.svg" alt="">
+                        </div>
+                        <div class="department-info">
+                            <h4 class="department-title">SS1 Foundation Class</h4>
+                            <p>Extended learning opportunities for the SS1 set, including science and art.</p>
+
+                        </div>
+                    </div>
+                    <div class="department-item">
+                        <div class="department-icon">
+                            <img src="assets/img/icon/data.svg" alt="">
+                        </div>
+                        <div class="department-info">
+                            <h4 class="department-title">College and Career Counseling</h4>
+                            <p>Guidance on college selection, application processes, and scholarship opportunities.
+                            Career assessment and planning services, including resume writing and interview preparation.</p>
+
+                        </div>
+                    </div>
+                    <div class="department-item">
+                        <div class="department-icon">
+                            <img src="assets/img/icon/health.svg" alt="">
+                        </div>
+                        <div class="department-info">
+                            <h4 class="department-title">Common Entrance</h4>
+                            <p>Support and resources available for students preparing for the Common Entrance Examination, preparing them for transition to secondary education.</p>
+
+                        </div>
+                    </div>
+                    <div class="department-item">
+                        <div class="department-icon">
+                            <img src="assets/img/icon/art.svg" alt="">
+                        </div>
+                        <div class="department-info">
+                            <h4 class="department-title">After-School Programs</h4>
+                            <p>Supervised activities that include homework help, recreational activities, and skill-building exercises.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- department area end -->
+
+
+        <!-- testimonial area -->
+        <div class="testimonial-area ts-bg pt-80 pb-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto">
+                        <div class="site-heading text-center">
+                            <span class="site-title-tagline"><i class="far fa-book-open-reader"></i> Testimonials</span>
+                            <h2 class="site-title text-white">What Our Students <span>Say</span></h2>
+                            <p class="text-white">These testimonials paint a picture of the positive impact our education center has on its students, parents, and educators.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slider owl-carousel owl-theme">
+                    <div class="testimonial-item">
+                        <div class="testimonial-rate">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-quote">
+                            <p>
+                            Joining Ivorygate education center was one of the best decisions I’ve ever made. The personalized attention I receive from my tutors has helped me improve my grades in math significantly.
+                            </p>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="testimonial-author-info">
+                                <h4>Anthony</h4>
+                                <p>Student</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-quote-icon"><i class="far fa-quote-right"></i></span>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-rate">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-quote">
+                            <p>
+                            The support from my teachers made all the difference during my college application process. They guided me through every step, and I’m proud to say I got accepted into my dream university thanks to their help!
+                            </p>
+                        </div>
+                        <div class="testimonial-content">
+
+                            <div class="testimonial-author-info">
+                                <h4>Richard</h4>
+                                <p>Student</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-quote-icon"><i class="far fa-quote-right"></i></span>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-rate">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-quote">
+                            <p>
+                            I love the after-school programs! I’ve made so many friends and learned new skills in art and robotics. It makes school so much more fun and engaging!
+                            </p>
+                        </div>
+                        <div class="testimonial-content">
+
+                            <div class="testimonial-author-info">
+                                <h4>Ogechi</h4>
+                                <p>Student</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-quote-icon"><i class="far fa-quote-right"></i></span>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-rate">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-quote">
+                            <p>
+                            I cannot express how grateful I am for the support my son received at Ivorygate education center. The staff is incredibly caring and dedicated, and I can see the growth in his confidence and academic performance.
+                            </p>
+                        </div>
+                        <div class="testimonial-content">
+
+                            <div class="testimonial-author-info">
+                                <h4>Linda T.</h4>
+                                <p>Parent</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-quote-icon"><i class="far fa-quote-right"></i></span>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-rate">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-quote">
+                            <p>
+                            As a parent, I appreciate how Ivorygate education center emphasizes not just academic success but also personal development.
+                            </p>
+                        </div>
+                        <div class="testimonial-content">
+
+                            <div class="testimonial-author-info">
+                                <h4>Ninal Gordon</h4>
+                                <p>Parent</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-quote-icon"><i class="far fa-quote-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- testimonial area end -->
+
+
+        <!-- partner area -->
+
+        <!-- partner area end -->
+
+    </main>
+
+
+    <?php include('footer.php')?>
 
 @endsection

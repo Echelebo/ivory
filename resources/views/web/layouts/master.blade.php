@@ -1,614 +1,321 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
+
+
+<!-- Mirrored from live.themewild.com/eduka/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 21 Dec 2024 10:10:14 GMT -->
 <head>
-    <!-- Meta Tags -->
-    <meta charset="utf-8">
+    <!-- meta tags -->
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IVORY GATE EDUCATION is on a mission to inspire and motivate young ones to Desire, pursue and attain academic excellence and diligence.">
+
+    <meta name="keywords" content="education centre,education abuja">
 
     @if(isset($setting))
     <!-- App Title -->
-    <title>@yield('title') | {{ $setting->title }}</title>
+    <title>{{ $page_title }} | {{ $setting->title }}</title>
 
     <!-- App favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/uploads/setting/'.$setting->favicon_path) }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('/uploads/setting/'.$setting->favicon_path) }}" type="image/x-icon">
-    
+
     @yield('top_meta_tags')
     @endif
-
 
     @if(empty($setting))
     <!-- App Title -->
     <title>@yield('title')</title>
     @endif
 
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all-fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Social Meta Tags -->
-    <link rel="canonical" href="{{ route('home') }}">
-    @yield('social_meta_tags')
-
-
-    <!-- Stylesheets -->
-    <link href="{{ asset('web/css/bootstrap.css') }}" rel="stylesheet">
-    @if($livechat->status == 1)
-    <link href="{{ asset('web/css/floating-wpp.min.css') }}" rel="stylesheet">
-    @endif
-    <link href="{{ asset('web/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('web/css/responsive.css') }}" rel="stylesheet">
-
-    <!-- Custom Style -->
-    @if(isset($setting->custom_css))
-    <style type="text/css">
-        {!! strip_tags($setting->custom_css) !!}
-    </style>
-    @endif
 </head>
 
 <body>
 
-<div class="page-wrapper">
-    <!-- Preloader -->
-    <div class="preloader"></div>
-    
-    <!-- Main Header-->
-    <header class="main-header header-style-one">
-    
-        @if(isset($setting->contact_address) || isset($social))
-        <!--Header Top-->
+    <!-- preloader -->
+    <div class="preloader">
+        <div class="loader-book">
+            <div class="loader-book-page"></div>
+            <div class="loader-book-page"></div>
+            <div class="loader-book-page"></div>
+        </div>
+    </div>
+    <!-- preloader end -->
+
+
+    <!-- header area -->
+    <header class="header">
+        <!-- header top -->
         <div class="header-top">
             <div class="container">
-                <div class="clearfix">
-                    <!--Top Left-->
-                    <div class="top-left clearfix">
-                        <ul class="links clearfix">
-                            @if(isset($setting->contact_address))
-                            <li><span class="icon fa fa-map-marker-alt"></span>{{ $setting->contact_address }}</li>
-                            @endif
-                        </ul>
-                    </div>
+                <div class="header-top-wrap">
+                    <div class="header-top-left">
+                        <div class="header-top-social">
+                            <span>Follow Us: </span>
+                            <a href="https://www.facebook.com/IvoryGateEducationCentreAbujaNigeria/"><i class="fab fa-facebook-f"></i></a>
 
-                    <!--Top Right-->
-                    <div class="top-right pull-right">
-                        <ul class="social-links clearfix">
-                            @if(isset($social->facebook))
-                            <li><a href="{{ $social->facebook }}" target="_blank"><span class="icon fab fa-facebook-f"></span></a></li>
-                            @endif
-                            @if(isset($social->twitter))
-                            <li><a href="{{ $social->twitter }}" target="_blank"><span class="icon fab fa-twitter"></span></a></li>
-                            @endif
-                            @if(isset($social->instagram))
-                            <li><a href="{{ $social->instagram }}" target="_blank"><span class="icon fab fa-instagram"></span></a></li>
-                            @endif
-                            @if(isset($social->linkedin))
-                            <li><a href="{{ $social->linkedin }}" target="_blank"><span class="icon fab fa-linkedin-in"></span></a></li>
-                            @endif
-                            @if(isset($social->pinterest))
-                            <li><a href="{{ $social->pinterest }}" target="_blank"><span class="icon fab fa-pinterest"></span></a></li>
-                            @endif
-                            @if(isset($social->youtube))
-                            <li><a href="{{ $social->youtube }}" target="_blank"><span class="icon fab fa-youtube"></span></a></li>
-                            @endif
-                            @if(isset($social->skype))
-                            <li><a href="skype:{{ $social->skype }}?chat" target="_blank"><span class="icon fab fa-skype"></span></a></li>
-                            @endif
-                            @if(isset($social->whatsapp))
-                            <li><a href="https://wa.me/{{ str_replace(' ', '', $social->whatsapp) }}" target="_blank"><span class="icon fab fa-whatsapp"></span></a></li>
-                            @endif
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endif
-    
-        <!--Header-Upper-->
-        <div class="header-upper">
-            <div class="container">
-                <div class="clearfix">
-                    <div class="nav-inner">
-                        @if(isset($setting))
-                        <div class="pull-left logo-box">
-                            <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset('/uploads/setting/'.$setting->logo_path) }}" alt="Logo"></a></div>
-                        </div>
-                        @endif
-                
-                        <div class="pull-right upper-right clearfix">
-                            
-                            <!--Info Box-->
-                            @if(isset($setting->office_hours))
-                            <div class="upper-column info-box">
-                                <div class="icon-box"><span class="flaticon-clock"></span></div>
-                                <ul>
-                                    <li><strong>{{ __('contact.office_time') }}:</strong></li>
-                                    <li>{!! strip_tags($setting->office_hours) !!}</li>
-                                </ul>
-                            </div>
-                            @endif
-                            
-                            @if(isset($setting->phone_one))
-                            <!--Info Box-->
-                            <div class="upper-column info-box">
-                                <div class="icon-box"><span class="flaticon-phone-call"></span></div>
-                                <ul>
-                                    <li><strong>{{ __('contact.phone') }}:</strong></li>
-                                    <li>{{ $setting->phone_one }}</li>
-                                </ul>
-                            </div>
-                            @endif
-                            
-                            @if(isset($setting->email_one))
-                            <!--Info Box-->
-                            <div class="upper-column info-box">
-                                <div class="icon-box"><span class="flaticon-email"></span></div>
-                                <ul>
-                                    <li><strong>{{ __('contact.email') }}:</strong></li>
-                                    <li>{{ $setting->email_one }}</li>
-                                </ul>
-                            </div>
-                            @endif
+                            <a href="https://wa.me/2348137107935"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!--End Header Upper-->
-        
-        <!--Header Lower-->
-        <div class="header-lower">
-            
-            <div class="container">
-                <div class="nav-outer clearfix">
-
-                    <!-- Main Menu -->
-                    <nav class="main-menu navbar-expand-md">
-                        <div class="navbar-header">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        
-                        <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
-                            <ul class="navigation clearfix">
-                                @php
-                                    $page_home = \App\Models\PageSetup::page('home');
-                                @endphp
-                                @if(isset($page_home))
-                                <li class="{{ Request::path() == '/' ? 'current' : '' }}"><a href="{{ route('home') }}">{{ $page_home->title }}</a></li>
-                                @endif
-
-                                @php
-                                    $page_about = \App\Models\PageSetup::page('about-us');
-                                @endphp
-                                @if(isset($page_about))
-                                <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="{{ route('about') }}">{{ $page_about->title }}</a></li>
-                                @endif
-
-                                @php
-                                    $page_services = \App\Models\PageSetup::page('services');
-                                @endphp
-                                @if(isset($page_services))
-                                <li class="dropdown {{ Request::is('service*') ? 'current' : '' }}"><a href="{{ route('services') }}">{{ $page_services->title }}</a>
-                                    <ul>
-                                        @foreach($service_subnavs as $service_subnav)
-                                        <li class="{{ Request::is('service/'.$service_subnav->slug) ? 'current' : '' }}"><a href="{{ route('service.single', $service_subnav->slug) }}">{{ $service_subnav->title }}</a></li>
-                                        @endforeach
-                                    </ul>
+                    <div class="header-top-right">
+                        <div class="header-top-contact">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="far fa-location-dot"></i>Abuja, Nigeria</a>
                                 </li>
-                                @endif
-
-                                @php
-                                    $page_portfolio = \App\Models\PageSetup::page('portfolio');
-                                @endphp
-                                @if(isset($page_portfolio))
-                                <li class="{{ Request::is('portfolio*') ? 'current' : '' }}"><a href="{{ route('portfolios') }}">{{ $page_portfolio->title }}</a></li>
-                                @endif
-
-                                @php
-                                    $page_pricing = \App\Models\PageSetup::page('pricing');
-                                @endphp
-                                @if(isset($page_pricing))
-                                <li class="{{ Request::is('pricing*') ? 'current' : '' }}"><a href="{{ route('pricing') }}">{{ $page_pricing->title }}</a></li>
-                                @endif
-
-                                @php
-                                    $page_blog = \App\Models\PageSetup::page('blog');
-                                @endphp
-                                @if(isset($page_blog))
-                                <li class="dropdown {{ Request::is('blog*') ? 'current' : '' }}"><a href="{{ route('blogs') }}">{{ $page_blog->title }}</a>
-                                    <ul>
-                                        @foreach($article_subnavs as $article_subnav)
-                                        <li class="{{ Request::is('blogs/'.$article_subnav->slug) ? 'current' : '' }}"><a href="{{ route('blog.category', $article_subnav->slug) }}">{{ $article_subnav->title }}</a></li>
-                                        @endforeach
-                                    </ul>
+                                <li>
+                                    <a href="mailto: contact@ivorygateeducation.org"><i class="far fa-envelopes"></i> <span class="__cf_email__" data-cfemail="30595e565f705548515d405c551e535f5d">contact@ivorygateeducation.org</span></a>
                                 </li>
-                                @endif
-
-                                @php
-                                    $page_faqs = \App\Models\PageSetup::page('faqs');
-                                @endphp
-                                @if(isset($page_faqs))
-                                <li class="{{ Request::is('faqs*') ? 'current' : '' }}"><a href="{{ route('faqs') }}">{{ $page_faqs->title }}</a></li>
-                                @endif
-
-                                @php
-                                    $page_contact = \App\Models\PageSetup::page('contact-us');
-                                @endphp
-                                @if(isset($page_contact))
-                                <li class="{{ Request::path() == 'contact' ? 'current' : '' }}"><a href="{{ route('contact') }}">{{ $page_contact->title }}</a></li>
-                                @endif
+                                <li>
+                                    <a href="tel:+2348137107935"><i class="far fa-phone-volume"></i>+2348137107935</a>
+                                </li>
                             </ul>
                         </div>
-                    </nav>
-                    <!-- Main Menu End-->
-
-                    <div class="outer-box clearfix">
-                        @php
-                            $page_quote = \App\Models\PageSetup::page('get-quote');
-                        @endphp
-                        @if(isset($page_quote))
-                        <div class="advisor-box {{ Request::is('get-quote*') ? 'current' : '' }}">
-                            <a href="{{ route('get-quote') }}" class="theme-btn advisor-btn">{{ $page_quote->title }}</a>
-                        </div>
-                        @endif
                     </div>
                 </div>
             </div>
         </div>
-        <!--End Header Lower-->
-        
-        <!--Sticky Header-->
-        <div class="sticky-header">
-            <div class="container clearfix">
-                @if(isset($setting))
-                <!--Logo-->
-                <div class="logo pull-left">
-                    <a href="{{ route('home') }}" class="img-responsive"><img src="{{ asset('/uploads/setting/'.$setting->logo_path) }}" alt="Logo"></a>
-                </div>
-                @endif
-                
-                <!--Right Col-->
-                <div class="right-col pull-right">
-                    <!-- Main Menu -->
-                    <nav class="main-menu  navbar-expand-md">
-                        <div class="navbar-header">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
+
+        <div class="main-navigation">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container position-relative">
+                    <a class="navbar-brand" href="/">
+                        <img src="assets/img/logo/logo.png" alt="logo">
+                    </a>
+                    <div class="mobile-menu-right">
+                        <div class="search-btn">
+                            <button type="button" class="nav-right-link search-box-outer"><i
+                                    class="far fa-search"></i></button>
                         </div>
-                        
-                        <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-                            <ul class="navigation clearfix">
-                                @php
-                                    $page_home = \App\Models\PageSetup::page('home');
-                                @endphp
-                                @if(isset($page_home))
-                                <li class="{{ Request::path() == '/' ? 'current' : '' }}"><a href="{{ route('home') }}">{{ $page_home->title }}</a></li>
-                                @endif
-
-                                @php
-                                    $page_about = \App\Models\PageSetup::page('about-us');
-                                @endphp
-                                @if(isset($page_about))
-                                <li class="{{ Request::is('about*') ? 'current' : '' }}"><a href="{{ route('about') }}">{{ $page_about->title }}</a></li>
-                                @endif
-
-                                @php
-                                    $page_services = \App\Models\PageSetup::page('services');
-                                @endphp
-                                @if(isset($page_services))
-                                <li class="dropdown {{ Request::is('service*') ? 'current' : '' }}"><a href="{{ route('services') }}">{{ $page_services->title }}</a>
-                                    <ul>
-                                        @foreach($service_subnavs as $service_subnav)
-                                        <li class="{{ Request::is('service/'.$service_subnav->slug) ? 'current' : '' }}"><a href="{{ route('service.single', $service_subnav->slug) }}">{{ $service_subnav->title }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                                @endif
-
-                                @php
-                                    $page_portfolio = \App\Models\PageSetup::page('portfolio');
-                                @endphp
-                                @if(isset($page_portfolio))
-                                <li class="{{ Request::is('portfolio*') ? 'current' : '' }}"><a href="{{ route('portfolios') }}">{{ $page_portfolio->title }}</a></li>
-                                @endif
-
-                                @php
-                                    $page_pricing = \App\Models\PageSetup::page('pricing');
-                                @endphp
-                                @if(isset($page_pricing))
-                                <li class="{{ Request::is('pricing*') ? 'current' : '' }}"><a href="{{ route('pricing') }}">{{ $page_pricing->title }}</a></li>
-                                @endif
-
-                                @php
-                                    $page_blog = \App\Models\PageSetup::page('blog');
-                                @endphp
-                                @if(isset($page_blog))
-                                <li class="dropdown {{ Request::is('blog*') ? 'current' : '' }}"><a href="{{ route('blogs') }}">{{ $page_blog->title }}</a>
-                                    <ul>
-                                        @foreach($article_subnavs as $article_subnav)
-                                        <li class="{{ Request::is('blogs/'.$article_subnav->slug) ? 'current' : '' }}"><a href="{{ route('blog.category', $article_subnav->slug) }}">{{ $article_subnav->title }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                                @endif
-
-                                @php
-                                    $page_faqs = \App\Models\PageSetup::page('faqs');
-                                @endphp
-                                @if(isset($page_faqs))
-                                <li class="{{ Request::is('faqs*') ? 'current' : '' }}"><a href="{{ route('faqs') }}">{{ $page_faqs->title }}</a></li>
-                                @endif
-
-                                @php
-                                    $page_contact = \App\Models\PageSetup::page('contact-us');
-                                @endphp
-                                @if(isset($page_contact))
-                                <li class="{{ Request::path() == 'contact' ? 'current' : '' }}"><a href="{{ route('contact') }}">{{ $page_contact->title }}</a></li>
-                                @endif
-
-                                @php
-                                    $page_quote = \App\Models\PageSetup::page('get-quote');
-                                @endphp
-                                @if(isset($page_quote))
-                                <li class="advisor-box {{ Request::is('get-quote*') ? 'current' : '' }}">
-                                    <a href="{{ route('get-quote') }}">{{ $page_quote->title }}</a>
-                                </li>
-                                @endif
-                            </ul>
-                        </div>
-                    </nav><!-- Main Menu End-->
-                </div>
-                
-            </div>
-        </div>
-        <!--End Sticky Header-->
-    
-    </header>
-    <!--End Main Header -->
-
-
-    <!-- Content Start -->
-    @yield('content')
-    <!-- Content End -->
-
-
-    @php
-        $section_subscribe = \App\Models\Section::section('subscribe');
-    @endphp
-    @if(isset($section_subscribe))
-    <!--Subscribe Section-->
-    <section class="subscribe-section">
-        <div class="container">
-            <div class="row clearfix">
-                <!--Form Column-->
-                <div class="title-column col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                    <h2>{{ $section_subscribe->title }}</h2>
-                    <div class="text">{!! $section_subscribe->description !!}</div>
-                    <div class="icon-box">
-                        <span class="icon flaticon-mail"></span>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-mobile-icon"><i class="far fa-bars"></i></span>
+                        </button>
                     </div>
-                </div>
-                <!--Form Column-->
-                <div class="form-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <div class="subscribe-form">
-                            <form method="post" action="{{ route('subscribe') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <input type="email" name="email" value="" placeholder="{{ __('contact.email_address') }}" required>
-                                    <button type="submit" class="theme-btn"><i class="fab fa-telegram-plane"></i></button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--End Subscribe Section-->
-    @endif
+                    <div class="collapse navbar-collapse" id="main_nav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle-x active" href="/" data-bs-toggle="dropdown-x">Home</a>
 
-    <!-- Main Footer -->
-    <footer class="main-footer" style="background-image: url({{ asset('web/images/background/footer-bg.jpg') }});">
-        <div class="container">
-            <!--Widgets Section-->
-            <div class="widgets-section">
-                <div class="row clearfix">
-                    <div class="big-column col-xl-8 col-lg-12 col-md-12 col-sm-12">
-                        <div class="row">
-                            <!--Footer Column-->
-                            <div class="footer-column col-lg-6 col-md-12 col-sm-12">
-                                <div class="footer-widget about-widget">
-                                    @if(isset($setting))
-                                    <div class="footer-logo"><a href="{{ route('home') }}"><img src="{{ asset('/uploads/setting/'.$setting->logo_path) }}" alt="Logo"></a></div>
-                                    
-                                    <div class="widget-content">
-                                        <ul class="info-box">
-                                            <li><i class="far fa-map"></i><span>{{ __('contact.address') }}:</span> {{ $setting->contact_address }}</li>
-                                            <li><i class="fa fa-phone-volume"></i> <span>{{ __('contact.phone') }}:</span> {{ $setting->phone_one }}@if(isset($setting->phone_two)), @endif {{ $setting->phone_two }} </li>
-                                            <li><i class="fas fa-envelope"></i> <span>{{ __('contact.email') }}:</span> {{ $setting->email_one }}@if(isset($setting->email_two)), @endif {{ $setting->email_two }} </li>
-                                        </ul>
-                                    </div>
-                                    @endif
-                                </div>
-                            </div>
-
-                            @if(count($pages) > 0)
-                            <!--Footer Column-->
-                            <div class="footer-column col-lg-6 col-md-12 col-sm-12">
-                                <div class="footer-widget links-widget">
-                                    <h2 class="widget-title">{{ __('common.footer_links') }}</h2>
-                                    <div class="widget-content">
-                                        <ul class="list">
-                                            @foreach($pages as $key => $page)
-                                            <li><a href="{{ route('page.single', $page->slug) }}">{{ $page->title }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div> 
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-
-                    @if(count($recents) > 0)
-                    <div class="big-column col-xl-4 col-lg-12 col-md-12 col-sm-12">
-                        <div class="row">
-                            <!--Footer Column-->
-                            <div class="footer-column col-lg-12 col-md-12 col-sm-12">
-                                <div class="footer-widget recent-posts">
-                                    <h2 class="widget-title">{{ __('common.recent_posts') }}</h2>
-                                     <!--Footer Column-->
-                                    <div class="widget-content">
-                                        <div class="item">
-                                            @foreach($recents as $key => $recent)
-                                            @if($key <= 1)
-                                            <div class="post">
-                                                <ul class="post-date">
-                                                    <li>{{ date('F d Y', strtotime($recent->created_at)) }}</li>
-                                                </ul>
-                                                <div class="thumb"><a href="{{ route('blog.single', $recent->slug) }}"><img src="{{ asset('uploads/article/'.$recent->image_path) }}" alt="{{ $recent->title }}"></a></div>
-                                                <h4><a href="{{ route('blog.single', $recent->slug) }}">{!! str_limit(strip_tags($recent->title), 50, ' ...') !!}</a></h4>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                            <li class="nav-item mega-menu dropdown">
+                                <a class="nav-link dropdown-toggle" href="/services" data-bs-toggle="dropdown">Our Services</a>
+                                <div class="dropdown-menu fade-down">
+                                    <div class="mega-content">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-4 col-md-3">
+                                                    <h5>About Us</h5>
+                                                    <div class="menu-about">
+                                                        <a href="/" class="menu-about-logo"><img
+                                                                src="assets/img/logo/logo-light.png" alt=""></a>
+                                                        <p>We believe that every student deserves individualized support in reaching their personal education and career goals.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4 col-md-3">
+                                                    <h5>Our Programs</h5>
+                                                    <ul class="mega-menu-item">
+                                                        <li><a class="dropdown-item" href="/sat">SAT</a></li>
+                                                        <li><a class="dropdown-item" href="/jamb">JAMB Class</a></li>
+                                                        <li><a class="dropdown-item"
+                                                                href="/ssce">SSCE Class</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item" href="/ss1-foundation">SS1 Foundation Class</a></li>
+                                                        <li><a class="dropdown-item" href="/bece">BECE (Junior WAEC) Class</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-12 col-sm-4 col-md-3">
+                                                    <h5>More Programs</h5>
+                                                    <ul class="mega-menu-item">
+                                                        <li><a class="dropdown-item"
+                                                                href="/common-entrance">Common Entrance Class</a></li>
+                                                        <li><a class="dropdown-item" href="/virtual">Virtual/Online Class</a></li>
+                                                        <li><a class="dropdown-item" href="/icttraining">ICT Training</a></li>
+                                                        <li><a class="dropdown-item"
+                                                                href="/volunteerism">Volunteerism</a></li>
+                                                        <li><a class="dropdown-item"
+                                                                href="/leadership">Leadership</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-3">
+                                                    <h5>Free Resources</h5>
+                                                    <ul class="mega-menu-item">
+                                                        <li><a class="dropdown-item" href="#">SAT Forum</a></li>
+                                                        <li><a class="dropdown-item" href="#">JAMB Forum</a></li>
+                                                        <li><a class="dropdown-item" href="#">SSCE Forum</a></li>
+                                                        <li><a class="dropdown-item" href="/blog">Blog</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                            @endif
-                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="/career">Career</a></li>
+
+
+                          <!--  <li class="nav-item ">
+                                <a class="nav-link dropdown-toggle-x" href="/blog" data-bs-toggle="dropdown-x">Our Blog</a>
+
+                            </li> -->
+                            <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+                        </ul>
+                       <!-- <div class="nav-right">
+                            <div class="search-btn">
+                                <button type="button" class="nav-right-link search-box-outer"><i
+                                        class="far fa-search"></i></button>
+                            </div>
+                            <div class="nav-right-btn mt-2">
+                                <a href="/contact" class="theme-btn"><span
+                                        class="fal fa-pencil"></span>Apply Now</a>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- header area end -->
+
+
+    <!-- popup search -->
+    <div class="search-popup">
+        <button class="close-search"><span class="far fa-times"></span></button>
+        <form action="#">
+            <div class="form-group">
+                <input type="search" name="search-field" placeholder="Search Here..." required>
+                <button type="submit"><i class="far fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+    <!-- popup search end -->
+
+<!-- Content Start -->
+@yield('content')
+<!-- Content End -->
+
+        <!-- footer area -->
+        <footer class="footer-area">
+            <div class="footer-shape">
+                <img src="assets/img/shape/03.png" alt="">
+            </div>
+            <div class="footer-widget">
+                <div class="container">
+                    <div class="row footer-widget-wrapper pt-100 pb-70">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="footer-widget-box about-us">
+                                <a href="/" class="footer-logo">
+                                    <img src="assets/img/logo/logo-light.png" alt="">
+                                </a>
+                                <p class="mb-3">
+                                we believe that every student deserves individualized support in reaching their personal education and career goals.
+                                </p>
+                                <ul class="footer-contact">
+                                    <li><a href="tel:+2348137107935"><i class="far fa-phone"></i>+2348137107935</a></li>
+                                    <li><i class="far fa-map-marker-alt"></i>Abuja, Nigeria</li>
+                                    <li><a href="mailto:contact@ivorygateeducation"><i
+                                                class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="b2dbdcd4ddf2d7cad3dfc2ded79cd1dddf">contact@ivorygateeducation</span></a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="footer-widget-box list">
+                                <h4 class="footer-widget-title">Services</h4>
+                                <ul class="footer-list">
+
+                                    <li><a href="/sat"><i class="fas fa-caret-right"></i>SAT Class</a></li>
+                                    <li><a href="/bece"><i class="fas fa-caret-right"></i>SSCE Class</a></li>
+                                    <li><a href="/common-entrance"><i class="fas fa-caret-right"></i>JAMB Class</a></li>
+                                    <li><a href="/icttraining"><i class="fas fa-caret-right"></i>Volunteerism</a></li>
+                                    <li><a href="/jamb"><i class="fas fa-caret-right"></i>Leadership</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="footer-widget-box list">
+                                <h4 class="footer-widget-title">More Services</h4>
+                                <ul class="footer-list">
+                                <li><a href="/ss1-foundation"><i class="fas fa-caret-right"></i>SS1 Foundation</a></li>
+                                    <li><a href="/ssce"><i class="fas fa-caret-right"></i>BECE (Junior Waec)</a></li>
+                                    <li><a href="/virtual"><i class="fas fa-caret-right"></i>Virtual/Online Class</a></li>
+                                    <li><a href="/volunteerism"><i class="fas fa-caret-right"></i>ICT Training</a></li>
+                                    <li><a href="/leadership"><i class="fas fa-caret-right"></i>Common Entrance Class</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-2">
+                            <div class="footer-widget-box list">
+                                <h4 class="footer-widget-title">Important Links</h4>
+                                <ul class="footer-list">
+                                <li><a href="/about"><i class="fas fa-caret-right"></i>About</a></li>
+                                <li><a href="/contact"><i class="fas fa-caret-right"></i>Contact</a></li>
+
+                                    <li><a href="/career"><i class="fas fa-caret-right"></i>Careers</a></li>
+                                    <li><a href="/services"><i class="fas fa-caret-right"></i>Services</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <div class="copyright-wrapper">
+                        <div class="row">
+                            <div class="col-md-6 align-self-center">
+                                <p class="copyright-text">
+                                    &copy; Copyright <span id="date"></span> <a href="/"> Ivorygate Education Center, </a> All Rights Reserved.
+                                </p>
+                            </div>
+                            <div class="col-md-6 align-self-center">
+                                <ul class="footer-social">
+                                    <li><a href="https://www.facebook.com/IvoryGateEducationCentreAbujaNigeria/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://wa.me/2348137107935"><i class="fab fa-whatsapp"></i></a></li>
+
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    @endif
                 </div>
             </div>
-        </div>
-        
-        <!--Footer Bottom-->
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="inner-container clearfix">
-                    @if(isset($setting))
-                    <div class="copyright-text">&copy; {!! strip_tags($setting->footer_text, '<p><a><b><i><u><strong>') !!}</div>
-                    @endif
-                    <div class="social-links">
-                        <ul class="social-icon-two">
-                            @if(isset($social->facebook))
-                            <li><a href="{{ $social->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                            @endif
-                            @if(isset($social->twitter))
-                            <li><a href="{{ $social->twitter }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                            @endif
-                            @if(isset($social->instagram))
-                            <li><a href="{{ $social->instagram }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                            @endif
-                            @if(isset($social->linkedin))
-                            <li><a href="{{ $social->linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                            @endif
-                            @if(isset($social->pinterest))
-                            <li><a href="{{ $social->pinterest }}" target="_blank"><i class="fab fa-pinterest"></i></a></li>
-                            @endif
-                            @if(isset($social->youtube))
-                            <li><a href="{{ $social->youtube }}" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                            @endif
-                            @if(isset($social->skype))
-                            <li><a href="skype:{{ $social->skype }}?chat" target="_blank"><i class="fab fa-skype"></i></a></li>
-                            @endif
-                            @if(isset($social->whatsapp))
-                            <li><a href="https://wa.me/{{ str_replace(' ', '', $social->whatsapp) }}" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-                            @endif
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- End Main Footer -->
+        </footer>
+        <!-- footer area end -->
 
 
-
-</div>
-
-<!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fas fa-angle-double-up"></span></div>
-
-    <script src="{{ asset('web/js/jquery.js') }}"></script> 
-    <script src="{{ asset('web/js/popper.min.js') }}"></script>
-    <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('web/js/jquery.fancybox.js') }}"></script>
-    <script src="{{ asset('web/js/owl.js') }}"></script>
-    <script src="{{ asset('web/js/wow.js') }}"></script>
-    <script src="{{ asset('web/js/appear.js') }}"></script>
-    <script src="{{ asset('web/js/isotope.js') }}"></script>
-    <script src="{{ asset('web/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-    <script src="{{ asset('web/js/jquery-ui.js') }}"></script>
-    <script src="{{ asset('web/js/mixitup.js') }}"></script>
-    @if($livechat->status == 1)
-    <script src="{{ asset('web/js/floating-wpp.min.js') }}"></script>
-    @endif
-    <script src="{{ asset('web/js/script.js') }}"></script>
+        <!-- scroll-top -->
+        <a href="#" id="scroll-top"><i class="far fa-arrow-up-from-arc"></i></a>
+        <!-- scroll-top end -->
 
 
-    @if($livechat->status == 1)
-    <!--Div where the WhatsApp will be rendered-->
-    <div id="whatspp_live"></div>
+        <!-- js -->
+        <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.7.1.min.js"></script>
+        <script src="assets/js/modernizr.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/isotope.pkgd.min.js"></script>
+        <script src="assets/js/jquery.appear.min.js"></script>
+        <script src="assets/js/jquery.easing.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/counter-up.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/main.js"></script>
 
-    <script type="text/javascript">
-        (function($) {
-        "use strict";
-          $('#whatspp_live').floatingWhatsApp({
-            phone: '{{ $livechat->whatsapp_no }}', //WhatsApp Business phone number International format
-            headerTitle: '{{ $livechat->whatsapp_title }}', //Popup Title
-            popupMessage: '{{ $livechat->whatsapp_greeting }}', //Popup Message
-            showPopup: true, //Enables popup display
-            buttonImage: '<img src="{{ asset('web/images/social/whatsapp.png') }}">', //Button Image
-            headerColor: '{{ $livechat->whatsapp_color }}', //headerColor: 'crimson', //Custom header color
-            backgroundColor: 'transparent', //backgroundColor: 'crimson', //Custom background button color
-            position: "right"    
-          });
-        })(jQuery);
-    </script>
-    @endif
+    </body>
 
 
-    @if($livechat->status == 0)
-    <!-- Load Facebook SDK for JavaScript -->
-    <div id="fb-root"></div>
-    <script type="text/javascript">
-        (function($) {
-        "use strict";
-            
-            window.fbAsyncInit = function() {
-              FB.init({
-                xfbml            : true,
-                version          : 'v8.0'
-              });
-            };
-
-            (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-
-        })(jQuery); 
-    </script>
-
-    <!-- Your Chat Plugin code -->
-    <div class="fb-customerchat"
-        attribution=setup_tool
-        page_id="{{ $livechat->facebook_id }}"
-        theme_color="{{ $livechat->facebook_color }}"
-        logged_in_greeting="{{ $livechat->facebook_greeting_in }}"
-        logged_out_greeting="{{ $livechat->facebook_greeting_out }}">
-    </div>
-    @endif
-
-</body>
-</html>
+    <!-- Mirrored from live.themewild.com/eduka/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 21 Dec 2024 10:11:08 GMT -->
+    </html>
