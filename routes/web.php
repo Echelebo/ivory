@@ -16,6 +16,20 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     // Home Route
     Route::get('/', 'HomeController@index')->name('home');
 
+    Route::get('/bece', 'HomeController@bece')->name('bece');
+    Route::get('/career', 'HomeController@career')->name('career');
+    Route::get('/common-entrance', 'HomeController@commonentrance')->name('common-entrance');
+    Route::get('/icttraining', 'HomeController@icttraining')->name('icttraining');
+    Route::get('/jamb', 'HomeController@jamb')->name('jamb');
+    Route::get('/leadership', 'HomeController@leadership')->name('leadership');
+    Route::get('/privacy', 'HomeController@privacy')->name('privacy');
+    Route::get('/sat', 'HomeController@sat')->name('sat');
+    Route::get('/ss1-foundation', 'HomeController@ss1foundation')->name('ss1-foundation');
+    Route::get('/ssce', 'HomeController@ssce')->name('ssce');
+    Route::get('/term', 'HomeController@term')->name('term');
+    Route::get('/virtual', 'HomeController@virtual')->name('virtual');
+    Route::get('/volunteerism', 'HomeController@volunteerism')->name('volunteerism');
+
     // Pages Route
     Route::get('/page/{slug}', 'HomeController@page')->name('page.single');
 
@@ -103,16 +117,16 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->namespace('Admin')->pref
     // FAQ Routes
 	Route::resource('faq-category', 'FaqCategoryController');
 	Route::resource('faq', 'FaqController');
-    
+
     // Slider Routes
     Route::resource('slider', 'SliderController');
-    
+
     // Client Routes
     Route::resource('client', 'ClientController');
 
     // Testimonial Routes
     Route::resource('testimonial', 'TestimonialController');
-    
+
     // Work Process Routes
     Route::resource('work-process', 'WorkProcessController');
 
@@ -136,7 +150,7 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->namespace('Admin')->pref
 
     // Page Setup Routes
     Route::resource('page-setup', 'PageSetupController');
-    
+
     // Section Routes
     Route::resource('section', 'SectionController');
 

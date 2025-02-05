@@ -40,38 +40,38 @@ class HomeController extends Controller
         $data['about'] = About::where('status', '1')
                             ->first();
 
-        // Counters                                
+        // Counters
         $data['counters'] = Counter::where('status', '1')
                             ->orderBy('id', 'asc')
                             ->get();
 
-        // Services                                
+        // Services
         $data['services'] = Service::where('status', '1')
                             ->orderBy('id', 'asc')
                             ->get();
 
-        // Portfolio Categories                                
+        // Portfolio Categories
         $data['portfolio_categories'] = PortfolioCategory::where('status', '1')
                             ->orderBy('id', 'asc')
                             ->get();
 
-        // Portfolios                                
+        // Portfolios
         $data['portfolios'] = Portfolio::where('status', '1')
                             ->orderBy('id', 'desc')
                             ->take(9)
                             ->get();
 
-        // Members                                
+        // Members
         $data['members'] = Member::where('status', '1')
                             ->orderBy('id', 'asc')
                             ->get();
 
-        // Testimonials                                
+        // Testimonials
         $data['testimonials'] = Testimonial::where('status', '1')
                             ->orderBy('id', 'desc')
                             ->get();
 
-        // Articles                                
+        // Articles
         $data['articles'] = Article::where('status', '1')
                             ->orderBy('id', 'desc')
                             ->take(3)
@@ -106,7 +106,7 @@ class HomeController extends Controller
         $subscriber = Subscriber::where('email', $request->email)->first();
 
         if(!isset($subscriber)){
-            Subscriber::create($request->all());             
+            Subscriber::create($request->all());
         }
 
         // Notify to User
@@ -128,7 +128,7 @@ class HomeController extends Controller
             Mail::to($data['email'])->send(new Subscription($data));
 
         }
-        
+
         return redirect()->back();
     }
 
@@ -144,4 +144,110 @@ class HomeController extends Controller
 
         return view('web.page-single', $data);
     }
+
+    public function bece()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.bece', $data);
+    }
+
+    public function career()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.career', $data);
+    }
+
+    public function commonentrance()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.common-entrance', $data);
+    }
+
+    public function icttraining()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.icttraining', $data);
+    }
+
+    public function jamb()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.jamb', $data);
+    }
+
+    public function leadership()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.leadership', $data);
+    }
+
+    public function privacy()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.privacy', $data);
+    }
+
+    public function sat()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.sat', $data);
+    }
+
+    public function ss1foundation()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.ss1-foundation', $data);
+    }
+
+    public function ssce()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.ssce', $data);
+    }
+
+    public function term()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.term', $data);
+    }
+
+    public function virtual()
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.virtual', $data);
+    }
+
+    public function volunteerism($slug)
+    {
+        // Page
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+
+        return view('web.volunterism', $data);
+    }
+
+
 }

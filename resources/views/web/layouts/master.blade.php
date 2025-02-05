@@ -152,7 +152,7 @@
                                                         <li><a class="dropdown-item" href="#">SAT Forum</a></li>
                                                         <li><a class="dropdown-item" href="#">JAMB Forum</a></li>
                                                         <li><a class="dropdown-item" href="#">SSCE Forum</a></li>
-                                                        <li><a class="dropdown-item" href="/blog">Blog</a></li>
+                                                        <li><a class="dropdown-item" href="/blogs">Blog</a></li>
                                                     </ul>
                                                 </div>
                                             </div>

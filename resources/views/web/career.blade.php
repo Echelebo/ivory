@@ -1,154 +1,127 @@
 <?php
-$page_title = "About Us";
+$page_title = "Our Careers";
 ?>
+
 @extends('web.layouts.master')
 @section('content')
 
-    <main class="main">
+<main class="main">
 
         <!-- breadcrumb -->
         <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
             <div class="container">
-                <h2 class="breadcrumb-title">About Us</h2>
+                <h2 class="breadcrumb-title">Join Our Team</h2>
                 <ul class="breadcrumb-menu">
                     <li><a href="/">Home</a></li>
-                    <li class="active">About Us</li>
+                    <li class="active">Join Our Team</li>
                 </ul>
             </div>
         </div>
         <!-- breadcrumb end -->
 
 
-        <!-- about area -->
-        <div class="about-area py-120">
+        <!-- course-single -->
+        <div class="course-single-area py-120">
             <div class="container">
-                <div class="row g-4 align-items-center">
-                    <div class="col-lg-6">
-                        <div class="about-left wow fadeInLeft" data-wow-delay=".25s">
-                            <div class="about-img">
-                                <div class="row g-4">
-                                    <div class="col-md-6">
-                                        <img class="img-1" src="assets/img/about/01.jpg" alt="">
-                                        <div class="about-experience mt-4">
-                                            <div class="about-experience-icon">
-                                                <img src="assets/img/icon/exchange-idea.svg" alt="">
-                                            </div>
-                                            <b class="text-start">Many Years Of <br> Quality Service</b>
+                <div class="course-single-wrapper">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="course-details">
+
+                                <div class="course-details">
+                                    <h3 class="mb-20">Join the IVORY GATE Team!
+                                    </h3>
+                                    <p class="mb-20">
+
+Ivory Gate Education has the distinction of being the a trusted educational services partner  since 2012. Our flagship programme, Ivory Gate JAMB Intensive has helped hundreds of students gain admission to their choice universities, to the joy and admiration of their family and friends. The success of the programme has made us to expand into SAT coaching, Common Entrance coaching, grade enhancement programmes for JSS and SSS students and Youth Development.
+
+
+                                    </p>
+                                    <p>Today, more than ever, we remain steadfast in our mission to provide excellence in educational services both within Abuja and across the nation.</p>
+                                    <p>Do you have what it takes to be part of the IVORY GATE Team? If you believe you have the skills to impart a love for learning, then join us now!</p>
+
+
+
+                                    <div class="my-4">
+                                        <div class="mb-3">
+                                            <h3 class="mb-3">Why Work With Us?</h3>
                                         </div>
+                                        <ul class="course-single-list">
+                                            <li><i class="fas fa-check"></i>Impactful Work: You’ll have the opportunity to make a real difference in students' lives every day.</li>
+                                            <li><i class="fas fa-check"></i>Collaborative Environment: We promote teamwork and encourage the sharing of ideas among staff and educators.</li>
+                                            <li><i class="fas fa-check"></i>Professional Growth: We offer ongoing training, workshops, and advancement opportunities to support your career development.
+                                            </li>
+                                            <li><i class="fas fa-check"></i>Inclusive Community: Our diverse team reflects the communities we serve, and we embrace different perspectives and backgrounds.</li>
+
+                                        </ul>
                                     </div>
-                                    <div class="col-md-6">
-                                        <img class="img-2" src="assets/img/about/02.jpg" alt="">
-                                        <img class="img-3 mt-4" src="assets/img/about/03.jpg" alt="">
+                                    <div class="my-4">
+                                        <h3 class="mb-3">Our Commitment to Diversity</h3>
+                                        <p>At Ivorygate Education Center, we celebrate diversity and are committed to creating an inclusive environment for all employees. We welcome applicants from all backgrounds and experiences.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="about-right wow fadeInRight" data-wow-delay=".25s">
-                            <div class="site-heading mb-3">
-                                <span class="site-title-tagline"><i class="far fa-book-open-reader"></i> About Us</span>
-                                <h2 class="site-title">
-                                    Our Education System <span>Inspires</span> You More.
-                                </h2>
-                            </div>
-                            <p class="about-text">
-                            We don’t just give students an education and experiences that set them up for success in a career. We help them succeed in their career—to discover a field they’re passionate about and dare to lead it.
-                            </p>
-                            <div class="about-content">
-                                <div class="row">
-
-                                    <div class="col-md-10">
-                                        <div class="about-quote">
-                                            <p>IVORY GATE EDUCATION is on a mission to inspire and motivate young ones to
-                                            Desire, pursue and attain academic excellence and diligence for outstanding performance in SAT, JAMB, SSCE, SS1 Foundation Class, BECE (Junior WAEC), Common Entrance,Virtual/ Online Classes and Information Technology.</p>
-                                            <i class="far fa-quote-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="about-bottom">
-                                <a href="/about" class="theme-btn">Discover More<i
-                                        class="fas fa-arrow-right-long"></i></a>
-                                <div class="about-phone">
-                                    <div class="icon"><i class="fal fa-headset"></i></div>
-                                    <div class="number">
-                                        <span>Call Now</span>
-                                        <h6><a href="tel:+2348137107935">+2348137107935</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- about area end -->
 
 
-        <!-- counter area -->
-        <div class="counter-area pt-60 pb-60">
+ <!-- biography & skill -->
+ <div class="biography-skil pb-120">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/course.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="30" data-speed="3000">30</span>
-                                <h6 class="title">+ Total Cources </h6>
-                            </div>
+                    <div class="col-md-6">
+                        <div class="biography">
+                            <h4 class="mb-3">Our Company Values</h4>
+                            <p class="mb-10">
+                            We believe that our team is our greatest asset. We are looking for passionate, creative, and qualified individuals who share our commitment to making a positive impact in education. Whether you are an experienced educator, a specialist in educational technology, or support staff, we welcome diverse perspectives and innovative ideas.
+                            </p>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/graduation.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="200" data-speed="3000">200</span>
-                                <h6 class="title">+ Our Students</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/teacher-2.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="50" data-speed="3000">50</span>
-                                <h6 class="title">+ Skilled Lecturers</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/award.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="30" data-speed="3000">30</span>
-                                <h6 class="title">+ Win Awards</h6>
+                    <div class="col-md-6">
+                        <div class="team-skill">
+                            <h4 class="mb-3">Our Company Values </h4>
+                            <div class="skills-section">
+                                <div class="progress-box">
+                                    <h5>Continuous Learning <span class="pull-right">98%</span></h5>
+                                    <div class="progress" data-value="98">
+                                        <div class="progress-bar" role="progressbar"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-box">
+                                    <h5>Diversity <span class="pull-right">99%</span></h5>
+                                    <div class="progress" data-value="99">
+                                        <div class="progress-bar" role="progressbar"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-box">
+                                    <h5>Purpose-driven
+                                    <span class="pull-right">99%</span></h5>
+                                    <div class="progress" data-value="99">
+                                        <div class="progress-bar" role="progressbar"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- counter area end -->
+        <!-- biography & skill end -->
+       <div class="mb-4 pt-80 pb-80" style="text-align: center; background-color: #f6f9fc;">
+       <h1 >How to Apply</h1>
+       <p align="center">If you’re ready to contribute to a vibrant educational community, please click below.</p>
+       <a href="https://forms.gle/Zpu6QhsJTxBwqVbt5" target="_blank" class="theme-btn mt-4">Apply Here<i class="fas fa-arrow-right-long"></i></a>
+        </div>
 
 
-        <!-- testimonial area -->
-        <div class="testimonial-area bg py-120">
+        <div class="testimonial-area ts-bg pt-80 pb-80">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 mx-auto">
                         <div class="site-heading text-center">
                             <span class="site-title-tagline"><i class="far fa-book-open-reader"></i> Testimonials</span>
-                            <h2 class="site-title">What Our Students <span>Say</span></h2>
-                            <p>These testimonials paint a picture of the positive impact our education center has on its students, parents, and educators.</p>
+                            <h2 class="site-title text-white">What Our Students <span>Say</span></h2>
+                            <p class="text-white">These testimonials paint a picture of the positive impact our education center has on its students, parents, and educators.</p>
                         </div>
                     </div>
                 </div>
@@ -167,7 +140,6 @@ $page_title = "About Us";
                             </p>
                         </div>
                         <div class="testimonial-content">
-
                             <div class="testimonial-author-info">
                                 <h4>Anthony</h4>
                                 <p>Student</p>
@@ -266,12 +238,14 @@ $page_title = "About Us";
                 </div>
             </div>
         </div>
-        <!-- testimonial area end -->
 
 
-
-
-
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- course-single end-->
 
     </main>
-    @endsection
+
+@endsection
