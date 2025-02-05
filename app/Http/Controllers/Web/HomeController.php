@@ -20,6 +20,7 @@ use App\Models\Slider;
 use App\Models\Client;
 use App\Models\About;
 use App\Models\Page;
+use App\Models\ArticleCategory;
 use Mail;
 
 class HomeController extends Controller
@@ -251,10 +252,62 @@ class HomeController extends Controller
 
     public function blog()
     {
+
+         // Articles
+         $data['articles'] = Article::where('status', '1')
+         ->orderBy('id', 'desc')
+         ->paginate(5);
+
+// Article Category
+$data['article_categories'] = ArticleCategory::where('status', '1')
+         ->orderBy('id', 'asc')
+         ->get();
         // Page
         $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.blog', $data);
+    }
+
+    public function searchblog(Request $request)
+    {
+        $data['search'] = $search = strip_tags($request->search);
+
+        // Articles
+        $data['articles'] = Article::where(function($query) use ($search){
+                                $query->where('title', 'LIKE', '%'.$search.'%' );
+                                $query->orWhere('description', 'LIKE', '%'.$search.'%' );
+                            })
+                            ->where('status', '1')
+                            ->orderBy('id', 'desc')
+                            ->paginate(5);
+
+        // Article Category
+        $data['article_categories'] = ArticleCategory::where('status', '1')
+                            ->orderBy('id', 'asc')
+                            ->get();
+
+        return view('web.article-category', $data);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showblog($slug)
+    {
+        // Article
+        $data['article'] = Article::where('slug', $slug)
+                            ->where('status', '1')
+                            ->firstOrFail();
+
+        // Article Category
+        $data['article_categories'] = ArticleCategory::where('status', '1')
+                            ->orderBy('id', 'asc')
+                            ->get();
+
+        return view('web.blog-single', $data);
     }
 
 

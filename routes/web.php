@@ -30,7 +30,8 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     Route::get('/term', 'HomeController@term')->name('term');
     Route::get('/virtual', 'HomeController@virtual')->name('virtual');
     Route::get('/volunteerism', 'HomeController@volunteerism')->name('volunteerism');
-
+    Route::get('/blog-search', 'HomeController@searchblog')->name('blog.search');
+    Route::get('/blog/{slug}', 'HomeController@showblog')->name('blog-single');
     // Pages Route
     Route::get('/page/{slug}', 'HomeController@page')->name('page.single');
 
@@ -40,8 +41,8 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     // Article Routes
     Route::get('/blogs', 'ArticleController@index')->name('blogs');
     Route::get('/blogs/{slug}', 'ArticleController@category')->name('blog.category');
-    Route::get('/blog-search', 'ArticleController@search')->name('blog.search');
-    Route::get('/blog/{slug}', 'ArticleController@show')->name('blog.single');
+
+
 
     // Service Routes
     Route::get('/services', 'ServiceController@index')->name('services');
