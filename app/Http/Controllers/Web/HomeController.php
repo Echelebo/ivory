@@ -241,7 +241,7 @@ class HomeController extends Controller
         return view('web.virtual', $data);
     }
 
-    public function volunteerism($slug)
+    public function volunteerism()
     {
         // Page
         $data['page'] = Page::where('status', 1)->firstOrFail();
