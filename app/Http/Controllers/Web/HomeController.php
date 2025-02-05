@@ -145,7 +145,7 @@ class HomeController extends Controller
         return view('web.page-single', $data);
     }
 
-    public function bece()
+    public function bece($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
@@ -153,7 +153,7 @@ class HomeController extends Controller
         return view('web.bece', $data);
     }
 
-    public function career()
+    public function career($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
@@ -161,7 +161,7 @@ class HomeController extends Controller
         return view('web.career', $data);
     }
 
-    public function commonentrance()
+    public function commonentrance($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
@@ -169,7 +169,7 @@ class HomeController extends Controller
         return view('web.common-entrance', $data);
     }
 
-    public function icttraining()
+    public function icttraining($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
@@ -177,7 +177,7 @@ class HomeController extends Controller
         return view('web.icttraining', $data);
     }
 
-    public function jamb()
+    public function jamb($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
@@ -185,7 +185,7 @@ class HomeController extends Controller
         return view('web.jamb', $data);
     }
 
-    public function leadership()
+    public function leadership($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
@@ -193,7 +193,7 @@ class HomeController extends Controller
         return view('web.leadership', $data);
     }
 
-    public function privacy()
+    public function privacy($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
@@ -201,7 +201,7 @@ class HomeController extends Controller
         return view('web.privacy', $data);
     }
 
-    public function sat()
+    public function sat($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
@@ -209,7 +209,7 @@ class HomeController extends Controller
         return view('web.sat', $data);
     }
 
-    public function ss1foundation()
+    public function ss1foundation($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
@@ -217,7 +217,7 @@ class HomeController extends Controller
         return view('web.ss1-foundation', $data);
     }
 
-    public function ssce()
+    public function ssce($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
@@ -225,7 +225,7 @@ class HomeController extends Controller
         return view('web.ssce', $data);
     }
 
-    public function term()
+    public function term($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
@@ -233,7 +233,7 @@ class HomeController extends Controller
         return view('web.term', $data);
     }
 
-    public function virtual()
+    public function virtual($slug)
     {
         // Page
         $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
