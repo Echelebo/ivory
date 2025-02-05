@@ -201,10 +201,10 @@ class HomeController extends Controller
         return view('web.privacy', $data);
     }
 
-    public function sat($slug)
+    public function sat()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.sat', $data);
     }
