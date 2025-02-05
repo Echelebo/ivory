@@ -246,7 +246,7 @@ class HomeController extends Controller
         // Page
         $data['page'] = Page::where('status', 1)->firstOrFail();
 
-        return view('web.volunterism', $data);
+        return view('web.volunteerism', $data);
     }
 
 
