@@ -140,63 +140,63 @@ class HomeController extends Controller
     public function page($slug)
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.page-single', $data);
     }
 
-    public function bece($slug)
+    public function bece()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.bece', $data);
     }
 
-    public function career($slug)
+    public function career()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.career', $data);
     }
 
-    public function commonentrance($slug)
+    public function commonentrance()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.common-entrance', $data);
     }
 
-    public function icttraining($slug)
+    public function icttraining()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.icttraining', $data);
     }
 
-    public function jamb($slug)
+    public function jamb()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.jamb', $data);
     }
 
-    public function leadership($slug)
+    public function leadership()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.leadership', $data);
     }
 
-    public function privacy($slug)
+    public function privacy()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.privacy', $data);
     }
@@ -209,34 +209,34 @@ class HomeController extends Controller
         return view('web.sat', $data);
     }
 
-    public function ss1foundation($slug)
+    public function ss1foundation()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.ss1-foundation', $data);
     }
 
-    public function ssce($slug)
+    public function ssce()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.ssce', $data);
     }
 
-    public function term($slug)
+    public function term()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.term', $data);
     }
 
-    public function virtual($slug)
+    public function virtual()
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.virtual', $data);
     }
@@ -244,7 +244,7 @@ class HomeController extends Controller
     public function volunteerism($slug)
     {
         // Page
-        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('status', 1)->firstOrFail();
 
         return view('web.volunterism', $data);
     }
