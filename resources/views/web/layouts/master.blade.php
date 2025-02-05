@@ -149,9 +149,9 @@
                                                 <div class="col-12 col-sm-12 col-md-3">
                                                     <h5>Free Resources</h5>
                                                     <ul class="mega-menu-item">
-                                                        <li><a class="dropdown-item" href="#">SAT Forum</a></li>
-                                                        <li><a class="dropdown-item" href="#">JAMB Forum</a></li>
-                                                        <li><a class="dropdown-item" href="#">SSCE Forum</a></li>
+                                                        <li><a class="dropdown-item" href="https://chat.whatsapp.com/B8Uka6NZBwfIcrnFeg2wJz" target="_blank">SAT Forum</a></li>
+                                                        <li><a class="dropdown-item" href="https://chat.whatsapp.com/Gjhfm1mqDToKF5Bu2IF2p9" target="_blank">JAMB Forum</a></li>
+                                                        <li><a class="dropdown-item" href="https://chat.whatsapp.com/DiELvZOkT9KK9RJKrUe0kS" target="_blank">SSCE Forum</a></li>
                                                         <li><a class="dropdown-item" href="/blogs">Blog</a></li>
                                                     </ul>
                                                 </div>

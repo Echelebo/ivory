@@ -1,4 +1,4 @@
-<a?php
+<?php
 $page_title = "Contact Us";
 ?>
 @extends('web.layouts.master')
