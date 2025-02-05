@@ -46,7 +46,7 @@ $page_title = "Virtual/Online Class";
                             <a href="https://chat.whatsapp.com/Gjhfm1mqDToKF5Bu2IF2p9" target="_blank"><i class="far fa-file-alt"></i> JAMB Forum</a>
                             <a href="https://chat.whatsapp.com/B8Uka6NZBwfIcrnFeg2wJz" target="_blank"><i class="far fa-file-alt"></i> SAT Forum</a>
                             <a href="https://chat.whatsapp.com/DiELvZOkT9KK9RJKrUe0kS" target="_blank"><i class="far fa-file-alt"></i> SSCE Forum</a>
-                            <a href="/blogs"><i class="far fa-file-alt"></i> Blog</a>
+                            <a href="/blog"><i class="far fa-file-alt"></i> Blog</a>
                         </div>
                     </div>
                 </div>

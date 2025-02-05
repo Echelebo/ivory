@@ -249,5 +249,13 @@ class HomeController extends Controller
         return view('web.volunteerism', $data);
     }
 
+    public function blog()
+    {
+        // Page
+        $data['page'] = Page::where('status', 1)->firstOrFail();
+
+        return view('web.blog', $data);
+    }
+
 
 }

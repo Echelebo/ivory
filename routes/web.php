@@ -17,6 +17,7 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('/bece', 'HomeController@bece')->name('bece');
+    Route::get('/blog', 'HomeController@blog')->name('blog');
     Route::get('/career', 'HomeController@career')->name('career');
     Route::get('/common-entrance', 'HomeController@commonentrance')->name('common-entrance');
     Route::get('/icttraining', 'HomeController@icttraining')->name('icttraining');
