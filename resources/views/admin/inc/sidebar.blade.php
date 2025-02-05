@@ -12,7 +12,7 @@
             </a>
         </li>
 
-        <li>
+        <!--<li>
             <a href="{{ route('admin.get-quote.index') }}">
                 <span class="icon"><i class="fas fa-quote-right"></i></span>
                 <span> {{ trans_choice('dashboard.quote', 2) }} </span>
@@ -24,7 +24,7 @@
                 <span class="icon"><i class="fas fa-file-invoice-dollar"></i></span>
                 <span> {{ trans_choice('dashboard.invoice', 2) }} </span>
             </a>
-        </li>
+        </li>-->
 
         <li>
             <a href="javascript: void(0);">
@@ -40,7 +40,7 @@
             </ul>
         </li>
 
-        <li>
+       <!-- <li>
             <a href="javascript: void(0);">
                 <span class="icon"><i class="far fa-images"></i></span>
                 <span> {{ trans_choice('dashboard.portfolio', 2) }} </span>
@@ -195,7 +195,7 @@
                     <a href="{{ route('admin.livechat.index') }}">{{ trans_choice('dashboard.live_chat', 2) }}</a>
                 </li>
             </ul>
-        </li>
+        </li> -->
 
     </ul>
 
