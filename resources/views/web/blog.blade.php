@@ -34,8 +34,9 @@ $page_title = "Our Blog";
             </div>
         </div>
         <div class="row">
+            @foreach($articles as $article)
             <div class="col-md-6 col-lg-4">
-                @foreach($articles as $article)
+
                 <div class="blog-item wow fadeInUp" data-wow-delay=".25s">
                     <div class="blog-date"><i class="fal fa-calendar-alt"></i>{{ date('d M, Y', strtotime($article->created_at)) }}</div>
                     <div class="blog-item-img">
@@ -54,9 +55,9 @@ $page_title = "Our Blog";
                         <a class="theme-btn" href="{{ route('blog-single', $article->slug) }}">Read More<i class="fas fa-arrow-right-long"></i></a>
                     </div>
                 </div>
-                @endforeach
-            </div>
 
+            </div>
+            @endforeach
 
 
 
