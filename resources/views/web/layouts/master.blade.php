@@ -262,6 +262,8 @@
 
                                     <li><a href="/career"><i class="fas fa-caret-right"></i>Careers</a></li>
                                     <li><a href="/services"><i class="fas fa-caret-right"></i>Services</a></li>
+                                    <li><a href="/privacy"><i class="fas fa-caret-right"></i>Privacy</a></li>
+                                    <li><a href="/term"><i class="fas fa-caret-right"></i>Terms</a></li>
 
                                 </ul>
                             </div>
