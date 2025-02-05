@@ -35,24 +35,26 @@ $page_title = "Our Blog";
         </div>
         <div class="row">
             <div class="col-md-6 col-lg-4">
+                @foreach($articles as $article)
                 <div class="blog-item wow fadeInUp" data-wow-delay=".25s">
-                    <div class="blog-date"><i class="fal fa-calendar-alt"></i> June 18, 2024</div>
+                    <div class="blog-date"><i class="fal fa-calendar-alt"></i>{{ date('d M, Y', strtotime($article->created_at)) }}</div>
                     <div class="blog-item-img">
-                        <img src="assets/img/blog/01.jpg" alt="Thumb">
+                        <img src="{{ asset('uploads/article/'.$article->image_path) }}" alt="Thumb">
                     </div>
                     <div class="blog-item-info">
                         <div class="blog-item-meta">
                             <ul>
-                                <li><a href="#"><i class="far fa-user-circle"></i> By Alicia Davis</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
+                                <li><a href="#"><i class="far fa-user-circle"></i> By Ivorygate Education</a></li>
+
                             </ul>
                         </div>
                         <h4 class="blog-title">
-                            <a href="/blog-single">There are many variations passage have suffered available.</a>
+                            <a href="{{ route('blog-single', $article->slug) }}">{!! str_limit(strip_tags($article->description), 150, ' ...') !!}</a>
                         </h4>
-                        <a class="theme-btn" href="/blog-single">Read More<i class="fas fa-arrow-right-long"></i></a>
+                        <a class="theme-btn" href="{{ route('blog-single', $article->slug) }}">Read More<i class="fas fa-arrow-right-long"></i></a>
                     </div>
                 </div>
+                @endforeach
             </div>
 
 
