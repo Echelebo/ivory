@@ -547,10 +547,8 @@ $page_title = "Home";
 
 
 
-    @php
-    $section_testimonials = \App\Models\Section::section('testimonials');
-@endphp
-@if(count($testimonials) > 0 && isset($section_testimonials))
+
+@if(count($testimonials) > 0 )
         <!-- testimonial area -->
         <div class="testimonial-area ts-bg pt-80 pb-80">
             <div class="container">
@@ -564,8 +562,9 @@ $page_title = "Home";
                     </div>
                 </div>
                 <div class="testimonial-slider owl-carousel owl-theme">
+                    @foreach($testimonials as $testimonial)
                     <div class="testimonial-item">
-                        @foreach($testimonials as $testimonial)
+
                         <div class="testimonial-rate">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -574,9 +573,9 @@ $page_title = "Home";
                             <i class="fas fa-star"></i>
                         </div>
                         <div class="testimonial-quote">
-                            <p>
-                                {!! $testimonial->description !!}
-                            </p>
+
+                                {{ $testimonial->description }}
+
                         </div>
                         <div class="testimonial-content">
                             <div class="testimonial-author-info">
@@ -585,9 +584,9 @@ $page_title = "Home";
                             </div>
                         </div>
                         <span class="testimonial-quote-icon"><i class="far fa-quote-right"></i></span>
-                        @endforeach
-                    </div>
 
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
