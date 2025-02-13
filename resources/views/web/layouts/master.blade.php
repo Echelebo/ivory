@@ -72,10 +72,10 @@
                                     <a href="#"><i class="far fa-location-dot"></i>Abuja, Nigeria</a>
                                 </li>
                                 <li>
-                                    <a href="mailto: contact@ivorygateeducation.org"><i class="far fa-envelopes"></i> <span class="__cf_email__" data-cfemail="30595e565f705548515d405c551e535f5d">contact@ivorygateeducation.org</span></a>
+                            <a href="mailto: contact@ivorygateeducation.org"><i class="far fa-envelopes"></i> <span class="__cf_email__" data-cfemail="30595e565f705548515d405c551e535f5d">contact@ivorygateeducation.org</span></a>
                                 </li>
                                 <li>
-                                    <a href="tel:+2348137107935"><i class="far fa-phone-volume"></i>+2348137107935</a>
+                            <a href="tel:+2348137107935"><i class="far fa-phone-volume"></i>+2348137107935</a>
                                 </li>
                             </ul>
                         </div>
@@ -223,7 +223,7 @@
                                     <li><a href="tel:+2348137107935"><i class="far fa-phone"></i>+2348137107935</a></li>
                                     <li><i class="far fa-map-marker-alt"></i>Abuja, Nigeria</li>
                                     <li><a href="mailto:contact@ivorygateeducation"><i
-                                                class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="b2dbdcd4ddf2d7cad3dfc2ded79cd1dddf">contact@ivorygateeducation</span></a></li>
+                                                class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="b2dbdcd4ddf2d7cad3dfc2ded79cd1dddf">contact@ivorygateeducation.org</span></a></li>
                                 </ul>
 
                             </div>
@@ -234,10 +234,10 @@
                                 <ul class="footer-list">
 
                                     <li><a href="/sat"><i class="fas fa-caret-right"></i>SAT Class</a></li>
-                                    <li><a href="/bece"><i class="fas fa-caret-right"></i>SSCE Class</a></li>
-                                    <li><a href="/common-entrance"><i class="fas fa-caret-right"></i>JAMB Class</a></li>
-                                    <li><a href="/icttraining"><i class="fas fa-caret-right"></i>Volunteerism</a></li>
-                                    <li><a href="/jamb"><i class="fas fa-caret-right"></i>Leadership</a></li>
+                                    <li><a href="/ssce"><i class="fas fa-caret-right"></i>SSCE Class</a></li>
+                                    <li><a href="/jamb"><i class="fas fa-caret-right"></i>JAMB Class</a></li>
+                                    <li><a href="/volunteerism"><i class="fas fa-caret-right"></i>Volunteerism</a></li>
+                                    <li><a href="/leadership"><i class="fas fa-caret-right"></i>Leadership</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -246,10 +246,10 @@
                                 <h4 class="footer-widget-title">More Services</h4>
                                 <ul class="footer-list">
                                 <li><a href="/ss1-foundation"><i class="fas fa-caret-right"></i>SS1 Foundation</a></li>
-                                    <li><a href="/ssce"><i class="fas fa-caret-right"></i>BECE (Junior Waec)</a></li>
+                                    <li><a href="/bece"><i class="fas fa-caret-right"></i>BECE (Junior Waec)</a></li>
                                     <li><a href="/virtual"><i class="fas fa-caret-right"></i>Virtual/Online Class</a></li>
-                                    <li><a href="/volunteerism"><i class="fas fa-caret-right"></i>ICT Training</a></li>
-                                    <li><a href="/leadership"><i class="fas fa-caret-right"></i>Common Entrance Class</a></li>
+                                    <li><a href="/icttraining"><i class="fas fa-caret-right"></i>ICT Training</a></li>
+                                    <li><a href="/common-entrance"><i class="fas fa-caret-right"></i>Common Entrance Class</a></li>
                                 </ul>
                             </div>
                         </div>

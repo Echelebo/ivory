@@ -10,10 +10,10 @@ $page_title = "The title of the blog";
 <!-- breadcrumb -->
 <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
     <div class="container">
-        <h2 class="breadcrumb-title">Blog Single</h2>
+        <h2 class="breadcrumb-title">Blog</h2>
         <ul class="breadcrumb-menu">
-            <li><a href="index-2.html">Home</a></li>
-            <li class="active">Blog Single</li>
+            <li><a href="/">Home</a></li>
+            <li class="active">Blog</li>
         </ul>
     </div>
 </div>

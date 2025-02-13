@@ -45,14 +45,14 @@ $page_title = "Our Blog";
                     <div class="blog-item-info">
                         <div class="blog-item-meta">
                             <ul>
-                                <li><a href="#"><i class="far fa-user-circle"></i> By Ivorygate Education</a></li>
+                                <li><a href="#"><i class="far fa-user-circle"></i> By Ivorygate</a></li>
 
                             </ul>
                         </div>
                         <h4 class="blog-title">
-                            <a href="{{ route('blog-single', $article->slug) }}">{!! str_limit(strip_tags($article->description), 150, ' ...') !!}</a>
+                            <a href="{{ route('blogsingle', $article->slug) }}">{!! str_limit(strip_tags($article->description), 150, ' ...') !!}</a>
                         </h4>
-                        <a class="theme-btn" href="{{ route('blog-single', $article->slug) }}">Read More<i class="fas fa-arrow-right-long"></i></a>
+                        <a class="theme-btn" href="{{ route('blogsingle', $article->slug) }}">Read More<i class="fas fa-arrow-right-long"></i></a>
                     </div>
                 </div>
 
@@ -64,7 +64,7 @@ $page_title = "Our Blog";
 
         </div>
         <!-- pagination -->
-        <div class="pagination-area">
+       <!-- <div class="pagination-area">
             <div aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item">
@@ -83,6 +83,7 @@ $page_title = "Our Blog";
                 </ul>
             </div>
         </div>
+    -->
         <!-- pagination end -->
     </div>
 </div>

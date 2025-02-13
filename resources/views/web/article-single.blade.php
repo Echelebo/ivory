@@ -105,7 +105,7 @@
                 <!--Sidebar Side-->
                 <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
                     <aside class="sidebar default-sidebar">
-                        
+
                         <!--search box-->
                         <div class="sidebar-widget search-box">
                             <form method="get" action="{{ route('blog.search') }}">
@@ -142,7 +142,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        @endif          
+                        @endif
                     </aside>
                 </div>
             </div>
