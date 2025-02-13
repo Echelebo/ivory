@@ -29,14 +29,14 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                   <!-- <div class="form-group">
                         <label for="organization">{{ __('dashboard.organization') }}</label>
                         <input type="text" class="form-control" name="organization" id="organization" value="{{ $row->organization }}">
 
                         <div class="invalid-feedback">
                           {{ __('dashboard.please_provide') }} {{ __('dashboard.organization') }}
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label for="description">{{ __('dashboard.description') }} <span>*</span></label>
@@ -47,14 +47,14 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                   <!-- <div class="form-group">
                         <label for="image">{{ __('dashboard.photo') }} <span>{{ __('dashboard.image_size', ['height' => 270, 'width' => 200]) }}</span></label>
                         <input type="file" class="form-control" name="image" id="image">
 
                         <div class="invalid-feedback">
                           {{ __('dashboard.please_provide') }} {{ __('dashboard.photo') }}
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label for="status">{{ __('dashboard.select_status') }}</label>

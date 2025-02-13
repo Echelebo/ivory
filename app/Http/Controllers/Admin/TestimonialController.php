@@ -38,7 +38,7 @@ class TestimonialController extends Controller
         $data['route'] = $this->route;
         $data['view'] = $this->view;
         $data['path'] = $this->path;
-        
+
         $data['rows'] = Testimonial::orderBy('id', 'desc')->get();
 
         return view($this->view.'.index', $data);
@@ -67,15 +67,15 @@ class TestimonialController extends Controller
             'title' => 'required|max:191|unique:testimonials,title',
             'designation' => 'required',
             'description' => 'required',
-            'image' => 'required|image',
+            'image' => 'nullable|image',
         ]);
 
 
-        // image upload, fit and store inside public folder 
+        // image upload, fit and store inside public folder
         if($request->hasFile('image')){
             //Upload New Image
             $filenameWithExt = $request->file('image')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); 
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
 
@@ -150,7 +150,7 @@ class TestimonialController extends Controller
         ]);
 
 
-        // image upload, fit and store inside public folder 
+        // image upload, fit and store inside public folder
         if($request->hasFile('image')){
 
             $file_path = public_path('uploads/'.$this->path.'/'.$testimonial->image_path);
@@ -160,7 +160,7 @@ class TestimonialController extends Controller
 
             //Upload New Image
             $filenameWithExt = $request->file('image')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); 
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
 
@@ -176,7 +176,7 @@ class TestimonialController extends Controller
         }
         else{
 
-            $fileNameToStore = $testimonial->image_path; 
+            $fileNameToStore = $testimonial->image_path;
         }
 
 
