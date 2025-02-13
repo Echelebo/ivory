@@ -31,7 +31,7 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     Route::get('/virtual', 'HomeController@virtual')->name('virtual');
     Route::get('/volunteerism', 'HomeController@volunteerism')->name('volunteerism');
     Route::get('/blog-search', 'HomeController@searchblog')->name('blog.search');
-    Route::get('/blogsingle/{slug}', 'HomeController@blogsingle')->name('blogsingle');
+    Route::get('/blog/{slug}', 'HomeController@blogshow')->name('blog.single');
     // Pages Route
     Route::get('/page/{slug}', 'HomeController@page')->name('page.single');
 

@@ -50,9 +50,9 @@ $page_title = "Our Blog";
                             </ul>
                         </div>
                         <h4 class="blog-title">
-                            <a href="{{ route('blogsingle', $article->slug) }}">{!! str_limit(strip_tags($article->description), 150, ' ...') !!}</a>
+                            <a href="{{ route('blog.single', $article->slug) }}">{!! str_limit(strip_tags($article->description), 150, ' ...') !!}</a>
                         </h4>
-                        <a class="theme-btn" href="{{ route('blogsingle', $article->slug) }}">Read More<i class="fas fa-arrow-right-long"></i></a>
+                        <a class="theme-btn" href="{{ route('blog.single', $article->slug) }}">Read More<i class="fas fa-arrow-right-long"></i></a>
                     </div>
                 </div>
 

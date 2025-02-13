@@ -299,7 +299,7 @@ $data['article_categories'] = ArticleCategory::where('status', '1')
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function blogsingle($slug)
+    public function blogshow($slug)
     {
         // Article
         $data['article'] = Article::where('slug', $slug)
@@ -311,7 +311,7 @@ $data['article_categories'] = ArticleCategory::where('status', '1')
                             ->orderBy('id', 'asc')
                             ->get();
 
-        return view('web.blogsingle', $data);
+        return view('web.blog-single', $data);
     }
 
 
