@@ -4,11 +4,11 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    
+
     <!-- start page title -->
     <!-- Include page breadcrumb -->
     @include('admin.inc.breadcrumb')
-    <!-- end page title --> 
+    <!-- end page title -->
 
 
     <div class="row">
@@ -38,10 +38,10 @@
                                   <input type="radio" id="whatsapp" name="status" class="custom-control-input" value="1" @if( $row->status == 1 ) checked @endif>
                                   <label class="custom-control-label" for="whatsapp">{{ __('WhatsApp') }}</label>
                               </div>
-                              <div class="custom-control custom-radio">
+                             <!-- <div class="custom-control custom-radio">
                                   <input type="radio" id="messenger" name="status" class="custom-control-input" value="0" @if( $row->status == 0 ) checked @endif>
                                   <label class="custom-control-label" for="messenger">{{ __('Messenger') }}</label>
-                              </div>
+                              </div> -->
                           </div>
                       </div>
 
@@ -77,7 +77,7 @@
                       </div>
 
 
-                      <div class="col-md-6">
+                     <!-- <div class="col-md-6">
                         <h4>{{ __('dashboard.messenger_live_chat') }}</h4>
                         <hr/>
                         <div class="form-group">
@@ -106,10 +106,10 @@
                             {{ __('dashboard.please_provide') }} {{ __('dashboard.facebook_logout_greeting') }}
                           </div>
                         </div>
-                      </div>
+                      </div> -->
 
                     </div>
-                    
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">{{ __('dashboard.update') }}</button>
                     </div>
@@ -123,7 +123,7 @@
     </div>
     <!-- end row-->
 
-    
+
 </div> <!-- container -->
 <!-- End Content-->
 

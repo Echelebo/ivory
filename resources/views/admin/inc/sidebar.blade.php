@@ -191,7 +191,7 @@
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
                     <a href="{{ route('admin.setting.index') }}">{{ trans_choice('dashboard.general_setting', 2) }}</a>
-                    <a href="{{ route('admin.template.index') }}">{{ trans_choice('dashboard.template', 2) }}</a>
+                   <!-- <a href="{{ route('admin.template.index') }}">{{ trans_choice('dashboard.template', 2) }}</a> -->
                     <a href="{{ route('admin.livechat.index') }}">{{ trans_choice('dashboard.live_chat', 2) }}</a>
                 </li>
             </ul>
