@@ -574,7 +574,7 @@ $page_title = "Home";
                         </div>
                         <div class="testimonial-quote">
 
-                                {{ $testimonial->description }}
+                                { !! $testimonial->description !! }
 
                         </div>
                         <div class="testimonial-content">
