@@ -131,12 +131,12 @@
             </a>
         </li> -->
 
-        <li>
+       <!-- <li>
             <a href="{{ route('admin.counter.index') }}">
                 <span class="icon"><i class="fas fa-stopwatch-20"></i></span>
                 <span> {{ trans_choice('dashboard.counter', 2) }} </span>
             </a>
-        </li>
+        </li> -->
 
        <!-- <li>
             <a href="{{ route('admin.contact.index') }}">
