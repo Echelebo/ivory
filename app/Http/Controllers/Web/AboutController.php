@@ -10,6 +10,7 @@ use App\Models\Counter;
 use App\Models\Member;
 use App\Models\Client;
 use App\Models\About;
+use App\Models\Testimonial;
 
 class AboutController extends Controller
 {
