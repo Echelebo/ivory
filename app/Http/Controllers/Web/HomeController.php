@@ -159,6 +159,10 @@ class HomeController extends Controller
         // Page
         $data['page'] = Page::where('status', 1)->firstOrFail();
 
+        $data['testimonials'] = Testimonial::where('status', '1')
+                            ->orderBy('id', 'desc')
+                            ->get();
+
         return view('web.career', $data);
     }
 

@@ -24,7 +24,7 @@ class AboutController extends Controller
         $data['about'] = About::where('status', '1')
                             ->first();
 
-        // Counters                                
+        // Counters
         $data['counters'] = Counter::where('status', '1')
                             ->orderBy('id', 'asc')
                             ->get();
@@ -34,7 +34,7 @@ class AboutController extends Controller
                             ->orderBy('id', 'asc')
                             ->get();
 
-        // Members                                
+        // Members
         $data['members'] = Member::where('status', '1')
                             ->orderBy('id', 'asc')
                             ->get();
@@ -46,6 +46,10 @@ class AboutController extends Controller
 
         // Clients
         $data['clients'] = Client::where('status', '1')
+                            ->orderBy('id', 'desc')
+                            ->get();
+
+         $data['testimonials'] = Testimonial::where('status', '1')
                             ->orderBy('id', 'desc')
                             ->get();
 
