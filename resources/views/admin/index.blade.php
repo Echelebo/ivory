@@ -4,11 +4,11 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    
+
     <!-- start page title -->
     <!-- Include page breadcrumb -->
-    @include('admin.inc.breadcrumb')  
-    <!-- end page title --> 
+    @include('admin.inc.breadcrumb')
+    <!-- end page title -->
 
     <div class="row">
         <div class="col-xl-3 col-lg-6">
@@ -25,7 +25,7 @@
             </div> <!-- end card-->
         </div> <!-- end col-->
 
-        <div class="col-xl-3 col-lg-6">
+        <!-- <div class="col-xl-3 col-lg-6">
             <div class="card widget-flat">
                 <div class="card-body p-0">
                     <div class="p-3 pb-0">
@@ -35,11 +35,11 @@
                         <h5 class="text-muted font-weight-normal mt-0">{{ __('dashboard.total_portfolios') }}</h5>
                         <h3 class="mt-2">{{ $portfolios }}</h3>
                     </div>
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col-->
+                </div>
+            </div>
+        </div> -->
 
-        <div class="col-xl-3 col-lg-6">
+      <!--  <div class="col-xl-3 col-lg-6">
             <div class="card widget-flat">
                 <div class="card-body p-0">
                     <div class="p-3 pb-0">
@@ -49,11 +49,11 @@
                         <h5 class="text-muted font-weight-normal mt-0">{{ __('dashboard.total_services') }}</h5>
                         <h3 class="mt-2">{{ $services }}</h3>
                     </div>
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col-->
+                </div>
+            </div>
+        </div> -->
 
-        <div class="col-xl-3 col-lg-6">
+      <!--  <div class="col-xl-3 col-lg-6">
             <div class="card widget-flat">
                 <div class="card-body p-0">
                     <div class="p-3 pb-0">
@@ -63,11 +63,11 @@
                         <h5 class="text-muted font-weight-normal mt-0">{{ __('dashboard.total_faqs') }}</h5>
                         <h3 class="mt-2">{{ $faqs }}</h3>
                     </div>
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col-->
+                </div>
+            </div>
+        </div> -->
 
-        <div class="col-xl-3 col-lg-6">
+      <!--  <div class="col-xl-3 col-lg-6">
             <div class="card widget-flat">
                 <div class="card-body p-0">
                     <div class="p-3 pb-0">
@@ -77,11 +77,11 @@
                         <h5 class="text-muted font-weight-normal mt-0">{{ __('dashboard.total_members') }}</h5>
                         <h3 class="mt-2">{{ $members }}</h3>
                     </div>
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col-->
+                </div>
+           </div>
+        </div> -->
 
-        <div class="col-xl-3 col-lg-6">
+      <!--  <div class="col-xl-3 col-lg-6">
             <div class="card widget-flat">
                 <div class="card-body p-0">
                     <div class="p-3 pb-0">
@@ -91,11 +91,11 @@
                         <h5 class="text-muted font-weight-normal mt-0">{{ __('dashboard.total_partners') }}</h5>
                         <h3 class="mt-2">{{ $clients }}</h3>
                     </div>
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col-->
+                </div>
+            </div>
+        </div> -->
 
-        <div class="col-xl-3 col-lg-6">
+      <!--  <div class="col-xl-3 col-lg-6">
             <div class="card widget-flat">
                 <div class="card-body p-0">
                     <div class="p-3 pb-0">
@@ -105,11 +105,11 @@
                         <h5 class="text-muted font-weight-normal mt-0">{{ __('dashboard.total_emails') }}</h5>
                         <h3 class="mt-2">{{ $contacts }}</h3>
                     </div>
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col-->
+                </div>
+            </div>
+        </div> -->
 
-        <div class="col-xl-3 col-lg-6">
+        <!-- <div class="col-xl-3 col-lg-6">
             <div class="card widget-flat">
                 <div class="card-body p-0">
                     <div class="p-3 pb-0">
@@ -119,9 +119,9 @@
                         <h5 class="text-muted font-weight-normal mt-0">{{ __('dashboard.total_subscribers') }}</h5>
                         <h3 class="mt-2">{{ $subscribers }}</h3>
                     </div>
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col-->
+                </div>
+            </div>
+        </div> -->
     </div>
     <!-- end row -->
 
