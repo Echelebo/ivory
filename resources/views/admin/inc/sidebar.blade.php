@@ -108,7 +108,7 @@
                 <span class="icon"><i class="fas fa-mug-hot"></i></span>
                 <span> {{ trans_choice('dashboard.partner', 2) }} </span>
             </a>
-        </li>
+        </li> -->
 
         <li>
             <a href="{{ route('admin.testimonial.index') }}">
@@ -117,7 +117,7 @@
             </a>
         </li>
 
-        <li>
+       <!-- <li>
             <a href="{{ route('admin.work-process.index') }}">
                 <span class="icon"><i class="fas fa-chart-line"></i></span>
                 <span> {{ trans_choice('dashboard.work_process', 2) }} </span>
@@ -129,7 +129,7 @@
                 <span class="icon"><i class="fas fa-hand-point-right"></i></span>
                 <span> {{ trans_choice('dashboard.feature', 2) }} </span>
             </a>
-        </li>
+        </li> -->
 
         <li>
             <a href="{{ route('admin.counter.index') }}">
@@ -138,7 +138,7 @@
             </a>
         </li>
 
-        <li>
+       <!-- <li>
             <a href="{{ route('admin.contact.index') }}">
                 <span class="icon"><i class="fas fa-envelope-open-text"></i></span>
                 <span> {{ trans_choice('dashboard.email', 2) }} </span>
@@ -180,7 +180,7 @@
                     <a href="{{ URL('admin/translation') }}" target="_blank">{{ trans_choice('dashboard.translation', 2) }}</a>
                 </li>
             </ul>
-        </li>
+        </li>-->
 
         <li>
             <a href="javascript: void(0);">
@@ -195,7 +195,7 @@
                     <a href="{{ route('admin.livechat.index') }}">{{ trans_choice('dashboard.live_chat', 2) }}</a>
                 </li>
             </ul>
-        </li> -->
+        </li>
 
     </ul>
 
