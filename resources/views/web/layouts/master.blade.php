@@ -36,6 +36,31 @@
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
+    @if($livechat->status == 1)
+    <link href="{{ asset('web/css/floating-wpp.min.css') }}" rel="stylesheet">
+    @endif
+
+    @if($livechat->status == 1)
+    <!--Div where the WhatsApp will be rendered-->
+    <div id="whatspp_live"></div>
+
+    <script type="text/javascript">
+        (function($) {
+        "use strict";
+          $('#whatspp_live').floatingWhatsApp({
+            phone: '{{ $livechat->whatsapp_no }}', //WhatsApp Business phone number International format
+            headerTitle: '{{ $livechat->whatsapp_title }}', //Popup Title
+            popupMessage: '{{ $livechat->whatsapp_greeting }}', //Popup Message
+            showPopup: true, //Enables popup display
+            buttonImage: '<img src="{{ asset('web/images/social/whatsapp.png') }}">', //Button Image
+            headerColor: '{{ $livechat->whatsapp_color }}', //headerColor: 'crimson', //Custom header color
+            backgroundColor: 'transparent', //backgroundColor: 'crimson', //Custom background button color
+            position: "right"
+          });
+        })(jQuery);
+    </script>
+    @endif
+
 </head>
 
 <body>
@@ -315,6 +340,10 @@
         <script src="assets/js/counter-up.js"></script>
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/main.js"></script>
+
+        @if($livechat->status == 1)
+    <script src="{{ asset('web/js/floating-wpp.min.js') }}"></script>
+    @endif
 
     </body>
 
