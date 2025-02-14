@@ -2,7 +2,13 @@
 $page_title = "The title of the blog";
 ?>
 
+
 @extends('web.layouts.master')
+
+@php
+    $header = \App\Models\PageSetup::page('blog');
+@endphp
+
 @section('content')
 
 <main class="main">
