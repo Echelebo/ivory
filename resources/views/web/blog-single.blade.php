@@ -51,7 +51,7 @@ $page_title = $article->title;
 
 <body>
 
-    <!-- preloader -->
+    <!-- preloader --
     <div class="preloader">
         <div class="loader-book">
             <div class="loader-book-page"></div>
