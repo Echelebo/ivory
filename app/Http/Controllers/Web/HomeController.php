@@ -290,7 +290,7 @@ $data['article_categories'] = ArticleCategory::where('status', '1')
                             ->orderBy('id', 'asc')
                             ->get();
 
-        return view('web.article-category', $data);
+        return view('web.blog', $data);
     }
 
     /**
