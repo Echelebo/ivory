@@ -12,7 +12,7 @@
             </a>
         </li>
 
-        <!--<li>
+        <li>
             <a href="{{ route('admin.get-quote.index') }}">
                 <span class="icon"><i class="fas fa-quote-right"></i></span>
                 <span> {{ trans_choice('dashboard.quote', 2) }} </span>
@@ -24,7 +24,7 @@
                 <span class="icon"><i class="fas fa-file-invoice-dollar"></i></span>
                 <span> {{ trans_choice('dashboard.invoice', 2) }} </span>
             </a>
-        </li>-->
+        </li>
 
         <li>
             <a href="javascript: void(0);">
@@ -40,7 +40,7 @@
             </ul>
         </li>
 
-       <!-- <li>
+        <li>
             <a href="javascript: void(0);">
                 <span class="icon"><i class="far fa-images"></i></span>
                 <span> {{ trans_choice('dashboard.portfolio', 2) }} </span>
@@ -108,7 +108,7 @@
                 <span class="icon"><i class="fas fa-mug-hot"></i></span>
                 <span> {{ trans_choice('dashboard.partner', 2) }} </span>
             </a>
-        </li> -->
+        </li>
 
         <li>
             <a href="{{ route('admin.testimonial.index') }}">
@@ -117,7 +117,7 @@
             </a>
         </li>
 
-       <!-- <li>
+        <li>
             <a href="{{ route('admin.work-process.index') }}">
                 <span class="icon"><i class="fas fa-chart-line"></i></span>
                 <span> {{ trans_choice('dashboard.work_process', 2) }} </span>
@@ -129,16 +129,16 @@
                 <span class="icon"><i class="fas fa-hand-point-right"></i></span>
                 <span> {{ trans_choice('dashboard.feature', 2) }} </span>
             </a>
-        </li> -->
+        </li>
 
-       <!-- <li>
+        <li>
             <a href="{{ route('admin.counter.index') }}">
                 <span class="icon"><i class="fas fa-stopwatch-20"></i></span>
                 <span> {{ trans_choice('dashboard.counter', 2) }} </span>
             </a>
-        </li> -->
+        </li>
 
-       <!-- <li>
+        <li>
             <a href="{{ route('admin.contact.index') }}">
                 <span class="icon"><i class="fas fa-envelope-open-text"></i></span>
                 <span> {{ trans_choice('dashboard.email', 2) }} </span>
@@ -180,7 +180,7 @@
                     <a href="{{ URL('admin/translation') }}" target="_blank">{{ trans_choice('dashboard.translation', 2) }}</a>
                 </li>
             </ul>
-        </li>-->
+        </li>
 
         <li>
             <a href="javascript: void(0);">
@@ -191,7 +191,7 @@
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
                     <a href="{{ route('admin.setting.index') }}">{{ trans_choice('dashboard.general_setting', 2) }}</a>
-                   <!-- <a href="{{ route('admin.template.index') }}">{{ trans_choice('dashboard.template', 2) }}</a> -->
+                    <a href="{{ route('admin.template.index') }}">{{ trans_choice('dashboard.template', 2) }}</a>
                     <a href="{{ route('admin.livechat.index') }}">{{ trans_choice('dashboard.live_chat', 2) }}</a>
                 </li>
             </ul>
