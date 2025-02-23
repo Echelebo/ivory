@@ -171,7 +171,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Study Centers</a>
                                 <div class="dropdown-menu fade-down">
                                     <div class="mega-content">
-                                        <div class="container-fluid">
+                                        <div class="container-fluid-x" style="margin: auto; width: 50%;">
                                             <div class="row">
                                                 <div class="col-12 col-sm-6 col-md-6">
                                                     <h5>CENTRE 1</h5>
