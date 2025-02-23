@@ -173,7 +173,7 @@
                                     <div class="mega-content">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-12 col-sm-4 col-md-3">
+                                                <div class="col-12 col-sm-6 col-md-6">
                                                     <h5>CENTRE 1</h5>
                                                     <div class="menu-about">
                                                         <p>IVORY GATE Study Centre,<br />
@@ -181,7 +181,7 @@
                                                             FHA Lugbe.</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-4 col-md-3">
+                                                <div class="col-12 col-sm-6 col-md-6">
                                                     <h5>CENTRE 2</h5>
                                                     <div class="menu-about">
 
