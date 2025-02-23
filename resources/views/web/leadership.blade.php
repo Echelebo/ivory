@@ -1,5 +1,5 @@
 <?php
-$page_title = "Volunteerism";
+$page_title = "Leadership";
 ?>
 
 @extends('web.layouts.master')
@@ -9,10 +9,10 @@ $page_title = "Volunteerism";
 <!-- breadcrumb -->
 <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
     <div class="container">
-        <h2 class="breadcrumb-title">Volunteerism</h2>
+        <h2 class="breadcrumb-title">Leadership</h2>
         <ul class="breadcrumb-menu">
             <li><a href="/">Home</a></li>
-            <li class="active">Volunteerism</li>
+            <li class="active">Leadership</li>
         </ul>
     </div>
 </div>
