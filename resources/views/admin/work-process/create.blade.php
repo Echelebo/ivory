@@ -22,7 +22,7 @@
 
                     <div class="form-group">
                         <label for="link">Link</label>
-                        <input class="form-control" name="link" id="link" value="{{ old('link') }}" required>
+                        <input type="url" class="form-control" name="link" id="link" value="{{ old('link') }}" required>
                     </div>
 
                     {{-- <div class="form-group">
