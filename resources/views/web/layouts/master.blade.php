@@ -116,7 +116,7 @@
                             <li class="nav-item mega-menu dropdown">
                                 <a class="nav-link dropdown-toggle" href="/services" data-bs-toggle="dropdown">Our Services</a>
                                 <div class="dropdown-menu fade-down">
-                                    <div class="mega-content-x">
+                                    <div class="mega-content">
                                         <div class="container-fluid">
                                             <div class="row">
                                                 <div class="col-12 col-sm-4 col-md-3">
@@ -170,7 +170,7 @@
                             <li class="nav-item mega-menu dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Study Centers</a>
                                 <div class="dropdown-menu fade-down">
-                                    <div class="mega-content">
+                                    <div class="mega-content-x">
                                         <div class="container-fluid">
                                             <div class="row">
                                                 <div class="col-12 col-sm-4 col-md-3">
