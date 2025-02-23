@@ -166,6 +166,38 @@
                                     </div>
                                 </div>
                             </li>
+
+                            <li class="nav-item mega-menu dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Study Centers</a>
+                                <div class="dropdown-menu fade-down">
+                                    <div class="mega-content">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-4 col-md-3">
+                                                    <h5>CENTRE 1</h5>
+                                                    <div class="menu-about">
+                                                        <p>IVORY GATE Study Centre,<br />
+                                                            25 Environmental Street,<br />
+                                                            FHA Lugbe.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4 col-md-3">
+                                                    <h5>CENTRE 2</h5>
+                                                    <div class="menu-about">
+
+                                                        <p>IVORY GATE Study Hub,<br />
+                                                            El-Salem Estate, Lugbe.<br />
+                                                            (Off Pyakasa Rd. Opp Penthouse Estate III)</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link" href="/studycentre">Study Centres</a></li>
                             <li class="nav-item"><a class="nav-link" href="/career">Career</a></li>
 
 
