@@ -66,7 +66,7 @@ class SettingController extends Controller
         $id = $request->id;
 
 
-        // Logo upload, fit and store inside public folder 
+        // Logo upload, fit and store inside public folder
         if($request->hasFile('logo')){
 
             //Delete Old Image
@@ -81,7 +81,7 @@ class SettingController extends Controller
 
             //Upload New Image
             $filenameWithExt = $request->file('logo')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); 
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('logo')->getClientOriginalExtension();
             $logoNameToStore = $filename.'_'.time().'.'.$extension;
 
@@ -100,17 +100,17 @@ class SettingController extends Controller
             $old_file = Setting::find($id);
 
             if(isset($old_file->logo_path)){
-                $logoNameToStore = $old_file->logo_path; 
+                $logoNameToStore = $old_file->logo_path;
             }
             else {
                 $logoNameToStore = Null;
             }
-            
+
         }
 
 
 
-        // Favicon upload, fit and store inside public folder 
+        // Favicon upload, fit and store inside public folder
         if($request->hasFile('favicon')){
 
             //Delete Old Image
@@ -125,7 +125,7 @@ class SettingController extends Controller
 
             //Upload New Image
             $filenameWithExt = $request->file('favicon')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); 
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('favicon')->getClientOriginalExtension();
             $faviconNameToStore = $filename.'_'.time().'.'.$extension;
 
@@ -144,12 +144,12 @@ class SettingController extends Controller
             $old_file = Setting::find($id);
 
             if(isset($old_file->favicon_path)){
-                $faviconNameToStore = $old_file->favicon_path; 
+                $faviconNameToStore = $old_file->favicon_path;
             }
             else {
                 $faviconNameToStore = Null;
             }
-            
+
         }
 
 
@@ -260,7 +260,7 @@ class SettingController extends Controller
             $user->email = $request->email;
             $user->save();
             Auth::logout();
-            
+
             Toastr::success(__('dashboard.updated_successfully'), __('dashboard.success'));
 
             return redirect()->route('login');
@@ -295,7 +295,7 @@ class SettingController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
             Auth::logout();
-            
+
             Toastr::success(__('dashboard.updated_successfully'), __('dashboard.success'));
 
             return redirect()->route('login');
@@ -314,6 +314,31 @@ class SettingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function socialInfo(Request $request)
+    {
+        $id = $request->id;
+
+
+        // -1 means no data row found
+        if($id == -1){
+            // Insert Data
+            $input = $request->all();
+            $data = Social::create($input);
+        }
+        else{
+            // Update Data
+            $data = Social::find($id);
+
+            $input = $request->all();
+            $data->update($input);
+        }
+
+
+        Toastr::success(__('dashboard.updated_successfully'), __('dashboard.success'));
+
+        return redirect()->back();
+    }
+
+    public function otherInfo(Request $request)
     {
         $id = $request->id;
 

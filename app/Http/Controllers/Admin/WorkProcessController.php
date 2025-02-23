@@ -18,7 +18,7 @@ class WorkProcessController extends Controller
     public function __construct()
     {
         // Module Data
-        $this->title = trans_choice('dashboard.work_process', 1);
+        $this->title = 'Resources Options';
         $this->route = 'admin.work-process';
         $this->view = 'admin.work-process';
         $this->path = 'work-process';
@@ -36,7 +36,7 @@ class WorkProcessController extends Controller
         $data['route'] = $this->route;
         $data['view'] = $this->view;
         $data['path'] = $this->path;
-        
+
         $data['rows'] = WorkProcess::orderBy('id', 'asc')->get();
 
         return view($this->view.'.index', $data);
@@ -69,7 +69,7 @@ class WorkProcessController extends Controller
         $workProcess = new WorkProcess;
         $workProcess->title = $request->title;
         $workProcess->slug = Str::slug($request->title, '-');
-        $workProcess->description = $request->description;
+        $workProcess->link = $request->link;
         $workProcess->icon = $request->icon;
         $workProcess->save();
 
@@ -118,7 +118,7 @@ class WorkProcessController extends Controller
         // Update Data
         $workProcess->title = $request->title;
         $workProcess->slug = Str::slug($request->title, '-');
-        $workProcess->description = $request->description;
+        $workProcess->link = $request->link;
         $workProcess->icon = $request->icon;
         $workProcess->status = $request->status;
         $workProcess->save();

@@ -173,5 +173,6 @@ Route::middleware(['auth:web', 'XSS'])->name('admin.')->namespace('Admin')->pref
     Route::post('changemail', 'SettingController@changeMail')->name('setting.changemail');
     Route::post('changepass', 'SettingController@changePass')->name('setting.changepass');
     Route::post('socialinfo', 'SettingController@socialInfo')->name('setting.socialinfo');
+    Route::post('otherinfo', 'SettingController@otherInfo')->name('setting.otherinfo');
     Route::post('customcode', 'SettingController@customCode')->name('setting.customcode');
 });

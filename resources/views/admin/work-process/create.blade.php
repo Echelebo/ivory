@@ -21,8 +21,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="description">{{ __('dashboard.description') }}</label>
-                        <textarea class="form-control summernote" name="description" id="description" rows="8">{{ old('description') }}</textarea>
+                        <label for="link">Link</label>
+                        <input class="form-control summernote" name="link" id="link" rows="8" value="{{ old('link') }}" required>
                     </div>
 
                     {{-- <div class="form-group">

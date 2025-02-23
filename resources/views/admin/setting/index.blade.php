@@ -4,11 +4,11 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    
+
     <!-- start page title -->
     <!-- Include page breadcrumb -->
     @include('admin.inc.breadcrumb')
-    <!-- end page title --> 
+    <!-- end page title -->
 
 
     <div class="row">
@@ -42,6 +42,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="#other-tab" data-toggle="tab" aria-expanded="false" class="nav-link">
+                            {{ __('dashboard.other_info') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#custom-tab" data-toggle="tab" aria-expanded="true" class="nav-link">
                             {{ __('dashboard.customization') }}
                         </a>
@@ -54,7 +59,7 @@
                   </ul>
                   <div class="tab-content">
                     <div class="tab-pane show active" id="website-tab">
-                        
+
                       <!-- Form Start -->
                       <form class="needs-validation" novalidate action="{{ route($route.'.siteinfo') }}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -139,7 +144,7 @@
 
                     </div>
                     <div class="tab-pane" id="contact-tab">
-                        
+
                       <!-- Form Start -->
                       <form class="needs-validation" novalidate action="{{ route($route.'.contactinfo') }}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -232,7 +237,7 @@
 
                     </div>
                     <div class="tab-pane" id="social-tab">
-                        
+
                       <!-- Form Start -->
                       <form class="needs-validation" novalidate action="{{ route($route.'.socialinfo') }}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -326,8 +331,59 @@
                       <!-- Form End -->
 
                     </div>
+                    <div class="tab-pane" id="other-tab">
+
+                        <!-- Form Start -->
+                        <form class="needs-validation" novalidate action="{{ route($route.'.otherinfo') }}" method="post" enctype="multipart/form-data">
+                          @csrf
+                          <input name="id" type="hidden" value="{{ (isset($social->id))?$social->id:-1 }}">
+                          <div class="row">
+                            <div class="form-group col-md-6">
+                              <label for="joingroup">Online Group Learning Application Form Link</label>
+                              <input type="url" class="form-control" name="joingroup" id="joingroup" value="{{ isset($social->joingroup)?$social->joingroup:'' }}">
+
+                              <div class="invalid-feedback">
+                                Please provide online learning application form link.
+                              </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                              <label for="contactform">Contact Us Form Link</label>
+                              <input type="url" class="form-control" name="contactform" id="contactform" value="{{ isset($social->contactform)?$social->contactform:'' }}">
+
+                              <div class="invalid-feedback">
+                                Please provide contact us form link.
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-group col-md-6">
+                              <label for="careerform">Career Form Link</label>
+                              <input type="url" class="form-control" name="careerform" id="careerform" value="{{ isset($social->careerform)?$social->careerform:'' }}">
+
+                              <div class="invalid-feedback">
+                                Please provide career form link.
+                              </div>
+                            </div>
+
+
+                          </div>
+
+
+
+
+
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-primary">{{ __('dashboard.update') }}</button>
+                          </div>
+
+                        </form>
+                        <!-- Form End -->
+
+                      </div>
                     <div class="tab-pane" id="custom-tab">
-                        
+
                       <!-- Form Start -->
                       <form class="needs-validation" novalidate action="{{ route($route.'.customcode') }}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -385,7 +441,7 @@
                           <!-- Form End -->
                         </div>
                       </div>
-                        
+
                       <div class="card">
                         <div class="card-header">
                           <h4 class="header-title">{{ __('dashboard.admin_change_password') }}</h4>
@@ -453,7 +509,7 @@
                           <!-- Form End -->
                         </div>
                       </div>
-                      
+
 
                     </div>
                   </div>
@@ -464,7 +520,7 @@
     </div>
     <!-- end row-->
 
-    
+
 </div> <!-- container -->
 <!-- End Content-->
 

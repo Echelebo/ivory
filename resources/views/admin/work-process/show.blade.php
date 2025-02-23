@@ -10,14 +10,14 @@
                     <!-- Details View Start -->
                     <h4><span class="text-highlight">{{ __('dashboard.title') }}:</span> {{ $row->title }}</h4>
                     <hr/>
-                    <p><span class="text-highlight">{{ __('dashboard.description') }}:</span> {!! $row->description !!}</p>
+                    <p><span class="text-highlight">Link:</span> {!! $row->link !!}</p>
 
                     @if(!empty($row->icon))
                     <hr/>
                     <p><span class="text-highlight">{{ __('dashboard.icon') }}:</span> <div class="btn btn-secondary btn-sm">{!! $row->icon !!}</div></p>
                     @endif
                     <hr/>
-                    <p><span class="text-highlight">{{ __('dashboard.status') }}:</span> 
+                    <p><span class="text-highlight">{{ __('dashboard.status') }}:</span>
                     @if( $row->status == 1 )
                     <span class="badge badge-success badge-pill">{{ __('dashboard.active') }}</span>
                     @else

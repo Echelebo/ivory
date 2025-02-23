@@ -13,20 +13,6 @@
         </li>
 
         <li>
-            <a href="{{ route('admin.get-quote.index') }}">
-                <span class="icon"><i class="fas fa-quote-right"></i></span>
-                <span> {{ trans_choice('dashboard.quote', 2) }} </span>
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ route('admin.invoice.index') }}">
-                <span class="icon"><i class="fas fa-file-invoice-dollar"></i></span>
-                <span> {{ trans_choice('dashboard.invoice', 2) }} </span>
-            </a>
-        </li>
-
-        <li>
             <a href="javascript: void(0);">
                 <span class="icon"><i class="fas fa-newspaper"></i></span>
                 <span> {{ trans_choice('dashboard.blog', 2) }} </span>
@@ -68,19 +54,7 @@
             </a>
         </li>
 
-        <li>
-            <a href="javascript: void(0);">
-                <span class="icon"><i class="fas fa-users"></i></span>
-                <span> {{ trans_choice('dashboard.team', 2) }} </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="{{ route('admin.member.index') }}">{{ trans_choice('dashboard.member', 2) }}</a>
-                    <a href="{{ route('admin.designation.index') }}">{{ trans_choice('dashboard.designation', 2) }}</a>
-                </li>
-            </ul>
-        </li>
+
 
         <li>
             <a href="javascript: void(0);">
@@ -103,12 +77,7 @@
             </a>
         </li>
 
-        <li>
-            <a href="{{ route('admin.client.index') }}">
-                <span class="icon"><i class="fas fa-mug-hot"></i></span>
-                <span> {{ trans_choice('dashboard.partner', 2) }} </span>
-            </a>
-        </li>
+
 
         <li>
             <a href="{{ route('admin.testimonial.index') }}">
@@ -124,19 +93,9 @@
             </a>
         </li>
 
-        <li>
-            <a href="{{ route('admin.why-choose-us.index') }}">
-                <span class="icon"><i class="fas fa-hand-point-right"></i></span>
-                <span> {{ trans_choice('dashboard.feature', 2) }} </span>
-            </a>
-        </li>
 
-        <li>
-            <a href="{{ route('admin.counter.index') }}">
-                <span class="icon"><i class="fas fa-stopwatch-20"></i></span>
-                <span> {{ trans_choice('dashboard.counter', 2) }} </span>
-            </a>
-        </li>
+
+
 
         <li>
             <a href="{{ route('admin.contact.index') }}">
@@ -145,12 +104,7 @@
             </a>
         </li>
 
-        <li>
-            <a href="{{ route('admin.subscriber.index') }}">
-                <span class="icon"><i class="fas fa-mail-bulk"></i></span>
-                <span> {{ trans_choice('dashboard.subscriber', 2) }} </span>
-            </a>
-        </li>
+
 
         <li>
             <a href="javascript: void(0);">
@@ -160,7 +114,7 @@
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="{{ route('admin.page-setup.index') }}">{{ trans_choice('dashboard.page_setup', 2) }}</a>
+
                     <a href="{{ route('admin.page.index') }}">{{ trans_choice('dashboard.footer_page', 2) }}</a>
                     <a href="{{ route('admin.section.index') }}">{{ trans_choice('dashboard.section', 2) }}</a>
                     <a href="{{ route('admin.about.index') }}">{{ trans_choice('dashboard.about', 2) }}</a>
@@ -168,19 +122,7 @@
             </ul>
         </li>
 
-        <li>
-            <a href="javascript: void(0);">
-                <span class="icon"><i class="fas fa-language"></i></span>
-                <span> {{ trans_choice('dashboard.language', 2) }} </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <ul class="nav-second-level" aria-expanded="false">
-                <li>
-                    <a href="{{ route('admin.language.index') }}">{{ trans_choice('dashboard.language', 1) }} {{ __('dashboard.setup') }}</a>
-                    <a href="{{ URL('admin/translation') }}" target="_blank">{{ trans_choice('dashboard.translation', 2) }}</a>
-                </li>
-            </ul>
-        </li>
+
 
         <li>
             <a href="javascript: void(0);">
@@ -191,7 +133,7 @@
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
                     <a href="{{ route('admin.setting.index') }}">{{ trans_choice('dashboard.general_setting', 2) }}</a>
-                    <a href="{{ route('admin.template.index') }}">{{ trans_choice('dashboard.template', 2) }}</a>
+
                     <a href="{{ route('admin.livechat.index') }}">{{ trans_choice('dashboard.live_chat', 2) }}</a>
                 </li>
             </ul>
