@@ -29,13 +29,13 @@
         <li>
             <a href="javascript: void(0);">
                 <span class="icon"><i class="far fa-images"></i></span>
-                <span> {{ trans_choice('dashboard.portfolio', 2) }} </span>
+                <span> Our Offer </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="{{ route('admin.portfolio.index') }}">{{ trans_choice('dashboard.portfolio_list', 2) }}</a>
-                    <a href="{{ route('admin.portfolio-category.index') }}">{{ trans_choice('dashboard.portfolio_category', 2) }}</a>
+                    <a href="{{ route('admin.portfolio.index') }}">Offer List</a>
+
                 </li>
             </ul>
         </li>
@@ -47,25 +47,17 @@
             </a>
         </li>
 
-        <li>
-            <a href="{{ route('admin.pricing.index') }}">
-                <span class="icon"><i class="fas fa-tags"></i></span>
-                <span> {{ trans_choice('dashboard.pricing', 2) }} </span>
-            </a>
-        </li>
-
 
 
         <li>
             <a href="javascript: void(0);">
                 <span class="icon"><i class="fas fa-question-circle"></i></span>
-                <span> {{ trans_choice('dashboard.faq', 2) }} </span>
+                <span> Study Centers </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="{{ route('admin.faq.index') }}">{{ trans_choice('dashboard.faq_list', 2) }}</a>
-                    <a href="{{ route('admin.faq-category.index') }}">{{ trans_choice('dashboard.faq_category', 2) }}</a>
+                    <a href="{{ route('admin.faq.index') }}">Centers List</a>
                 </li>
             </ul>
         </li>
@@ -89,21 +81,9 @@
         <li>
             <a href="{{ route('admin.work-process.index') }}">
                 <span class="icon"><i class="fas fa-chart-line"></i></span>
-                <span> {{ trans_choice('dashboard.work_process', 2) }} </span>
+                <span> Resources </span>
             </a>
         </li>
-
-
-
-
-
-        <li>
-            <a href="{{ route('admin.contact.index') }}">
-                <span class="icon"><i class="fas fa-envelope-open-text"></i></span>
-                <span> {{ trans_choice('dashboard.email', 2) }} </span>
-            </a>
-        </li>
-
 
 
         <li>
