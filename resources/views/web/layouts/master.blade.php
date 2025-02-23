@@ -167,7 +167,7 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item mega-menu-x dropdown">
+                            <li class="nav-item mega-menu dropdown" style="margin: auto; width: 50%;">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Study Centers</a>
                                 <div class="dropdown-menu fade-down">
                                     <div class="mega-content">
