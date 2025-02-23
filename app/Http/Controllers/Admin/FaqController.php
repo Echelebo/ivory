@@ -21,7 +21,7 @@ class FaqController extends Controller
     public function __construct()
     {
         // Module Data
-        $this->title = trans_choice('dashboard.faq', 1);
+        $this->title = 'Study Centers';
         $this->route = 'admin.faq';
         $this->view = 'admin.faq';
         $this->path = 'faq';
@@ -73,28 +73,27 @@ class FaqController extends Controller
         // Field Validation
         $request->validate([
             'title' => 'required|max:191|unique:faqs,title',
-            'category' => 'required',
             'description' => 'required',
         ]);
 
 
         // Get content with media file
         $content=$request->input('description');
-        
+
         $dom = new \DomDocument();
         libxml_use_internal_errors(true);
         $dom->encoding = 'utf-8';
-        $dom->loadHtml(utf8_decode($content), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $dom->loadHtml(utf8_decode($content), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
        // foreach <img> in the submited content
         foreach($images as $img){
             $src = $img->getAttribute('src');
-            
+
             // if the img source is 'data-url'
-            if(preg_match('/data:image/', $src)){                
+            if(preg_match('/data:image/', $src)){
                 // get the mimetype
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                $mimetype = $groups['mime'];                
+                $mimetype = $groups['mime'];
                 // Generating a random filename
                 $filename = uniqid().'_'.time();
 
@@ -104,17 +103,17 @@ class FaqController extends Controller
                     File::makeDirectory($path, 0777, true, true);
                 }
 
-                $filepath = "/uploads/media/$filename.$mimetype";    
+                $filepath = "/uploads/media/$filename.$mimetype";
                 // @see http://image.intervention.io/api/
                 $image = Image::make($src)
                   // resize if required
-                  //->resize(500, null) 
+                  //->resize(500, null)
                   ->resize(800, null, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })
                   ->encode($mimetype, 100)  // encode file to the specified mimetype
-                  ->save(public_path($filepath));                
+                  ->save(public_path($filepath));
                 $new_src = asset($filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
@@ -126,7 +125,6 @@ class FaqController extends Controller
         $article = new Faq;
         $article->title = $request->title;
         $article->slug = Str::slug($request->title, '-');
-        $article->category_id = $request->category;
         $article->description = $dom->saveHTML();
         $article->save();
 
@@ -187,28 +185,27 @@ class FaqController extends Controller
         // Field Validation
         $request->validate([
             'title' => 'required|max:191|unique:faqs,title,'.$faq->id,
-            'category' => 'required',
             'description' => 'required',
         ]);
 
 
         // Get content with media file
         $content=$request->input('description');
-        
+
         $dom = new \DomDocument();
         libxml_use_internal_errors(true);
         $dom->encoding = 'utf-8';
-        $dom->loadHtml(utf8_decode($content), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $dom->loadHtml(utf8_decode($content), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
        // foreach <img> in the submited content
         foreach($images as $img){
             $src = $img->getAttribute('src');
-            
+
             // if the img source is 'data-url'
-            if(preg_match('/data:image/', $src)){                
+            if(preg_match('/data:image/', $src)){
                 // get the mimetype
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                $mimetype = $groups['mime'];                
+                $mimetype = $groups['mime'];
                 // Generating a random filename
                 $filename = uniqid().'_'.time();
 
@@ -218,17 +215,17 @@ class FaqController extends Controller
                     File::makeDirectory($path, 0777, true, true);
                 }
 
-                $filepath = "/uploads/media/$filename.$mimetype";    
+                $filepath = "/uploads/media/$filename.$mimetype";
                 // @see http://image.intervention.io/api/
                 $image = Image::make($src)
                   // resize if required
-                  //->resize(500, null) 
+                  //->resize(500, null)
                   ->resize(800, null, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })
                   ->encode($mimetype, 100)  // encode file to the specified mimetype
-                  ->save(public_path($filepath));                
+                  ->save(public_path($filepath));
                 $new_src = asset($filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
@@ -239,7 +236,6 @@ class FaqController extends Controller
         // Update Data
         $faq->title = $request->title;
         $faq->slug = Str::slug($request->title, '-');
-        $faq->category_id = $request->category;
         $faq->description = $dom->saveHTML();
         $faq->status = $request->status;
         $faq->save();

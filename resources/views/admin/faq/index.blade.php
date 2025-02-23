@@ -4,11 +4,11 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    
+
     <!-- start page title -->
     <!-- Include page breadcrumb -->
     @include('admin.inc.breadcrumb')
-    <!-- end page title --> 
+    <!-- end page title -->
 
 
     <div class="row">
@@ -27,7 +27,7 @@
                     <h4 class="header-title">{{ $title }} {{ __('dashboard.list') }}</h4>
                 </div>
                 <div class="card-body">
-                  
+
                   <!-- Data Table Start -->
                   <div class="table-responsive">
                     <table id="basic-datatable" class="table table-striped table-hover table-dark nowrap full-width">
@@ -35,7 +35,6 @@
                             <tr>
                                 <th>{{ __('dashboard.no') }}</th>
                                 <th>{{ __('dashboard.title') }}</th>
-                                <th>{{ __('dashboard.category') }}</th>
                                 <th>{{ __('dashboard.status') }}</th>
                                 <th>{{ __('dashboard.action') }}</th>
                             </tr>
@@ -45,7 +44,7 @@
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{!! str_limit(strip_tags($row->title), 50, ' ...') !!}</td>
-                                <td>{{ $row->category->title }}</td>
+
                                 <td>
                                     @if( $row->status == 1 )
                                     <span class="badge badge-success badge-pill">{{ __('dashboard.active') }}</span>
@@ -81,7 +80,7 @@
     </div>
     <!-- end row-->
 
-    
+
 </div> <!-- container -->
 <!-- End Content-->
 

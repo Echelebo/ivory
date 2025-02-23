@@ -4,11 +4,11 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    
+
     <!-- start page title -->
     <!-- Include page breadcrumb -->
     @include('admin.inc.breadcrumb')
-    <!-- end page title --> 
+    <!-- end page title -->
 
 
     <div class="row">
@@ -27,16 +27,14 @@
                     <h4 class="header-title">{{ $title }} {{ __('dashboard.list') }}</h4>
                 </div>
                 <div class="card-body">
-                  
+
                   <!-- Data Table Start -->
                   <div class="table-responsive">
                     <table id="basic-datatable" class="table table-striped table-hover table-dark nowrap full-width">
                         <thead>
                             <tr>
                                 <th>{{ __('dashboard.no') }}</th>
-                                <th>{{ __('dashboard.thumbnail') }}</th>
                                 <th>{{ __('dashboard.title') }}</th>
-                                <th>{{ __('dashboard.category') }}</th>
                                 <th>{{ __('dashboard.status') }}</th>
                                 <th>{{ __('dashboard.action') }}</th>
                             </tr>
@@ -45,17 +43,8 @@
                           @foreach( $rows as $key => $row )
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>
-                                    @if(is_file('uploads/'.$path.'/'.$row->image_path))
-                                    <img src="{{ asset('uploads/'.$path.'/'.$row->image_path) }}" class="img-fluid" alt="Portfolio">
-                                    @endif
-                                </td>
+
                                 <td>{!! str_limit(strip_tags($row->title), 50, ' ...') !!}</td>
-                                <td>
-                                    @foreach($row->categories as $category)
-                                        <span class="badge badge-primary">{{ $category->title }}</span> 
-                                    @endforeach
-                                </td>
                                 <td>
                                     @if( $row->status == 1 )
                                     <span class="badge badge-success badge-pill">{{ __('dashboard.active') }}</span>
@@ -91,7 +80,7 @@
     </div>
     <!-- end row-->
 
-    
+
 </div> <!-- container -->
 <!-- End Content-->
 

@@ -56,15 +56,13 @@ class AboutController extends Controller
         $request->validate([
             'title' => 'required|max:191',
             'description' => 'required',
-            'image' => 'nullable|image',
-            'video_id' => 'nullable|max:100',
         ]);
 
 
         $id = $request->id;
 
 
-        // Image upload, fit and store inside public folder 
+        // Image upload, fit and store inside public folder
         if($request->hasFile('image')){
 
             //Delete Old Image
@@ -79,7 +77,7 @@ class AboutController extends Controller
 
             //Upload New Image
             $filenameWithExt = $request->file('image')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); 
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
 
@@ -98,32 +96,32 @@ class AboutController extends Controller
             $old_file = About::find($id);
 
             if(isset($old_file->image_path)){
-                $fileNameToStore = $old_file->image_path; 
+                $fileNameToStore = $old_file->image_path;
             }
             else {
                 $fileNameToStore = Null;
             }
-            
+
         }
 
 
         // Get content with media file
         $content=$request->input('description');
-        
+
         $dom = new \DomDocument();
         libxml_use_internal_errors(true);
         $dom->encoding = 'utf-8';
-        $dom->loadHtml(utf8_decode($content), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $dom->loadHtml(utf8_decode($content), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
        // foreach <img> in the submited content
         foreach($images as $img){
             $src = $img->getAttribute('src');
-            
+
             // if the img source is 'data-url'
-            if(preg_match('/data:image/', $src)){                
+            if(preg_match('/data:image/', $src)){
                 // get the mimetype
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                $mimetype = $groups['mime'];                
+                $mimetype = $groups['mime'];
                 // Generating a random filename
                 $filename = uniqid().'_'.time();
 
@@ -133,17 +131,17 @@ class AboutController extends Controller
                     File::makeDirectory($path, 0777, true, true);
                 }
 
-                $filepath = "/uploads/media/$filename.$mimetype";    
+                $filepath = "/uploads/media/$filename.$mimetype";
                 // @see http://image.intervention.io/api/
                 $image = Image::make($src)
                   // resize if required
-                  //->resize(500, null) 
+                  //->resize(500, null)
                   ->resize(800, null, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })
                   ->encode($mimetype, 100)  // encode file to the specified mimetype
-                  ->save(public_path($filepath));                
+                  ->save(public_path($filepath));
                 $new_src = asset($filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
@@ -159,12 +157,7 @@ class AboutController extends Controller
             $data->title = $request->title;
             $data->slug = Str::slug($request->title, '-');
             $data->description = $dom->saveHTML();
-            $data->image_path = $fileNameToStore;
-            $data->video_id = $request->video_id;
-            $data->mission_title = $request->mission_title;
             $data->mission_desc = $request->mission_desc;
-            $data->vision_title = $request->vision_title;
-            $data->vision_desc = $request->vision_desc;
             $data->status = $request->status;
             $data->save();
         }
@@ -174,12 +167,7 @@ class AboutController extends Controller
             $data->title = $request->title;
             $data->slug = Str::slug($request->title, '-');
             $data->description = $dom->saveHTML();
-            $data->image_path = $fileNameToStore;
-            $data->video_id = $request->video_id;
-            $data->mission_title = $request->mission_title;
             $data->mission_desc = $request->mission_desc;
-            $data->vision_title = $request->vision_title;
-            $data->vision_desc = $request->vision_desc;
             $data->status = $request->status;
             $data->save();
         }

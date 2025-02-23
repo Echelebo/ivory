@@ -4,11 +4,11 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    
+
     <!-- start page title -->
     <!-- Include page breadcrumb -->
     @include('admin.inc.breadcrumb')
-    <!-- end page title --> 
+    <!-- end page title -->
 
 
     <div class="row">
@@ -50,14 +50,6 @@
 
                     <div class="row">
                       <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="mission_title">{{ __('dashboard.mission_title') }}</label>
-                        <input type="text" class="form-control" name="mission_title" id="mission_title" value="{{ isset($row->mission_title)?$row->mission_title:'' }}">
-
-                        <div class="invalid-feedback">
-                          {{ __('dashboard.please_provide') }} {{ __('dashboard.mission_title') }}
-                        </div>
-                      </div>
 
                       <div class="form-group">
                         <label for="mission_desc">{{ __('dashboard.mission_description') }}</label>
@@ -70,23 +62,9 @@
                       </div>
 
                       <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="vision_title">{{ __('dashboard.vision_title') }}</label>
-                        <input type="text" class="form-control" name="vision_title" id="vision_title" value="{{ isset($row->vision_title)?$row->vision_title:'' }}">
 
-                        <div class="invalid-feedback">
-                          {{ __('dashboard.please_provide') }} {{ __('dashboard.vision_title') }}
-                        </div>
-                      </div>
 
-                      <div class="form-group">
-                        <label for="vision_desc">{{ __('dashboard.vision_description') }}</label>
-                        <textarea class="form-control summernote" name="vision_desc" id="vision_desc" rows="8">{{ isset($row->vision_desc)?$row->vision_desc:'' }}</textarea>
 
-                        <div class="invalid-feedback">
-                          {{ __('dashboard.please_provide') }} {{ __('dashboard.vision_description') }}
-                        </div>
-                      </div>
                       </div>
                     </div>
 
@@ -107,21 +85,6 @@
                         @endif
                       </div> --}}
 
-                      <div class="form-group col-md-6">
-                        <label for="video_id">{{ __('dashboard.youtube_video_id') }}</label>
-                        <input type="text" class="form-control" name="video_id" id="video_id" value="{{ isset($row->video_id)?$row->video_id:'' }}">
-
-                        <div class="invalid-feedback">
-                          {{ __('dashboard.please_provide') }} {{ __('dashboard.youtube_video_id') }}
-                        </div>
-
-                        @if(!empty($row->video_id))
-                        <br/>
-                        <div class="embed-responsive embed-responsive-16by9">
-                          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ $row->video_id }}?rel=0" allowfullscreen></iframe>
-                        </div>
-                        @endif
-                      </div>
                     </div>
 
                     <div class="form-group">
@@ -145,7 +108,7 @@
     </div>
     <!-- end row-->
 
-    
+
 </div> <!-- container -->
 <!-- End Content-->
 

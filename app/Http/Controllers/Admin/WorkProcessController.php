@@ -70,7 +70,6 @@ class WorkProcessController extends Controller
         $workProcess->title = $request->title;
         $workProcess->slug = Str::slug($request->title, '-');
         $workProcess->link = $request->link;
-        $workProcess->icon = $request->icon;
         $workProcess->save();
 
 
@@ -119,7 +118,6 @@ class WorkProcessController extends Controller
         $workProcess->title = $request->title;
         $workProcess->slug = Str::slug($request->title, '-');
         $workProcess->link = $request->link;
-        $workProcess->icon = $request->icon;
         $workProcess->status = $request->status;
         $workProcess->save();
 

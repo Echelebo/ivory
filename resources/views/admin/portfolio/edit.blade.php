@@ -4,11 +4,11 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    
+
     <!-- start page title -->
     <!-- Include page breadcrumb -->
     @include('admin.inc.breadcrumb')
-    <!-- end page title --> 
+    <!-- end page title -->
 
 
     <div class="row">
@@ -38,50 +38,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="category">{{ __('dashboard.category') }} <span>*</span></label>
-                        <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="{{ __('dashboard.select') }}" name="categories[]" id="category" required>
-                            @foreach( $categories as $category )
-                            <option value="{{ $category->id }}" 
-                                @foreach($row->categories as $row_category)
-                                    @if( $category->id == $row_category->id ) selected @endif
-                                @endforeach
-                            >{{ $category->title }}</option>
-                            @endforeach
-                        </select>
-
-                        <div class="invalid-feedback">
-                          {{ __('dashboard.please_provide') }} {{ __('dashboard.category') }}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">{{ __('dashboard.description') }} <span>*</span></label>
-                        <textarea class="form-control textMediaEditor" name="description" id="description" rows="8" required>{{ $row->description }}</textarea>
-
-                        <div class="invalid-feedback">
-                          {{ __('dashboard.please_provide') }} {{ __('dashboard.description') }}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="image">{{ __('dashboard.thumbnail') }} <span>{{ __('dashboard.image_size', ['height' => 500, 'width' => 800]) }}</span></label>
-                        <input type="file" class="form-control" name="image" id="image">
-
-                        <div class="invalid-feedback">
-                          {{ __('dashboard.please_provide') }} {{ __('dashboard.thumbnail') }}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="video_id">{{ __('dashboard.youtube_video_id') }}</label>
-                        <input type="text" class="form-control" name="video_id" id="video_id" value="{{ $row->video_id }}">
-
-                        <div class="invalid-feedback">
-                          {{ __('dashboard.please_provide') }} {{ __('dashboard.youtube_video_id') }}
-                        </div>
-                    </div>
-
                     {{-- <div class="form-group">
                         <label for="link">{{ __('dashboard.web_link') }}</label>
                         <input type="url" class="form-control" name="link" id="link" value="{{ $row->link }}">
@@ -99,7 +55,7 @@
                         </select>
                     </div>
                     <!-- Form End -->
-                    
+
                 </div>
                 <div class="card-footer">
                     <div class="form-group">
@@ -112,7 +68,7 @@
     </div>
     <!-- end row-->
 
-    
+
 </div> <!-- container -->
 <!-- End Content-->
 

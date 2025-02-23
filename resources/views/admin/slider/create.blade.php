@@ -12,6 +12,14 @@
                 <div class="modal-body">
                     <!-- Form Start -->
                     <div class="form-group">
+                        <label for="link">Welcome Title</label>
+                        <input type="text" class="form-control" name="link" id="link" value="{{ old('link') }}">
+
+                        <div class="invalid-feedback">
+                          {{ __('dashboard.please_provide') }} Welcome Title
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="title">{{ __('dashboard.title') }} <span>*</span></label>
                         <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" required>
 
@@ -32,15 +40,6 @@
 
                         <div class="invalid-feedback">
                           {{ __('dashboard.please_provide') }} {{ __('dashboard.thumbnail') }}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="link">{{ __('dashboard.web_link') }}</label>
-                        <input type="url" class="form-control" name="link" id="link" value="{{ old('link') }}">
-
-                        <div class="invalid-feedback">
-                          {{ __('dashboard.please_provide') }} {{ __('dashboard.web_link') }}
                         </div>
                     </div>
                     <!-- Form End -->

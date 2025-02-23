@@ -43,7 +43,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="#other-tab" data-toggle="tab" aria-expanded="false" class="nav-link">
-                            {{ __('dashboard.other_info') }}
+                            Other Info
                         </a>
                     </li>
                     <li class="nav-item">

@@ -20,13 +20,8 @@
                     <p><span class="text-highlight">{{ __('dashboard.description') }}:</span> {!! $row->description !!}</p>
                     <hr>
 
-                    @if(!empty($row->link))
                     <hr/>
-                    <p><span class="badge badge-primary">{{ __('dashboard.web_link') }}:</span> <a href="{{ $row->link }}" target="_blank">{{ $row->link }}</a></p>
-                    @endif
-
-                    <hr/>
-                    <p><span class="text-highlight">{{ __('dashboard.status') }}:</span> 
+                    <p><span class="text-highlight">{{ __('dashboard.status') }}:</span>
                     @if( $row->status == 1 )
                     <span class="badge badge-success badge-pill">{{ __('dashboard.active') }}</span>
                     @else

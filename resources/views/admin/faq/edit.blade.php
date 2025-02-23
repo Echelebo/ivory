@@ -4,11 +4,11 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    
+
     <!-- start page title -->
     <!-- Include page breadcrumb -->
     @include('admin.inc.breadcrumb')
-    <!-- end page title --> 
+    <!-- end page title -->
 
 
     <div class="row">
@@ -39,20 +39,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="category">{{ __('dashboard.category') }} <span>*</span></label>
-                        <select class="form-control" name="category" id="category" required>
-                            <option value="">{{ __('dashboard.select') }}</option>
-                            @foreach( $categories as $category )
-                            <option value="{{ $category->id }}" @if( $category->id == $row->category_id ) selected @endif>{{ $category->title }}</option>
-                            @endforeach
-                        </select>
-
-                        <div class="invalid-feedback">
-                          {{ __('dashboard.please_provide') }} {{ __('dashboard.category') }}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label for="description">{{ __('dashboard.description') }} <span>*</span></label>
                         <textarea class="form-control textMediaEditor" name="description" id="description" rows="8" required>{{ $row->description }}</textarea>
 
@@ -69,7 +55,7 @@
                         </select>
                     </div>
                     <!-- Form End -->
-                    
+
                 </div>
                 <div class="card-footer">
                     <div class="form-group">
@@ -82,7 +68,7 @@
     </div>
     <!-- end row-->
 
-    
+
 </div> <!-- container -->
 <!-- End Content-->
 

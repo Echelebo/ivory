@@ -4,11 +4,11 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    
+
     <!-- start page title -->
     <!-- Include page breadcrumb -->
     @include('admin.inc.breadcrumb')
-    <!-- end page title --> 
+    <!-- end page title -->
 
 
     <div class="row">
@@ -27,13 +27,12 @@
 
                     <!-- Details View Start -->
                     <h4><span class="text-highlight">{{ __('dashboard.title') }}:</span> {{ $row->title }}</h4>
-                    <p><span class="text-highlight">{{ __('dashboard.category') }}:</span> {{ $row->category->title }}</p>
                     <hr/>
-                    
+
                     <p><span class="text-highlight">{{ __('dashboard.description') }}:</span> {!! $row->description !!}</p>
 
                     <hr/>
-                    <p><span class="text-highlight">{{ __('dashboard.status') }}:</span> 
+                    <p><span class="text-highlight">{{ __('dashboard.status') }}:</span>
                     @if( $row->status == 1 )
                     <span class="badge badge-success badge-pill">{{ __('dashboard.active') }}</span>
                     @else
@@ -47,7 +46,7 @@
     </div>
     <!-- end row-->
 
-    
+
 </div> <!-- container -->
 <!-- End Content-->
 
