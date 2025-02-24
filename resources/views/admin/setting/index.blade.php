@@ -265,11 +265,11 @@
 
                         <div class="row">
                           <div class="form-group col-md-6">
-                            <label for="linkedin">{{ __('dashboard.linkedin') }}</label>
+                            <label for="linkedin">Online Group Learning Application Form Link</label>
                             <input type="url" class="form-control" name="linkedin" id="linkedin" value="{{ isset($social->linkedin)?$social->linkedin:'' }}">
 
                             <div class="invalid-feedback">
-                              {{ __('dashboard.please_provide') }} {{ __('dashboard.linkedin') }}
+                              {{ __('dashboard.please_provide') }} Learning Application Form Link.
                             </div>
                           </div>
 
@@ -285,11 +285,11 @@
 
                         <div class="row">
                           <div class="form-group col-md-6">
-                            <label for="pinterest">{{ __('dashboard.pinterest') }}</label>
+                            <label for="pinterest">Contact Us Form Link</label>
                             <input type="url" class="form-control" name="pinterest" id="pinterest" value="{{ isset($social->pinterest)?$social->pinterest:'' }}">
 
                             <div class="invalid-feedback">
-                              {{ __('dashboard.please_provide') }} {{ __('dashboard.pinterest') }}
+                              {{ __('dashboard.please_provide') }} Contact Us Form Link.
                             </div>
                           </div>
 
@@ -305,11 +305,11 @@
 
                         <div class="row">
                           <div class="form-group col-md-6">
-                            <label for="skype">{{ __('dashboard.skype') }}</label>
+                            <label for="skype">Career Form Link</label>
                             <input type="text" class="form-control" name="skype" id="skype" value="{{ isset($social->skype)?$social->skype:'' }}">
 
                             <div class="invalid-feedback">
-                              {{ __('dashboard.please_provide') }} {{ __('dashboard.skype') }}
+                              {{ __('dashboard.please_provide') }} Career Form Link.
                             </div>
                           </div>
 
@@ -331,57 +331,11 @@
                       <!-- Form End -->
 
                     </div>
-                    <div class="tab-pane" id="other-tab">
-
-                        <!-- Form Start -->
-                        <form class="needs-validation" novalidate action="{{ route($route.'.otherinfo') }}" method="post" enctype="multipart/form-data">
-                          @csrf
-                          <input name="id" type="hidden" value="{{ (isset($social->id))?$social->id:-1 }}">
-                          <div class="row">
-                            <div class="form-group col-md-6">
-                              <label for="joingroup">Online Group Learning Application Form Link</label>
-                              <input type="url" class="form-control" name="joingroup" id="joingroup" value="{{ isset($social->joingroup)?$social->joingroup:'' }}">
-
-                              <div class="invalid-feedback">
-                                Please provide online learning application form link.
-                              </div>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                              <label for="contactform">Contact Us Form Link</label>
-                              <input type="url" class="form-control" name="contactform" id="contactform" value="{{ isset($social->contactform)?$social->contactform:'' }}">
-
-                              <div class="invalid-feedback">
-                                Please provide contact us form link.
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="row">
-                            <div class="form-group col-md-6">
-                              <label for="careerform">Career Form Link</label>
-                              <input type="url" class="form-control" name="careerform" id="careerform" value="{{ isset($social->careerform)?$social->careerform:'' }}">
-
-                              <div class="invalid-feedback">
-                                Please provide career form link.
-                              </div>
-                            </div>
-
-
-                          </div>
 
 
 
 
 
-                          <div class="form-group">
-                              <button type="submit" class="btn btn-primary">{{ __('dashboard.update') }}</button>
-                          </div>
-
-                        </form>
-                        <!-- Form End -->
-
-                      </div>
                     <div class="tab-pane" id="custom-tab">
 
                       <!-- Form Start -->
