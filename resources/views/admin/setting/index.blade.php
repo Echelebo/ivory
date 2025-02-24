@@ -41,11 +41,7 @@
                             {{ __('dashboard.social_info') }}
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#other-tab" data-toggle="tab" aria-expanded="false" class="nav-link">
-                            Other Info
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a href="#custom-tab" data-toggle="tab" aria-expanded="true" class="nav-link">
                             {{ __('dashboard.customization') }}
