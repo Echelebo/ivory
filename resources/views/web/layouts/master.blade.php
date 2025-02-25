@@ -66,22 +66,25 @@
                     <div class="header-top-left">
                         <div class="header-top-social">
                             <span>Follow Us: </span>
-                            <a href="https://www.facebook.com/IvoryGateEducationCentreAbujaNigeria/"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ $social->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
 
-                            <a href="https://wa.me/2348137107935"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://wa.me/{{ str_replace(' ', '', $social->whatsapp) }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            @if(isset($social->youtube))
+                            <a href="{{ $social->youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
+                            @endif
                         </div>
                     </div>
                     <div class="header-top-right">
                         <div class="header-top-contact">
                             <ul>
                                 <li>
-                                    <a href="#"><i class="far fa-location-dot"></i>Abuja, Nigeria</a>
+                                    <a href="#"><i class="far fa-location-dot"></i>{{ $setting->contact_address }}</a>
                                 </li>
                                 <li>
-                            <a href="mailto: contact@ivorygateeducation.org"><i class="far fa-envelopes"></i> <span class="__cf_email__" data-cfemail="30595e565f705548515d405c551e535f5d">contact@ivorygateeducation.org</span></a>
+                            <a href="mailto: {{ $setting->email_one }}"><i class="far fa-envelopes"></i> <span class="__cf_email__" data-cfemail="30595e565f705548515d405c551e535f5d">{{ $setting->email_one }}</span></a>
                                 </li>
                                 <li>
-                            <a href="tel:+2348137107935"><i class="far fa-phone-volume"></i>+2348137107935</a>
+                            <a href="tel:{{ $setting->phone_one }}"><i class="far fa-phone-volume"></i>{{ $setting->phone_one }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -94,7 +97,7 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container position-relative">
                     <a class="navbar-brand" href="/">
-                        <img src="assets/img/logo/logo.png" alt="logo">
+                        <img src="{{ asset('/uploads/setting/'.$setting->logo_path) }}" alt="logo">
                     </a>
                     <div class="mobile-menu-right">
                         <div class="search-btn">
@@ -123,41 +126,34 @@
                                                     <h5>About Us</h5>
                                                     <div class="menu-about">
                                                         <a href="/" class="menu-about-logo"><img
-                                                                src="assets/img/logo/logo-light.png" alt=""></a>
+                                                                src="{{ asset('/uploads/setting/'.$setting->logo_path) }}" alt=""></a>
                                                         <p>We believe that every student deserves individualized support in reaching their personal education and career goals.</p>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-12 col-sm-4 col-md-3">
                                                     <h5>Our Programs</h5>
                                                     <ul class="mega-menu-item">
-                                                        <li><a class="dropdown-item" href="/sat">SAT</a></li>
-                                                        <li><a class="dropdown-item" href="/jamb">JAMB Class</a></li>
-                                                        <li><a class="dropdown-item"
-                                                                href="/ssce">SSCE Class</a>
-                                                        </li>
-                                                        <li><a class="dropdown-item" href="/ss1-foundation">SS1 Foundation Class</a></li>
-                                                        <li><a class="dropdown-item" href="/bece">BECE (Junior WAEC) Class</a></li>
+                                                        @foreach($service15 as $service15)
+                                                        <li><a class="dropdown-item" href="/{{ $service15->slug }}">{{ $service15->title }}</a></li>
+                                                        @endforeach
+
                                                     </ul>
                                                 </div>
                                                 <div class="col-12 col-sm-4 col-md-3">
                                                     <h5>More Programs</h5>
                                                     <ul class="mega-menu-item">
-                                                        <li><a class="dropdown-item"
-                                                                href="/common-entrance">Common Entrance Class</a></li>
-                                                        <li><a class="dropdown-item" href="/virtual">Virtual/Online Class</a></li>
-                                                        <li><a class="dropdown-item" href="/icttraining">ICT Training</a></li>
-                                                        <li><a class="dropdown-item"
-                                                                href="/volunteerism">Volunteerism</a></li>
-                                                        <li><a class="dropdown-item"
-                                                                href="/leadership">Leadership</a></li>
+                                                        @foreach($service60 as $service60)
+                                                        <li><a class="dropdown-item" href="/{{ $service60->slug }}">{{ $service60->title }}</a></li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                                 <div class="col-12 col-sm-12 col-md-3">
                                                     <h5>Free Resources</h5>
                                                     <ul class="mega-menu-item">
-                                                        <li><a class="dropdown-item" href="https://chat.whatsapp.com/B8Uka6NZBwfIcrnFeg2wJz" target="_blank">SAT Forum</a></li>
-                                                        <li><a class="dropdown-item" href="https://chat.whatsapp.com/Gjhfm1mqDToKF5Bu2IF2p9" target="_blank">JAMB Forum</a></li>
-                                                        <li><a class="dropdown-item" href="https://chat.whatsapp.com/DiELvZOkT9KK9RJKrUe0kS" target="_blank">SSCE Forum</a></li>
+                                                        @foreach($workprogress as $workprogres)
+                                                        <li><a class="dropdown-item" href="{{ $workprogress->link }}" target="_blank">{{ $workprogress->tltle }}</a></li>
+                                                        @endforeach
                                                         <li><a class="dropdown-item" href="/blog">Blog</a></li>
                                                     </ul>
                                                 </div>
@@ -173,23 +169,14 @@
                                     <div class="mega-content">
                                         <div class="container-fluid">
                                             <div class="row">
+                                                @foreach($workprogress as $workprogress)
                                                 <div class="col-12 col-sm-6 col-md-6">
-                                                    <h5>CENTRE 1</h5>
+                                                    <h5>{{ $workprogress->title }}</h5>
                                                     <div class="menu-about">
-                                                        <p>IVORY GATE Study Centre,<br />
-                                                            25 Environmental Street,<br />
-                                                            FHA Lugbe.</p>
+                                                        <p>{{ $workprogress->description }}</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-6 col-md-6">
-                                                    <h5>CENTRE 2</h5>
-                                                    <div class="menu-about">
-
-                                                        <p>IVORY GATE Study Hub,<br />
-                                                            El-Salem Estate, Lugbe.<br />
-                                                            (Off Pyakasa Rd. Opp Penthouse Estate III)</p>
-                                                    </div>
-                                                </div>
+                                                @endforeach
 
                                             </div>
                                         </div>
@@ -256,10 +243,10 @@
                                 we believe that every student deserves individualized support in reaching their personal education and career goals.
                                 </p>
                                 <ul class="footer-contact">
-                                    <li><a href="tel:+2348137107935"><i class="far fa-phone"></i>+2348137107935</a></li>
-                                    <li><i class="far fa-map-marker-alt"></i>Abuja, Nigeria</li>
-                                    <li><a href="mailto:contact@ivorygateeducation"><i
-                                                class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="b2dbdcd4ddf2d7cad3dfc2ded79cd1dddf">contact@ivorygateeducation.org</span></a></li>
+                                    <li><a href="tel:{{ $setting->phone_one }}"><i class="far fa-phone"></i>{{ $setting->phone_one }}</a></li>
+                                    <li><i class="far fa-map-marker-alt"></i>{{ $setting->contact_address }}/li>
+                                    <li><a href="mailto:{{ $setting->email_one }}"><i
+                                                class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="b2dbdcd4ddf2d7cad3dfc2ded79cd1dddf">{{ $setting->email_one }}</span></a></li>
                                 </ul>
 
                             </div>
@@ -268,12 +255,10 @@
                             <div class="footer-widget-box list">
                                 <h4 class="footer-widget-title">Services</h4>
                                 <ul class="footer-list">
+                                    @foreach($service15 as $service15)
+                                    <li><a href="/{{ $service15->slug }} class="fas fa-caret-right"></i>{{ $service15->title }}</a></li>
+                                    @endforeach
 
-                                    <li><a href="/sat"><i class="fas fa-caret-right"></i>SAT Class</a></li>
-                                    <li><a href="/ssce"><i class="fas fa-caret-right"></i>SSCE Class</a></li>
-                                    <li><a href="/jamb"><i class="fas fa-caret-right"></i>JAMB Class</a></li>
-                                    <li><a href="/volunteerism"><i class="fas fa-caret-right"></i>Volunteerism</a></li>
-                                    <li><a href="/leadership"><i class="fas fa-caret-right"></i>Leadership</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -281,12 +266,9 @@
                             <div class="footer-widget-box list">
                                 <h4 class="footer-widget-title">More Services</h4>
                                 <ul class="footer-list">
-                                <li><a href="/ss1-foundation"><i class="fas fa-caret-right"></i>SS1 Foundation</a></li>
-                                    <li><a href="/bece"><i class="fas fa-caret-right"></i>BECE (Junior Waec)</a></li>
-                                    <li><a href="/virtual"><i class="fas fa-caret-right"></i>Virtual/Online Class</a></li>
-                                    <li><a href="/icttraining"><i class="fas fa-caret-right"></i>ICT Training</a></li>
-                                    <li><a href="/common-entrance"><i class="fas fa-caret-right"></i>Common Entrance Class</a></li>
-                                </ul>
+                                    @foreach($service60 as $service15)
+                                    <li><a href="/{{ $service15->slug }} class="fas fa-caret-right"></i>{{ $service15->title }}</a></li>
+                                    @endforeach
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-2">
@@ -315,13 +297,17 @@
                         <div class="row">
                             <div class="col-md-6 align-self-center">
                                 <p class="copyright-text">
-                                    &copy; Copyright <span id="date"></span> <a href="/"> Ivorygate Education Center, </a> All Rights Reserved.
+                                    &copy; {!! strip_tags($setting->footer_text, '<p><a><b><i><u><strong>') !!}
                                 </p>
                             </div>
                             <div class="col-md-6 align-self-center">
                                 <ul class="footer-social">
-                                    <li><a href="https://www.facebook.com/IvoryGateEducationCentreAbujaNigeria/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="https://wa.me/2348137107935"><i class="fab fa-whatsapp"></i></a></li>
+                                  <li>  <a href="{{ $social->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+
+                                    <li><a href="https://wa.me/{{ str_replace(' ', '', $social->whatsapp) }}" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                            @if(isset($social->youtube))
+                            <li><a href="{{ $social->youtube }}" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                            @endif
 
                                 </ul>
                             </div>

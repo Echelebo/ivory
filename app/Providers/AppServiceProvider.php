@@ -13,6 +13,8 @@ use App\Models\Article;
 use App\Models\Service;
 use App\Models\Social;
 use App\Models\Page;
+use App\Models\WorkProcess;
+use App\Models\Faq;
 use View;
 
 class AppServiceProvider extends ServiceProvider
@@ -45,14 +47,18 @@ class AppServiceProvider extends ServiceProvider
         $livechat = LiveChat::first();
         $sections = Section::where('status', '1')->get();
         $pages = Page::where('status', '1')->get();
+        $faqs = Faq::where('status', '1')->get();
         $article_subnavs = ArticleCategory::where('status', '1')->get();
+        $workprogress = WorkProcess::where('status', '1')->orderBy('id', 'desc')->take(3)->get();
         $service_subnavs = Service::where('status', '1')->get();
+        $service15 = Service::where('status', '1')->where('id', '<', 6)->orderBy('id', 'desc')->take(5)->get();
+        $service60 = Service::where('status', '1')->where('id', '<', 11)->orderBy('id', 'desc')->take(5)->get();
         $recents = Article::where('status', '1')
                             ->orderBy('id', 'desc')
                             ->take(3)
                             ->get();
 
-        View::share(['setting' => $setting, 'social' => $social, 'livechat' => $livechat, 'pages' => $pages, 'recents' => $recents, 'sections' => $sections, 'article_subnavs' => $article_subnavs, 'service_subnavs' => $service_subnavs]);
+        View::share(['setting' => $setting, 'social' => $social, 'faqs' => $faqs, 'workprogress' => $workprogress, 'service15' => $service15, 'service60' => $service60, 'livechat' => $livechat, 'pages' => $pages, 'recents' => $recents, 'sections' => $sections, 'article_subnavs' => $article_subnavs, 'service_subnavs' => $service_subnavs]);
 
     }
 }
