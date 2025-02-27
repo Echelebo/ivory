@@ -287,8 +287,9 @@
 
                                     <li><a href="{{ route('career') }}"><i class="fas fa-caret-right"></i>Careers</a></li>
                                     <li><a href="{{ route('services') }}"><i class="fas fa-caret-right"></i>Services</a></li>
-                                    <li><a href="{{ route('privacy') }}"><i class="fas fa-caret-right"></i>Privacy</a></li>
-                                    <li><a href="{{ route('term') }}"><i class="fas fa-caret-right"></i>Terms</a></li>
+                                    @foreach($pages as $key => $page)
+                                            <li><a href="{{ route('page.single', $page->slug) }}"><i class="fas fa-caret-right"></i>{{ $page->title }}</a></li>
+                                            @endforeach
 
                                 </ul>
                             </div>

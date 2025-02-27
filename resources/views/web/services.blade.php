@@ -1,7 +1,27 @@
-<?php
-$page_title = "Our Services";
-?>
 @extends('web.layouts.master')
+@php
+$header = \App\Models\PageSetup::page('services');
+@endphp
+@if(isset($header))
+
+@section('title', $header->meta_title)
+
+@section('top_meta_tags')
+@if(isset($header->meta_description))
+<meta name="description" content="{!! str_limit(strip_tags($header->meta_description), 160, ' ...') !!}">
+@else
+<meta name="description" content="{!! str_limit(strip_tags($setting->description), 160, ' ...') !!}">
+@endif
+
+@if(isset($header->meta_keywords))
+<meta name="keywords" content="{!! strip_tags($header->meta_keywords) !!}">
+@else
+<meta name="keywords" content="{!! strip_tags($setting->keywords) !!}">
+@endif
+@endsection
+
+@endif
+
 @section('content')
 
 <main class="main">
@@ -32,104 +52,23 @@ $page_title = "Our Services";
             </div>
         </div>
         <div class="row">
+            @foreach ($services as $service)
             <div class="col-lg-3">
                 <div class="department-item">
                     <div class="department-icon">
-                        <img src="assets/img/icon/monitor.svg" alt="">
+                        <img src="{{ asset('uploads/service/'.$service->image_path) }}" alt="">
                     </div>
                     <div class="department-info">
-                        <h4 class="department-title">Academic Tutoring</h4>
-                        <p>One-on-one and group tutoring sessions across subjects (math, science, etc.).
-                        Test preparation for standardized tests (e.g., SAT, JAMB, SSCE).</p>
-
+                        <h4 class="department-title">{{ $service->title }}</h4>
+                        <p>{!! str_limit(strip_tags($service->short_desc), 120, ' ...') !!}</p>
+                        <div class="department-btn">
+                            <a href="{{ route('service.single', $service->slug) }}">Read More<i class="fas fa-arrow-right-long"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <div class="department-item">
-                    <div class="department-icon">
-                        <img src="assets/img/icon/law.svg" alt="">
-                    </div>
-                    <div class="department-info">
-                        <h4 class="department-title">SS1 Foundation Class</h4>
-                        <p>Extended learning opportunities for the SS1 set, including science and art.</p>
+            @endforeach
 
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="department-item">
-                    <div class="department-icon">
-                        <img src="assets/img/icon/data.svg" alt="">
-                    </div>
-                    <div class="department-info">
-                        <h4 class="department-title">College and Career Counseling</h4>
-                        <p>Guidance on college selection, application processes, and scholarship opportunities.
-                        Career assessment and planning services, including resume writing and interview preparation.</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="department-item">
-                    <div class="department-icon">
-                        <img src="assets/img/icon/health.svg" alt="">
-                    </div>
-                    <div class="department-info">
-                        <h4 class="department-title">Common Entrance</a></h4>
-                        <p>Support and resources available for students preparing for the Common Entrance Examination, preparing them for transition to secondary education.</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="department-item">
-                    <div class="department-icon">
-                        <img src="assets/img/icon/art.svg" alt="">
-                    </div>
-                    <div class="department-info">
-                        <h4 class="department-title">After-School Programs</h4>
-                        <p>Supervised activities that include homework help, recreational activities, and skill-building exercises.</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="department-item">
-                    <div class="department-icon">
-                        <img src="assets/img/icon/information.svg" alt="">
-                    </div>
-                    <div class="department-info">
-                        <h4 class="department-title">Virtual/Online Tutoring</h4>
-                        <p>Ivorygate leverages technology to provide personalized learning experiences, making education more accessible and adaptable to individual needs.</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="department-item">
-                    <div class="department-icon">
-                        <img src="assets/img/icon/acting.svg" alt="">
-                    </div>
-                    <div class="department-info">
-                        <h4 class="department-title">ICT Training</h4>
-                        <p>We equip individuals with the essential digital skills needed to thrive in today's technology-driven world.</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="department-item">
-                    <div class="department-icon">
-                        <img src="assets/img/icon/human.svg" alt="">
-                    </div>
-                    <div class="department-info">
-                        <h4 class="department-title">Leadership</h4>
-                        <p>We cultivate leadership skills among educators and students, promoting a culture of positive influence, collaboration, and innovation.</p>
-
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

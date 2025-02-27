@@ -1,7 +1,27 @@
-<?php
-$page_title = "Contact Us";
-?>
 @extends('web.layouts.master')
+@php
+$header = \App\Models\PageSetup::page('contact-us');
+@endphp
+@if(isset($header))
+
+@section('title', $header->meta_title)
+
+@section('top_meta_tags')
+@if(isset($header->meta_description))
+<meta name="description" content="{!! str_limit(strip_tags($header->meta_description), 160, ' ...') !!}">
+@else
+<meta name="description" content="{!! str_limit(strip_tags($setting->description), 160, ' ...') !!}">
+@endif
+
+@if(isset($header->meta_keywords))
+<meta name="keywords" content="{!! strip_tags($header->meta_keywords) !!}">
+@else
+<meta name="keywords" content="{!! strip_tags($setting->keywords) !!}">
+@endif
+@endsection
+
+@endif
+
 @section('content')
 
 
@@ -33,7 +53,7 @@ $page_title = "Contact Us";
                                 </div>
                                 <div class="contact-info-content">
                                     <h5>Office Address</h5>
-                                    <p>Lugbe, Abuja, Nigeria</p>
+                                    <p>{{ $setting->contact_address }}</p>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +64,7 @@ $page_title = "Contact Us";
                                 </div>
                                 <div class="contact-info-content">
                                     <h5>Call Us</h5>
-                                    <p>+2348137107935</p>
+                                    <p>{{ $setting->phone_one }}</p>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +75,7 @@ $page_title = "Contact Us";
                                 </div>
                                 <div class="contact-info-content">
                                     <h5>Email Us</h5>
-                                    <p><a href="mailto: contact@ivorygateeducation.org" class="__cf_email__" data-cfemail="ec85828a83ac89948d819c8089c28f8381">contact@ivorygateeducation.org</a></p>
+                                    <p><a href="mailto: {{ $setting->email_one }}" class="__cf_email__" data-cfemail="ec85828a83ac89948d819c8089c28f8381">{{ $setting->email_one }}</a></p>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +86,7 @@ $page_title = "Contact Us";
                                 </div>
                                 <div class="contact-info-content">
                                     <h5>Open Time</h5>
-                                    <p>Mon - Sat (10.00AM - 05.30PM)</p>
+                                    <p>{!! strip_tags($setting->office_hours) !!}</p>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +107,7 @@ $page_title = "Contact Us";
                                 </div>
 
 
-                                    <a href="https://forms.gle/56tUuSVAK4UtgN1A8" target="_blank" class="theme-btn">Send Us a
+                                    <a href="{{ $social->pinterest }}" target="_blank" class="theme-btn">Send Us a
                                         Message <i class="far fa-paper-plane"></i></a>
                                     <div class="col-md-12 mt-3">
                                         <div class="form-messege text-success"></div>
@@ -103,8 +123,8 @@ $page_title = "Contact Us";
 
         <!-- map -->
         <div class="contact-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.8471638784417!2d7.352603549494776!3d8.986207966727626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e73d37bec2e97%3A0x592b365590cd8cd4!2sIvory%20Gate%20Education%20Centre%2C%20FHA%20Lugbe%20Abuja!5e0!3m2!1sen!2sng!4v1735470864731!5m2!1sen!2sng" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+            {!! strip_tags($setting->google_map, '<iframe>') !!}
+         </div>
 
     </main>
 

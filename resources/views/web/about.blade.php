@@ -1,3 +1,4 @@
+@extends('web.layouts.master')
 @php
 $header = \App\Models\PageSetup::page('about-us');
 @endphp
@@ -20,7 +21,6 @@ $header = \App\Models\PageSetup::page('about-us');
 @endsection
 
 @endif
-@extends('web.layouts.master')
 @section('content')
 
     <main class="main">
@@ -143,7 +143,7 @@ echo $result; // Output the result
                         </div>
                         <div class="testimonial-quote">
 
-                            {!! str_limit(strip_tags($testimonial->description), 140, ' ...') !!}
+                            {!! str_limit(strip_tags($testimonial->description), 200, ' ...') !!}
                         </div>
                         <div class="testimonial-content">
                             <div class="testimonial-author-info">
