@@ -11,7 +11,7 @@
 
     @if(isset($setting))
     <!-- App Title -->
-    <title>{{ $page_title }} | {{ $setting->title }}</title>
+    <title>@yield('title') | {{ $setting->title }}</title>
 
     <!-- App favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/uploads/setting/'.$setting->favicon_path) }}" type="image/x-icon">

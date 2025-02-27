@@ -46,9 +46,6 @@
 
 @section('content')
 
-<?php
-$page_title = "Home";
-?>
 <main class="main">
 
         <!-- hero slider -->
