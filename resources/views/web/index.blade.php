@@ -420,7 +420,7 @@ echo $result; // Output the result
                         </div>
                         <div class="department-info">
                             <h4 class="department-title">{{ $service->title }}</h4>
-                            <p class="long-text-x">{{ Str::words({!! strip_tags($service->short_desc) !!}, 15, '...') }}  </p>
+                            <p class="long-text-x">{{ Str::words(strip_tags($service->short_desc), 15, '...' ) }}  </p>
                             <div class="department-btn">
                                 <a href="{{ route('service.single', $service->slug) }}">Read More<i class="fas fa-arrow-right-long"></i></a>
                             </div>
