@@ -94,7 +94,7 @@
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-
+                    <a href="{{ route('admin.page-setup.index') }}">{{ trans_choice('dashboard.page_setup', 2) }}</a>
                     <a href="{{ route('admin.page.index') }}">{{ trans_choice('dashboard.footer_page', 2) }}</a>
                     <a href="{{ route('admin.section.index') }}">{{ trans_choice('dashboard.section', 2) }}</a>
                     <a href="{{ route('admin.about.index') }}">{{ trans_choice('dashboard.about', 2) }}</a>
