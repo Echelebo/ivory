@@ -59,7 +59,7 @@ class HomeController extends Controller
         // Portfolios
         $data['portfolios'] = Portfolio::where('status', '1')
                             ->orderBy('id', 'desc')
-                            ->take(9)
+                            ->take(4)
                             ->get();
 
         // Members

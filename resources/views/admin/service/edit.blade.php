@@ -56,6 +56,14 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="image">{{ __('dashboard.thumbnail') }} <span>{{ __('dashboard.image_size', ['height' => 500, 'width' => 800]) }}</span></label>
+                        <input type="file" class="form-control" name="image" id="image">
+
+                        <div class="invalid-feedback">
+                          {{ __('dashboard.please_provide') }} {{ __('dashboard.thumbnail') }}
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label for="status">{{ __('dashboard.select_status') }}</label>

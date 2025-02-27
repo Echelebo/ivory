@@ -29,6 +29,11 @@
                     <h4><span class="text-highlight">{{ __('dashboard.title') }}:</span> {{ $row->title }}</h4>
                     <hr/>
 
+                    @if(is_file('uploads/'.$path.'/'.$row->image_path))
+                    <p><span class="text-highlight">{{ __('dashboard.thumbnail') }}:</span></p>
+                    <img src="{{ asset('uploads/'.$path.'/'.$row->image_path) }}" class="img-fluid" alt="Blog">
+                    @endif
+
                     <hr/>
                     <p><span class="text-highlight">{{ __('dashboard.short_desc') }}:</span> {!! $row->short_desc !!}</p>
                     <hr/>

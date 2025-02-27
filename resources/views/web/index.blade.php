@@ -1,5 +1,49 @@
 @extends('web.layouts.master')
 
+@php
+    $header = \App\Models\PageSetup::page('home');
+@endphp
+
+@if(isset($header))
+
+    @section('title', $header->meta_title)
+
+    @section('top_meta_tags')
+    @if(isset($header->meta_description))
+    <meta name="description" content="{!! str_limit(strip_tags($header->meta_description), 160, ' ...') !!}">
+    @else
+    <meta name="description" content="{!! str_limit(strip_tags($setting->description), 160, ' ...') !!}">
+    @endif
+
+    @if(isset($header->meta_keywords))
+    <meta name="keywords" content="{!! strip_tags($header->meta_keywords) !!}">
+    @else
+    <meta name="keywords" content="{!! strip_tags($setting->keywords) !!}">
+    @endif
+    @endsection
+
+@endif
+
+@section('social_meta_tags')
+    @if(isset($setting))
+    <meta property="og:type" content="website">
+    <meta property='og:site_name' content="{{ $setting->title }}"/>
+    <meta property='og:title' content="{{ $setting->title }}"/>
+    <meta property='og:description' content="{!! str_limit(strip_tags($setting->description), 160, ' ...') !!}"/>
+    <meta property='og:url' content="{{ route('home') }}"/>
+    <meta property='og:image' content="{{ asset('/uploads/setting/'.$setting->logo_path) }}"/>
+
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="{!! '@'.str_replace(' ', '', $setting->title) !!}" />
+    <meta name="twitter:creator" content="@ivorygate" />
+    <meta name="twitter:url" content="{{ route('home') }}" />
+    <meta name="twitter:title" content="{{ $setting->title }}" />
+    <meta name="twitter:description" content="{!! str_limit(strip_tags($setting->description), 160, ' ...') !!}" />
+    <meta name="twitter:image" content="{{ asset('/uploads/setting/'.$setting->logo_path) }}" />
+    @endif
+@endsection
+
 @section('content')
 
 <?php
@@ -10,25 +54,25 @@ $page_title = "Home";
         <!-- hero slider -->
         <div class="hero-section">
             <div class="hero-slider owl-carousel owl-theme">
-                <div class="hero-single" style="background: url(assets/img/slider/slider-1.jpg)">
+                @foreach($sliders as $slider)
+                <div class="hero-single" style="background: url({{ asset('uploads/slider/'.$slider->image_path) }});">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-md-12 col-lg-7">
                                 <div class="hero-content">
                                     <h6 class="hero-sub-title" data-animation="fadeInDown" data-delay=".25s">
-                                        <i class="far fa-book-open-reader"></i>Welcome To Ivorygate!
+                                        <i class="far fa-book-open-reader"></i>{{ $slider->link }}
                                     </h6>
                                     <h1 class="hero-title" data-animation="fadeInRight" data-delay=".50s">
-                                        Start Your Beautiful And <span>Bright</span> Future
+                                        {{ $slider->title }}
                                     </h1>
-                                    <p data-animation="fadeInLeft" data-delay=".75s">
-                                    Every teaching and learning journey is unique Following
-                                    We'll help guide your way.
-                                    </p>
+                                    <div data-animation="fadeInLeft" data-delay=".75s">
+                                        {!! $slider->description !!}
+                                    </div>
                                     <div class="hero-btn" data-animation="fadeInUp" data-delay="1s">
-                                        <a href="/about" class="theme-btn">About Us<i
+                                        <a href="{{ route('about') }}" class="theme-btn">About Us<i
                                                 class="fas fa-arrow-right-long"></i></a>
-                                        <a href="/contact" class="theme-btn theme-btn2">Contact Us<i
+                                        <a href="{{ route('contact') }}" class="theme-btn theme-btn2">Contact Us<i
                                                 class="fas fa-arrow-right-long"></i></a>
                                     </div>
                                 </div>
@@ -37,56 +81,7 @@ $page_title = "Home";
                     </div>
 
                 </div>
-                <div class="hero-single" style="background: url(assets/img/slider/slider-2.jpg)">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-md-12 col-lg-7">
-                                <div class="hero-content">
-                                    <h6 class="hero-sub-title" data-animation="fadeInDown" data-delay=".25s">
-                                        <i class="far fa-book-open-reader"></i>Welcome To Ivorygate!
-                                    </h6>
-                                    <h1 class="hero-title" data-animation="fadeInRight" data-delay=".50s">
-                                    Never Stop Learning, Life Never Stop Teaching
-                                    </h1>
-                                    <p data-animation="fadeInLeft" data-delay=".75s">
-                                    Combines the ideas of empowered learning and top-tier instruction for students.
-                                    </p>
-                                    <div class="hero-btn" data-animation="fadeInUp" data-delay="1s">
-                                        <a href="/about" class="theme-btn">About Us<i
-                                                class="fas fa-arrow-right-long"></i></a>
-                                        <a href="/contact" class="theme-btn theme-btn2">Contact Us<i
-                                                class="fas fa-arrow-right-long"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-single" style="background: url(assets/img/slider/slider-3.jpg)">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-md-12 col-lg-7">
-                                <div class="hero-content">
-                                    <h6 class="hero-sub-title" data-animation="fadeInDown" data-delay=".25s">
-                                        <i class="far fa-book-open-reader"></i>Welcome To Ivorygate!
-                                    </h6>
-                                    <h1 class="hero-title" data-animation="fadeInRight" data-delay=".50s">
-                                        Start Your Beautiful And <span>Bright</span> Future
-                                    </h1>
-                                    <p data-animation="fadeInLeft" data-delay=".75s">
-                                    Our instructors are industry experts and passionate educators with a wealth of knowledge and experience.
-                                    </p>
-                                    <div class="hero-btn" data-animation="fadeInUp" data-delay="1s">
-                                        <a href="/about" class="theme-btn">About Us<i
-                                                class="fas fa-arrow-right-long"></i></a>
-                                        <a href="/contact" class="theme-btn theme-btn2">Contact Us<i
-                                                class="fas fa-arrow-right-long"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <!-- hero slider end -->
@@ -97,54 +92,24 @@ $page_title = "Home";
             <div class="col-xl-9 ms-auto">
                 <div class="feature-wrapper">
                     <div class="row g-4">
+                        @foreach ($portfolios as $portfolio)
+
                         <div class="col-md-6 col-lg-3">
                             <div class="feature-item">
-                                <span class="count">01</span>
+                                <span class="count">@if ($portfolio->id == 6) 01 @elseif ($portfolio->id == 5) 02 @elseif ($portfolio->id == 4) 03 @elseif ($portfolio->id == 3) 04 @endif</span>
                                 <div class="feature-icon">
-                                    <img src="assets/img/icon/scholarship.svg" alt="">
+                                    @if ($portfolio->id == 6) <img src="assets/img/icon/scholarship.svg" alt=""> @elseif ($portfolio->id == 5) <img src="assets/img/icon/teacher.svg" alt=""> @elseif ($portfolio->id == 4) <img src="assets/img/icon/library.svg" alt=""> @elseif ($portfolio->id == 3) <img src="assets/img/icon/money.svg" alt=""> @endif
+
                                 </div>
                                 <div class="feature-content">
-                                    <h4 class="feature-title">Scholarship Facility</h4>
+                                    <h4 class="feature-title">{{ $portfolio->title }}</h4>
 
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="feature-item">
-                                <span class="count">02</span>
-                                <div class="feature-icon">
-                                    <img src="assets/img/icon/teacher.svg" alt="">
-                                </div>
-                                <div class="feature-content">
-                                    <h4 class="feature-title">Skilled Lecturers</h4>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="feature-item">
-                                <span class="count">03</span>
-                                <div class="feature-icon">
-                                    <img src="assets/img/icon/library.svg" alt="">
-                                </div>
-                                <div class="feature-content">
-                                    <h4 class="feature-title">Book Library Facility</h4>
+                        @endforeach
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="feature-item">
-                                <span class="count">04</span>
-                                <div class="feature-icon">
-                                    <img src="assets/img/icon/money.svg" alt="">
-                                </div>
-                                <div class="feature-content">
-                                    <h4 class="feature-title">Affordable Price</h4>
-
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -184,32 +149,43 @@ $page_title = "Home";
                             <div class="site-heading mb-3">
                                 <span class="site-title-tagline"><i class="far fa-book-open-reader"></i> About Us</span>
                                 <h2 class="site-title">
-                                    Our Education System <span>Inspires</span> You More.
+                                    <?php
+$text = $about->title; // Your string
+$words = explode(" ", $text); // Split the string into words
+
+if (count($words) > 1 && count($words) < 4 ) {
+    $words[1] = '<span style="color: #fda31b;">' . $words[1] . '</span>'; // Change color of the second word
+}elseif (count($words) >= 4) {
+    $words[3] = '<span style="color: #fda31b;">' . $words[3] . '</span>';
+}
+
+$result = implode(" ", $words); // Join the words back into a string
+echo $result; // Output the result
+?>
                                 </h2>
                             </div>
-                            <p class="about-text">
-                            We don’t just give students an education and experiences that set them up for success in a career. We help them succeed in their career—to discover a field they’re passionate about and dare to lead it.
-                            </p>
+                            <div class="about-text">
+                                {!! $about->description !!}
+                            </div>
                             <div class="about-content">
                                 <div class="row">
 
                                     <div class="col-md-10">
                                         <div class="about-quote">
-                                            <p>IVORY GATE EDUCATION is on a mission to inspire and motivate young ones to
-                                            Desire, pursue and attain academic excellence and diligence for outstanding performance in SAT, JAMB, SSCE, SS1 Foundation Class, BECE (Junior WAEC), Common Entrance,Virtual/ Online Classes and Information Technology.</p>
+                                            <p>{!! $about->mission_desc !!}</p>
                                             <i class="far fa-quote-right"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="about-bottom">
-                                <a href="/about" class="theme-btn">Discover More<i
+                                <a href="{{ route('about') }}" class="theme-btn">Discover More<i
                                         class="fas fa-arrow-right-long"></i></a>
                                 <div class="about-phone">
                                     <div class="icon"><i class="fal fa-headset"></i></div>
                                     <div class="number">
                                         <span>Call Now</span>
-                                        <h6><a href="tel:+2348137107935">+2348137107935</a></h6>
+                                        <h6><a href="tel:{{ $setting->phone_one }}">{{ $setting->phone_one }}</a></h6>
                                     </div>
                                 </div>
                             </div>
@@ -219,59 +195,6 @@ $page_title = "Home";
             </div>
         </div>
         <!-- about area end -->
-
-        <!-- counter area -->
-        <div class="counter-area pt-60 pb-60">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/course.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="30" data-speed="3000">30</span>
-                                <h6 class="title">+ Total Subjects  </h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/graduation.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="200" data-speed="3000">200</span>
-                                <h6 class="title">+ Our Students</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/teacher-2.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="50" data-speed="3000">50</span>
-                                <h6 class="title">+ Skilled Lecturers</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/award.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="30" data-speed="3000">30</span>
-                                <h6 class="title">+ Win Awards</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <!-- choose-area -->
         <div class="choose-area pt-80 pb-80">
@@ -458,13 +381,15 @@ $page_title = "Home";
             <div class="container">
                 <div class="cta-wrapper">
                     <div class="row align-items-center">
+                        @php
+        $section_action = \App\Models\Section::section('why-us');
+    @endphp
                         <div class="col-lg-5 ms-lg-auto">
                             <div class="cta-content">
-                                <h1>We have online group learning running - Join Today For Your Classes</h1>
-                                <p>Our students have consistently achieved high scores in standardized tests, including Waec, Jamb.
-                                In 2024, 92% of our graduates were accepted into top-tier universities.</p>
+                                <h1>{{ $section_action->title }}</h1>
+                                <p>{!! $section_action->description !!}</p>
                                 <div class="cta-btn">
-                                    <a href="https://forms.gle/SdWRWBRSbBXMJtZT8" class="theme-btn" target="_blank">Join Group Now!<i
+                                    <a href="{{ $social->linkedin }}" class="theme-btn" target="_blank">Join Group Now!<i
                                             class="fas fa-arrow-right-long"></i></a>
                                 </div>
                             </div>
@@ -488,58 +413,20 @@ $page_title = "Home";
                     </div>
                 </div>
                 <div class="department-slider owl-carousel owl-theme">
+                    @foreach($services as $service)
                     <div class="department-item">
                         <div class="department-icon">
-                            <img src="assets/img/icon/monitor.svg" alt="">
+                            <img src="{{ asset('uploads/service/'.$service->image_path) }}" alt="">
                         </div>
                         <div class="department-info">
-                            <h4 class="department-title">Academic Tutoring</h4>
-                            <p>One-on-one and group tutoring sessions across subjects (math, science, etc.).
-                            Test preparation for standardized tests (e.g., SAT, JAMB, SSCE).</p>
-
+                            <h4 class="department-title">{{ $service->title }}</h4>
+                            <p class="long-text-x">{{ Str::words({!! strip_tags($service->short_desc) !!}, 15, '...') }}  </p>
+                            <div class="department-btn">
+                                <a href="{{ route('service.single', $service->slug) }}">Read More<i class="fas fa-arrow-right-long"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="department-item">
-                        <div class="department-icon">
-                            <img src="assets/img/icon/law.svg" alt="">
-                        </div>
-                        <div class="department-info">
-                            <h4 class="department-title">SS1 Foundation Class</h4>
-                            <p>Extended learning opportunities for the SS1 set, including science and art.</p>
-
-                        </div>
-                    </div>
-                    <div class="department-item">
-                        <div class="department-icon">
-                            <img src="assets/img/icon/data.svg" alt="">
-                        </div>
-                        <div class="department-info">
-                            <h4 class="department-title">College and Career Counseling</h4>
-                            <p>Guidance on college selection, application processes, and scholarship opportunities.
-                            Career assessment and planning services, including resume writing and interview preparation.</p>
-
-                        </div>
-                    </div>
-                    <div class="department-item">
-                        <div class="department-icon">
-                            <img src="assets/img/icon/health.svg" alt="">
-                        </div>
-                        <div class="department-info">
-                            <h4 class="department-title">Common Entrance</h4>
-                            <p>Support and resources available for students preparing for the Common Entrance Examination, preparing them for transition to secondary education.</p>
-
-                        </div>
-                    </div>
-                    <div class="department-item">
-                        <div class="department-icon">
-                            <img src="assets/img/icon/art.svg" alt="">
-                        </div>
-                        <div class="department-info">
-                            <h4 class="department-title">After-School Programs</h4>
-                            <p>Supervised activities that include homework help, recreational activities, and skill-building exercises.</p>
-
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -580,7 +467,7 @@ $page_title = "Home";
                         <div class="testimonial-content">
                             <div class="testimonial-author-info">
                                 <h4>{{ $testimonial->title }}</h4>
-                                <p>{{ $testimonial->designation }}</p>
+                                <p class="long-text-x">{{ Str::words($testimonial->designation, 20, '...') }}</p>
                             </div>
                         </div>
                         <span class="testimonial-quote-icon"><i class="far fa-quote-right"></i></span>

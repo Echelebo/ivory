@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-12">
-            <a href="{{ route($route.'.create') }}" class="btn btn-primary">{{ __('dashboard.add_new') }}</a>
+
 
             <a href="{{ route($route.'.index') }}" class="btn btn-info">{{ __('dashboard.refresh') }}</a>
         </div>

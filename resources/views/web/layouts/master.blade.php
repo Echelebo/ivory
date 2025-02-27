@@ -1,3 +1,7 @@
+@php
+    use Illuminate\Support\Str;
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +12,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="IVORY GATE EDUCATION is on a mission to inspire and motivate young ones to Desire, pursue and attain academic excellence and diligence.">
-
-    <meta name="keywords" content="education centre,education abuja">
 
     @if(isset($setting))
     <!-- App Title -->
@@ -372,6 +373,17 @@
         })(jQuery);
     </script>
     @endif
+<script type="text/javascript">
+var para = document.getElementsByClassName("long-text")[0];
+var text = para.innerHTML;
+para.innerHTML = "";
+var words = text.split(" ");
+for (i = 0; i < 15; i++) {
+  para.innerHTML += words[i] + " ";
+}
+para.innerHTML += "...";
+</script>
+
 
     </body>
 

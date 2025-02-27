@@ -91,7 +91,7 @@ class ServiceController extends Controller
 
             //Resize And Crop as Fit image here (800 width, 500 height)
             $thumbnailpath = $path.$fileNameToStore;
-            $img = Image::make($request->file('image')->getRealPath())->fit(800, 500, function ($constraint) { $constraint->upsize(); })->save($thumbnailpath);
+            $img = Image::make($request->file('image')->getRealPath())->fit(512, 512, function ($constraint) { $constraint->upsize(); })->save($thumbnailpath);
         }
         else{
             $fileNameToStore = 'noimage.jpg'; // if no image selected this will be the default image
@@ -129,7 +129,7 @@ class ServiceController extends Controller
                 $image = Image::make($src)
                   // resize if required
                   //->resize(500, null)
-                  ->resize(800, null, function ($constraint) {
+                  ->resize(512, null, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })
@@ -234,7 +234,7 @@ class ServiceController extends Controller
 
             //Resize And Crop as Fit image here (800 width, 500 height)
             $thumbnailpath = $path.$fileNameToStore;
-            $img = Image::make($request->file('image')->getRealPath())->fit(800, 500, function ($constraint) { $constraint->upsize(); })->save($thumbnailpath);
+            $img = Image::make($request->file('image')->getRealPath())->fit(512, 512, function ($constraint) { $constraint->upsize(); })->save($thumbnailpath);
         }
         else{
 
@@ -273,7 +273,7 @@ class ServiceController extends Controller
                 $image = Image::make($src)
                   // resize if required
                   //->resize(500, null)
-                  ->resize(800, null, function ($constraint) {
+                  ->resize(512, null, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })

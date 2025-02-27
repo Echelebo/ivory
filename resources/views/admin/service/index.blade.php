@@ -43,6 +43,11 @@
                           @foreach( $rows as $key => $row )
                             <tr>
                                 <td>{{ $key + 1 }}</td>
+                                <td>
+                                    @if(is_file('uploads/'.$path.'/'.$row->image_path))
+                                    <img src="{{ asset('uploads/'.$path.'/'.$row->image_path) }}" class="img-fluid" alt="Service">
+                                    @endif
+                                </td>
                                 <td>{!! str_limit(strip_tags($row->title), 50, ' ...') !!}</td>
                                 <td>
                                     @if( $row->status == 1 )
