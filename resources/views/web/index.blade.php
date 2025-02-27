@@ -420,7 +420,7 @@ echo $result; // Output the result
                         </div>
                         <div class="department-info">
                             <h4 class="department-title">{{ $service->title }}</h4>
-                            <p class="long-text-x">{!! str_limit(strip_tags($service->short_desc), 15, ' ...') !!}  </p>
+                            <p class="long-text-x">{!! str_limit(strip_tags($service->short_desc), 110, ' ...') !!}  </p>
                             <div class="department-btn">
                                 <a href="{{ route('service.single', $service->slug) }}">Read More<i class="fas fa-arrow-right-long"></i></a>
                             </div>
@@ -461,13 +461,13 @@ echo $result; // Output the result
                         </div>
                         <div class="testimonial-quote">
 
-                            {!! $testimonial->description !!}
+                            {!! str_limit(strip_tags($testimonial->description), 140, ' ...') !!}
 
                         </div>
                         <div class="testimonial-content">
                             <div class="testimonial-author-info">
                                 <h4>{{ $testimonial->title }}</h4>
-                                <p class="long-text-x">{!! str_limit(strip_tags($testimonial->designation), 20, ' ...') !!}</p>
+                                <p class="long-text-x">{{ $testimonial->designation }}</p>
                             </div>
                         </div>
                         <span class="testimonial-quote-icon"><i class="far fa-quote-right"></i></span>
