@@ -4,7 +4,7 @@
 @endphp
 @if(isset($header))
 
-    @section('title', $header->title)
+@section('title', $header->meta_title)
 
     @section('top_meta_tags')
     @if(isset($header->meta_description))

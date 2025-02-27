@@ -141,7 +141,7 @@ class HomeController extends Controller
     public function page($slug)
     {
         // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
+        $data['page'] = Page::where('slug', $slug)->where('status', 1)->firstOrFail();
 
         return view('web.page-single', $data);
     }
@@ -149,7 +149,7 @@ class HomeController extends Controller
     public function career()
     {
         // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
+
 
         $data['testimonials'] = Testimonial::where('status', '1')
                             ->orderBy('id', 'desc')
@@ -172,7 +172,7 @@ $data['article_categories'] = ArticleCategory::where('status', '1')
          ->orderBy('id', 'asc')
          ->get();
         // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
+
 
         return view('web.blog', $data);
     }
