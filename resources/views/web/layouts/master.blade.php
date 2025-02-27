@@ -135,8 +135,11 @@
                                                 <div class="col-12 col-sm-4 col-md-3">
                                                     <h5>Our Programs</h5>
                                                     <ul class="mega-menu-item">
-                                                        @foreach($first_programs as $first_program)
-                                                        <li><a class="dropdown-item" href="{{ route('service.single', $first_program->slug) }}">{{ $first_program->title }}</a></li>
+                                                        @foreach($service_subnavs as $service_subnav)
+                                                        @if ($service_subnav->id < 6)
+                                                        <li><a class="dropdown-item" href="{{ route('service.single', $service_subnav->slug) }}">{{ $service_subnav->title }}</a></li>
+                                                        @endif
+
                                                         @endforeach
 
                                                     </ul>
@@ -144,8 +147,10 @@
                                                 <div class="col-12 col-sm-4 col-md-3">
                                                     <h5>More Programs</h5>
                                                     <ul class="mega-menu-item">
-                                                        @foreach($second_programs as $second_program)
-                                                        <li><a class="dropdown-item" href="{{ route('service.single', $second_program->slug) }}">{{ $second_program->title }}</a></li>
+                                                        @foreach($service_subnavs as $service_subnav)
+                                                        @if ($service_subnav->id > 5)
+                                                        <li><a class="dropdown-item" href="{{ route('service.single', $service_subnav->slug) }}">{{ $service_subnav->title }}</a></li>
+                                                        @endif
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -257,10 +262,11 @@
                             <div class="footer-widget-box list">
                                 <h4 class="footer-widget-title">Services</h4>
                                 <ul class="footer-list">
-                                    @foreach($first_programs as $first_program)
-                                    <li><a href="{{ route('service.single', $first_program->slug) }}" class="fas fa-caret-right"></i>{{ $first_program->title }}</a></li>
+                                    @foreach($service_subnavs as $service_subnav)
+                                    @if ($service_subnav->id < 6)
+                                    <li><a href="{{ route('service.single', $service_subnav->slug) }}" class="fas fa-caret-right"></i>{{ $service_subnav->title }}</a></li>
+                                    @endif
                                     @endforeach
-
                                 </ul>
                             </div>
                         </div>
@@ -268,8 +274,10 @@
                             <div class="footer-widget-box list">
                                 <h4 class="footer-widget-title">More Services</h4>
                                 <ul class="footer-list">
-                                    @foreach($second_programs as $second_program)
-                                    <li><a href="{{ route('service.single', $second_program->slug) }}" class="fas fa-caret-right"></i>{{ $second_program->title }}</a></li>
+                                    @foreach($service_subnavs as $service_subnav)
+                                    @if ($service_subnav->id > 5)
+                                    <li><a href="{{ route('service.single', $service_subnav->slug) }}" class="fas fa-caret-right"></i>{{ $service_subnav->title }}</a></li>
+                                    @endif
                                     @endforeach
                             </div>
                         </div>
