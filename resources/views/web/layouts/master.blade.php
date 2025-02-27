@@ -158,7 +158,7 @@
                                                     <h5>Free Resources</h5>
                                                     <ul class="mega-menu-item">
                                                         @foreach($workprogress as $workprogres)
-                                                        <li><a class="dropdown-item" href="{{ $workprogres->link }}" target="_blank">{{ $workprogres->tltle }}</a></li>
+                                                        <li><a class="dropdown-item" href="{{ $workprogres->link }}" target="_blank">{{ $workprogres->title }}</a></li>
                                                         @endforeach
                                                         <li><a class="dropdown-item" href="{{ route('blog') }}">Blog</a></li>
                                                     </ul>
