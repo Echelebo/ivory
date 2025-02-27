@@ -125,7 +125,7 @@ class FaqController extends Controller
         $article = new Faq;
         $article->title = $request->title;
         $article->slug = Str::slug($request->title, '-');
-        $article->description = $dom->saveHTML();
+        $article->description = $content;
         $article->save();
 
 
@@ -236,7 +236,7 @@ class FaqController extends Controller
         // Update Data
         $faq->title = $request->title;
         $faq->slug = Str::slug($request->title, '-');
-        $faq->description = $dom->saveHTML();
+        $faq->description = $content;
         $faq->status = $request->status;
         $faq->save();
 

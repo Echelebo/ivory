@@ -179,7 +179,7 @@
                                                 <div class="col-12 col-sm-6 col-md-6">
                                                     <h5>{{ $faq->title }}</h5>
                                                     <div class="menu-about">
-                                                        <p>{!! $faq->description !!}</p>
+                                                        {!! $faq->description !!}
                                                     </div>
                                                 </div>
                                                 @endforeach
@@ -251,7 +251,7 @@
                                 </p>
                                 <ul class="footer-contact">
                                     <li><a href="tel:{{ $setting->phone_one }}"><i class="far fa-phone"></i>{{ $setting->phone_one }}</a></li>
-                                    <li><i class="far fa-map-marker-alt"></i>{{ $setting->contact_address }}/li>
+                                    <li><i class="far fa-map-marker-alt"></i>{{ $setting->contact_address }}</li>
                                     <li><a href="mailto:{{ $setting->email_one }}"><i
                                                 class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="b2dbdcd4ddf2d7cad3dfc2ded79cd1dddf">{{ $setting->email_one }}</span></a></li>
                                 </ul>
@@ -264,7 +264,7 @@
                                 <ul class="footer-list">
                                     @foreach($service_subnavs as $service_subnav)
                                     @if ($service_subnav->id < 6)
-                                    <li><a href="{{ route('service.single', $service_subnav->slug) }}" class="fas fa-caret-right"></i>{{ $service_subnav->title }}</a></li>
+                                    <li><a href="{{ route('service.single', $service_subnav->slug) }}"> <i class="fas fa-caret-right"></i>{{ $service_subnav->title }}</a></li>
                                     @endif
                                     @endforeach
                                 </ul>
@@ -276,7 +276,7 @@
                                 <ul class="footer-list">
                                     @foreach($service_subnavs as $service_subnav)
                                     @if ($service_subnav->id > 5)
-                                    <li><a href="{{ route('service.single', $service_subnav->slug) }}" class="fas fa-caret-right"></i>{{ $service_subnav->title }}</a></li>
+                                    <li><a href="{{ route('service.single', $service_subnav->slug) }}"> <i class="fas fa-caret-right"></i>{{ $service_subnav->title }}</a></li>
                                     @endif
                                     @endforeach
                             </div>
