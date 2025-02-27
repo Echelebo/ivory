@@ -1,7 +1,3 @@
-@php
-    use Illuminate\Support\Str;
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -373,16 +369,6 @@
         })(jQuery);
     </script>
     @endif
-<script type="text/javascript">
-var para = document.getElementsByClassName("long-text")[0];
-var text = para.innerHTML;
-para.innerHTML = "";
-var words = text.split(" ");
-for (i = 0; i < 15; i++) {
-  para.innerHTML += words[i] + " ";
-}
-para.innerHTML += "...";
-</script>
 
 
     </body>

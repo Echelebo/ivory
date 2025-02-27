@@ -1,6 +1,25 @@
-<?php
-$page_title = "About Us";
-?>
+@php
+$header = \App\Models\PageSetup::page('about-us');
+@endphp
+@if(isset($header))
+
+@section('title', $header->meta_title)
+
+@section('top_meta_tags')
+@if(isset($header->meta_description))
+<meta name="description" content="{!! str_limit(strip_tags($header->meta_description), 160, ' ...') !!}">
+@else
+<meta name="description" content="{!! str_limit(strip_tags($setting->description), 160, ' ...') !!}">
+@endif
+
+@if(isset($header->meta_keywords))
+<meta name="keywords" content="{!! strip_tags($header->meta_keywords) !!}">
+@else
+<meta name="keywords" content="{!! strip_tags($setting->keywords) !!}">
+@endif
+@endsection
+
+@endif
 @extends('web.layouts.master')
 @section('content')
 
@@ -19,7 +38,6 @@ $page_title = "About Us";
         <!-- breadcrumb end -->
 
 
-        <!-- about area -->
         <div class="about-area py-120">
             <div class="container">
                 <div class="row g-4 align-items-center">
@@ -49,32 +67,43 @@ $page_title = "About Us";
                             <div class="site-heading mb-3">
                                 <span class="site-title-tagline"><i class="far fa-book-open-reader"></i> About Us</span>
                                 <h2 class="site-title">
-                                    Our Education System <span>Inspires</span> You More.
+                                    <?php
+$text = $about->title; // Your string
+$words = explode(" ", $text); // Split the string into words
+
+if (count($words) > 1 && count($words) < 4 ) {
+    $words[1] = '<span style="color: #fda31b;">' . $words[1] . '</span>'; // Change color of the second word
+}elseif (count($words) >= 4) {
+    $words[3] = '<span style="color: #fda31b;">' . $words[3] . '</span>';
+}
+
+$result = implode(" ", $words); // Join the words back into a string
+echo $result; // Output the result
+?>
                                 </h2>
                             </div>
-                            <p class="about-text">
-                            We don’t just give students an education and experiences that set them up for success in a career. We help them succeed in their career—to discover a field they’re passionate about and dare to lead it.
-                            </p>
+                            <div class="about-text">
+                                {!! $about->description !!}
+                            </div>
                             <div class="about-content">
                                 <div class="row">
 
                                     <div class="col-md-10">
                                         <div class="about-quote">
-                                            <p>IVORY GATE EDUCATION is on a mission to inspire and motivate young ones to
-                                            Desire, pursue and attain academic excellence and diligence for outstanding performance in SAT, JAMB, SSCE, SS1 Foundation Class, BECE (Junior WAEC), Common Entrance,Virtual/ Online Classes and Information Technology.</p>
+                                            <p>{!! $about->mission_desc !!}</p>
                                             <i class="far fa-quote-right"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="about-bottom">
-                                <a href="/about" class="theme-btn">Discover More<i
+                                <a href="{{ route('about') }}" class="theme-btn">Discover More<i
                                         class="fas fa-arrow-right-long"></i></a>
                                 <div class="about-phone">
                                     <div class="icon"><i class="fal fa-headset"></i></div>
                                     <div class="number">
                                         <span>Call Now</span>
-                                        <h6><a href="tel:+2348137107935">+2348137107935</a></h6>
+                                        <h6><a href="tel:{{ $setting->phone_one }}">{{ $setting->phone_one }}</a></h6>
                                     </div>
                                 </div>
                             </div>
@@ -86,58 +115,7 @@ $page_title = "About Us";
         <!-- about area end -->
 
 
-        <!-- counter area -->
-        <div class="counter-area pt-60 pb-60">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/course.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="30" data-speed="3000">30</span>
-                                <h6 class="title">+ Total Cources </h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/graduation.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="200" data-speed="3000">200</span>
-                                <h6 class="title">+ Our Students</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/teacher-2.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="50" data-speed="3000">50</span>
-                                <h6 class="title">+ Skilled Lecturers</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="counter-box">
-                            <div class="icon">
-                                <img src="assets/img/icon/award.svg" alt="">
-                            </div>
-                            <div>
-                                <span class="counter" data-count="+" data-to="30" data-speed="3000">30</span>
-                                <h6 class="title">+ Win Awards</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- counter area end -->
+
 
         @if(count($testimonials) > 0 )
         <!-- testimonial area -->
@@ -171,7 +149,7 @@ $page_title = "About Us";
                         <div class="testimonial-content">
                             <div class="testimonial-author-info">
                                 <h4>{{ $testimonial->title }}</h4>
-                                <p>{{ $testimonial->designation }}</p>
+                                <p>{!! str_limit(strip_tags($testimonial->designation), 20, ' ...') !!}</p>
                             </div>
                         </div>
                         <span class="testimonial-quote-icon"><i class="far fa-quote-right"></i></span>
