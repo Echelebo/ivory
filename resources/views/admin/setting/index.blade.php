@@ -123,6 +123,15 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="motto_text">Site motto <span>*</span></label>
+                            <textarea class="form-control" name="motto_text" id="motto_text" rows="3" required>{{ isset($row->motto_text)?$row->motto_text:'' }}</textarea>
+
+                            <div class="invalid-feedback">
+                              {{ __('dashboard.please_provide') }} site motto write up.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="footer_text">{{ __('dashboard.footer_text') }} <span>*</span></label>
                             <textarea class="form-control" name="footer_text" id="footer_text" rows="2" required>{{ isset($row->footer_text)?$row->footer_text:'' }}</textarea>
 

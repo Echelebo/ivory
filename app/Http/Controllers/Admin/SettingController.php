@@ -164,6 +164,7 @@ class SettingController extends Controller
             $data->logo_path = $logoNameToStore;
             $data->favicon_path = $faviconNameToStore;
             $data->google_analytics = $request->google_analytics;
+            $data->motto_text = $request->motto_text;
             $data->footer_text = $request->footer_text;
             $data->save();
         }
@@ -176,6 +177,7 @@ class SettingController extends Controller
             $data->logo_path = $logoNameToStore;
             $data->favicon_path = $faviconNameToStore;
             $data->google_analytics = $request->google_analytics;
+            $data->motto_text = $request->motto_text;
             $data->footer_text = $request->footer_text;
             $data->save();
         }

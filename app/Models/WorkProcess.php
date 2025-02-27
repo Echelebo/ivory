@@ -12,6 +12,6 @@ class WorkProcess extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'slug', 'description', 'icon', 'status',
+        'title', 'slug', 'link', 'icon', 'status',
     ];
 }

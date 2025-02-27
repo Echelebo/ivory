@@ -29,12 +29,12 @@
     @endif
 
     <!-- css -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/all-fontawesome.min.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/all-fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
     @if($livechat->status == 1)
     <link href="{{ asset('web/css/floating-wpp.min.css') }}" rel="stylesheet">
@@ -60,6 +60,7 @@
     <!-- header area -->
     <header class="header">
         <!-- header top -->
+
         <div class="header-top">
             <div class="container">
                 <div class="header-top-wrap">
@@ -115,9 +116,9 @@
                                 <a class="nav-link dropdown-toggle-x active" href="/" data-bs-toggle="dropdown-x">Home</a>
 
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About Us</a></li>
                             <li class="nav-item mega-menu dropdown">
-                                <a class="nav-link dropdown-toggle" href="/services" data-bs-toggle="dropdown">Our Services</a>
+                                <a class="nav-link dropdown-toggle" href="{{ route('services') }}" data-bs-toggle="dropdown">Our Services</a>
                                 <div class="dropdown-menu fade-down">
                                     <div class="mega-content">
                                         <div class="container-fluid">
@@ -127,15 +128,15 @@
                                                     <div class="menu-about">
                                                         <a href="/" class="menu-about-logo"><img
                                                                 src="{{ asset('/uploads/setting/'.$setting->logo_path) }}" alt=""></a>
-                                                        <p>We believe that every student deserves individualized support in reaching their personal education and career goals.</p>
+                                                        <p>{!! strip_tags($setting->motto_text, '<p><a><b><i><u><strong>') !!}</p>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12 col-sm-4 col-md-3">
                                                     <h5>Our Programs</h5>
                                                     <ul class="mega-menu-item">
-                                                        @foreach($service15 as $service15)
-                                                        <li><a class="dropdown-item" href="/{{ $service15->slug }}">{{ $service15->title }}</a></li>
+                                                        @foreach($first_programs as $first_program)
+                                                        <li><a class="dropdown-item" href="{{ route('service.single', $first_program->slug) }}">{{ $first_program->title }}</a></li>
                                                         @endforeach
 
                                                     </ul>
@@ -143,8 +144,8 @@
                                                 <div class="col-12 col-sm-4 col-md-3">
                                                     <h5>More Programs</h5>
                                                     <ul class="mega-menu-item">
-                                                        @foreach($service60 as $service60)
-                                                        <li><a class="dropdown-item" href="/{{ $service60->slug }}">{{ $service60->title }}</a></li>
+                                                        @foreach($second_programs as $second_program)
+                                                        <li><a class="dropdown-item" href="{{ route('service.single', $second_program->slug) }}">{{ $second_program->title }}</a></li>
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -152,9 +153,9 @@
                                                     <h5>Free Resources</h5>
                                                     <ul class="mega-menu-item">
                                                         @foreach($workprogress as $workprogres)
-                                                        <li><a class="dropdown-item" href="{{ $workprogress->link }}" target="_blank">{{ $workprogress->tltle }}</a></li>
+                                                        <li><a class="dropdown-item" href="{{ $workprogres->link }}" target="_blank">{{ $workprogres->tltle }}</a></li>
                                                         @endforeach
-                                                        <li><a class="dropdown-item" href="/blog">Blog</a></li>
+                                                        <li><a class="dropdown-item" href="{{ route('blog') }}">Blog</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -169,11 +170,11 @@
                                     <div class="mega-content">
                                         <div class="container-fluid">
                                             <div class="row">
-                                                @foreach($workprogress as $workprogress)
+                                                @foreach($faqs as $faq)
                                                 <div class="col-12 col-sm-6 col-md-6">
-                                                    <h5>{{ $workprogress->title }}</h5>
+                                                    <h5>{{ $faq->title }}</h5>
                                                     <div class="menu-about">
-                                                        <p>{{ $workprogress->description }}</p>
+                                                        <p>{!! $faq->description !!}</p>
                                                     </div>
                                                 </div>
                                                 @endforeach
@@ -183,14 +184,14 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="/career">Career</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('career') }}">Career</a></li>
 
 
                           <!--  <li class="nav-item ">
                                 <a class="nav-link dropdown-toggle-x" href="/blog" data-bs-toggle="dropdown-x">Our Blog</a>
 
                             </li> -->
-                            <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li>
                         </ul>
                        <!-- <div class="nav-right">
                             <div class="search-btn">
@@ -229,7 +230,7 @@
         <!-- footer area -->
         <footer class="footer-area">
             <div class="footer-shape">
-                <img src="assets/img/shape/03.png" alt="">
+                <img src="{{ asset('assets/img/shape/03.png') }}" alt="">
             </div>
             <div class="footer-widget">
                 <div class="container">
@@ -237,10 +238,11 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="footer-widget-box about-us">
                                 <a href="/" class="footer-logo">
-                                    <img src="assets/img/logo/logo-light.png" alt="">
+                                    <img src="{{ asset('/uploads/setting/'.$setting->logo_path) }}" alt="">
                                 </a>
                                 <p class="mb-3">
-                                we believe that every student deserves individualized support in reaching their personal education and career goals.
+                                    {!! strip_tags($setting->motto_text, '<p><a><b><i><u><strong>') !!}
+
                                 </p>
                                 <ul class="footer-contact">
                                     <li><a href="tel:{{ $setting->phone_one }}"><i class="far fa-phone"></i>{{ $setting->phone_one }}</a></li>
@@ -255,8 +257,8 @@
                             <div class="footer-widget-box list">
                                 <h4 class="footer-widget-title">Services</h4>
                                 <ul class="footer-list">
-                                    @foreach($service15 as $service15)
-                                    <li><a href="/{{ $service15->slug }} class="fas fa-caret-right"></i>{{ $service15->title }}</a></li>
+                                    @foreach($first_programs as $first_program)
+                                    <li><a href="{{ route('service.single', $first_program->slug) }}" class="fas fa-caret-right"></i>{{ $first_program->title }}</a></li>
                                     @endforeach
 
                                 </ul>
@@ -266,8 +268,8 @@
                             <div class="footer-widget-box list">
                                 <h4 class="footer-widget-title">More Services</h4>
                                 <ul class="footer-list">
-                                    @foreach($service60 as $service15)
-                                    <li><a href="/{{ $service15->slug }} class="fas fa-caret-right"></i>{{ $service15->title }}</a></li>
+                                    @foreach($second_programs as $second_program)
+                                    <li><a href="{{ route('service.single', $second_program->slug) }}" class="fas fa-caret-right"></i>{{ $second_program->title }}</a></li>
                                     @endforeach
                             </div>
                         </div>
@@ -275,13 +277,13 @@
                             <div class="footer-widget-box list">
                                 <h4 class="footer-widget-title">Important Links</h4>
                                 <ul class="footer-list">
-                                <li><a href="/about"><i class="fas fa-caret-right"></i>About</a></li>
-                                <li><a href="/contact"><i class="fas fa-caret-right"></i>Contact</a></li>
+                                <li><a href="{{ route('about') }}"><i class="fas fa-caret-right"></i>About</a></li>
+                                <li><a href="{{ route('contact') }}"><i class="fas fa-caret-right"></i>Contact</a></li>
 
-                                    <li><a href="/career"><i class="fas fa-caret-right"></i>Careers</a></li>
-                                    <li><a href="/services"><i class="fas fa-caret-right"></i>Services</a></li>
-                                    <li><a href="/privacy"><i class="fas fa-caret-right"></i>Privacy</a></li>
-                                    <li><a href="/term"><i class="fas fa-caret-right"></i>Terms</a></li>
+                                    <li><a href="{{ route('career') }}"><i class="fas fa-caret-right"></i>Careers</a></li>
+                                    <li><a href="{{ route('services') }}"><i class="fas fa-caret-right"></i>Services</a></li>
+                                    <li><a href="{{ route('privacy') }}"><i class="fas fa-caret-right"></i>Privacy</a></li>
+                                    <li><a href="{{ route('term') }}"><i class="fas fa-caret-right"></i>Terms</a></li>
 
                                 </ul>
                             </div>
@@ -325,18 +327,18 @@
 
 
         <!-- js -->
-        <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.7.1.min.js"></script>
-        <script src="assets/js/modernizr.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-        <script src="assets/js/jquery.magnific-popup.min.js"></script>
-        <script src="assets/js/isotope.pkgd.min.js"></script>
-        <script src="assets/js/jquery.appear.min.js"></script>
-        <script src="assets/js/jquery.easing.min.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <script src="assets/js/counter-up.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+        <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.appear.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.easing.min.js') }}"></script>
+        <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('assets/js/counter-up.js') }}"></script>
+        <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+        <script src="{{ asset('assets/js/main.js') }}"></script>
 
         @if($livechat->status == 1)
     <script src="{{ asset('web/js/floating-wpp.min.js') }}"></script>
