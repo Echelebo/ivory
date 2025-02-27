@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
         $pages = Page::where('status', '1')->get();
         $faqs = Faq::where('status', '1')->get();
         $article_subnavs = ArticleCategory::where('status', '1')->get();
-        $workprogress = WorkProcess::where('status', '1')->orderBy('id', 'desc')->take(2)->get();
+        $workprogress = WorkProcess::where('status', '1')->take(3)->get();
         $service_subnavs = Service::where('status', '1' )->get();
         $recents = Article::where('status', '1')
                             ->orderBy('id', 'desc')
