@@ -146,14 +146,6 @@ class HomeController extends Controller
         return view('web.page-single', $data);
     }
 
-    public function bece()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.bece', $data);
-    }
-
     public function career()
     {
         // Page
@@ -166,93 +158,6 @@ class HomeController extends Controller
         return view('web.career', $data);
     }
 
-    public function commonentrance()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.common-entrance', $data);
-    }
-
-    public function icttraining()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.icttraining', $data);
-    }
-
-    public function jamb()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.jamb', $data);
-    }
-
-    public function leadership()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.leadership', $data);
-    }
-
-    public function privacy()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.privacy', $data);
-    }
-
-    public function sat()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.sat', $data);
-    }
-
-    public function ss1foundation()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.ss1-foundation', $data);
-    }
-
-    public function ssce()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.ssce', $data);
-    }
-
-    public function term()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.term', $data);
-    }
-
-    public function virtual()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.virtual', $data);
-    }
-
-    public function volunteerism()
-    {
-        // Page
-        $data['page'] = Page::where('status', 1)->firstOrFail();
-
-        return view('web.volunteerism', $data);
-    }
 
     public function blog()
     {
