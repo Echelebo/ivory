@@ -72,15 +72,14 @@ class ServiceController extends Controller
             'title' => 'required|max:191|unique:services,title',
             'short_desc' => 'required',
             'description' => 'required',
-            'image' => 'required|image',
         ]);
 
 
-        // image upload, fit and store inside public folder 
+        // image upload, fit and store inside public folder
         if($request->hasFile('image')){
             //Upload New Image
             $filenameWithExt = $request->file('image')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); 
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
 
@@ -101,21 +100,21 @@ class ServiceController extends Controller
 
         // Get content with media file
         $content=$request->input('description');
-        
+
         $dom = new \DomDocument();
         libxml_use_internal_errors(true);
         $dom->encoding = 'utf-8';
-        $dom->loadHtml(utf8_decode($content), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $dom->loadHtml(utf8_decode($content), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
        // foreach <img> in the submited content
         foreach($images as $img){
             $src = $img->getAttribute('src');
-            
+
             // if the img source is 'data-url'
-            if(preg_match('/data:image/', $src)){                
+            if(preg_match('/data:image/', $src)){
                 // get the mimetype
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                $mimetype = $groups['mime'];                
+                $mimetype = $groups['mime'];
                 // Generating a random filename
                 $filename = uniqid().'_'.time();
 
@@ -125,17 +124,17 @@ class ServiceController extends Controller
                     File::makeDirectory($path, 0777, true, true);
                 }
 
-                $filepath = "/uploads/media/$filename.$mimetype";    
+                $filepath = "/uploads/media/$filename.$mimetype";
                 // @see http://image.intervention.io/api/
                 $image = Image::make($src)
                   // resize if required
-                  //->resize(500, null) 
+                  //->resize(500, null)
                   ->resize(800, null, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })
                   ->encode($mimetype, 100)  // encode file to the specified mimetype
-                  ->save(public_path($filepath));                
+                  ->save(public_path($filepath));
                 $new_src = asset($filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
@@ -210,11 +209,10 @@ class ServiceController extends Controller
             'title' => 'required|max:191|unique:services,title,'.$service->id,
             'short_desc' => 'required',
             'description' => 'required',
-            'image' => 'nullable|image',
         ]);
 
 
-        // image upload, fit and store inside public folder 
+        // image upload, fit and store inside public folder
         if($request->hasFile('image')){
 
             $file_path = public_path('uploads/'.$this->path.'/'.$service->image_path);
@@ -224,7 +222,7 @@ class ServiceController extends Controller
 
             //Upload New Image
             $filenameWithExt = $request->file('image')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); 
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
 
@@ -240,27 +238,27 @@ class ServiceController extends Controller
         }
         else{
 
-            $fileNameToStore = $service->image_path; 
+            $fileNameToStore = $service->image_path;
         }
 
 
         // Get content with media file
         $content=$request->input('description');
-        
+
         $dom = new \DomDocument();
         libxml_use_internal_errors(true);
         $dom->encoding = 'utf-8';
-        $dom->loadHtml(utf8_decode($content), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $dom->loadHtml(utf8_decode($content), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
        // foreach <img> in the submited content
         foreach($images as $img){
             $src = $img->getAttribute('src');
-            
+
             // if the img source is 'data-url'
-            if(preg_match('/data:image/', $src)){                
+            if(preg_match('/data:image/', $src)){
                 // get the mimetype
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                $mimetype = $groups['mime'];                
+                $mimetype = $groups['mime'];
                 // Generating a random filename
                 $filename = uniqid().'_'.time();
 
@@ -270,17 +268,17 @@ class ServiceController extends Controller
                     File::makeDirectory($path, 0777, true, true);
                 }
 
-                $filepath = "/uploads/media/$filename.$mimetype";    
+                $filepath = "/uploads/media/$filename.$mimetype";
                 // @see http://image.intervention.io/api/
                 $image = Image::make($src)
                   // resize if required
-                  //->resize(500, null) 
+                  //->resize(500, null)
                   ->resize(800, null, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })
                   ->encode($mimetype, 100)  // encode file to the specified mimetype
-                  ->save(public_path($filepath));                
+                  ->save(public_path($filepath));
                 $new_src = asset($filepath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);
