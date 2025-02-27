@@ -48,7 +48,7 @@
 <main class="main">
 
 <!-- breadcrumb -->
-<div class="site-breadcrumb" style="background: url(https://ivorygateeducation.org/assets/img/breadcrumb/01.jpg)">
+<div class="site-breadcrumb" style="background: url({{ asset('assets/img/breadcrumb/01.jpg') }})">
     <div class="container">
         <h2 class="breadcrumb-title">Blog</h2>
         <ul class="breadcrumb-menu">
